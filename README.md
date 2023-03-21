@@ -16,4 +16,4 @@ Within each folder the following files are included:
 - `slides-filename.html` (revealjs slides output)
 - `pdf-filename.pdf` (pdf output)
 
-N.B., to view the `html` files in your browser (without downloading them), prepend the URL with `https://htmlpreview.github.io/?`. E.g., `https://github.com/daniela-palleschi/workflow/blob/main/git/sheet-git_set-up.html` is just html code, but `https://htmlpreview.github.io/?https://github.com/daniela-palleschi/workflow/blob/main/git/sheet-git_set-up.html` is a rendered html sheet.
+N.B., to view the `html` files in your browser (without downloading them), prepend the URL with `https://htmlpreview.github.io/?`. E.g., `https://github.com/daniela-palleschi/workflow/blob/main/git/sheet-git_set-up.html` is just html code, but `https://htmlpreview.github.io/?https://github.com/daniela-palleschi/workflow/blob/main/git/sheet-git_set-up.html` is a rendered html sheet. Source: [Stackoverflow](https://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview).
