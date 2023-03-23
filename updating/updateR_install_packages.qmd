@@ -1,0 +1,326 @@
+---
+title: "UpdateR and (re-)Install Packages"
+author: "Daniela Palleschi"
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: true
+    html-math-method: katex
+    css: styles.css
+    number-sections: true
+    number-depth: 3
+    code-overflow: wrap
+editor: source
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo = F}
+# set global options
+knitr::opts_chunk$set(eval = F, # run each code chunk?
+                      echo = T, # print code chunk?
+                      message = F, # print messages (e.g., warnings)?
+                      error = F, # print errors?
+                      cache = T # cache? (Session > Restart R to clear cache)
+                      ) 
+```
+
+This script is to be run whenever you want to update R and/or install your required packages. Whenever you install a new package, try to remember to add it to this file. This way, whenver you update, you can just run this script and will then have all your required packages ready to go. Newer versions of RStudio automatically check for missing packages when opening a script, so forgetting to install CRAN packages will be less detrimental to your workflow.
+
+# Check for R update: `updateR`
+
+Do you need to update R? If using a Mac, you can do this by using the `updateR` package (some steps found [here](https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/)):
+
+```{r}
+# install devtools if you don't have it already
+install.packages('devtools')
+```
+
+```{r}
+# install updateR
+devtools::install_github('andreacirilloac/updateR')
+```
+
+```{r}
+# run; you will be prompted for admin password
+updateR::updateR()
+```
+
+# Global options
+
+My preferred global options (RStudio > Tools > Global options):
+
+  - General > Basic
+    - **R Sessions**
+        + uncheck 'Restore previously open source documents at startup'
+    - **Workspace** (for reproducibile workflow!!!)
+        + uncheck 'Restore .RData into workshapce at startup'
+        + Save workspace to .RData on exit: ***Never***
+  - Code > Display
+    - General
+      + Show whitespace characters
+      + Allow scroll past end of document
+      + highlight selected line
+  - Appearance
+    - Editor theme: Cobalt
+
+# Install packages 
+
+Packages can be available on CRAN or through developer versions.
+
+## CRAN packages
+
+First make a list of your packages available on CRAN.
+
+```{r}
+# CRAN packages ####
+
+# run THIS chunk after updating R/RStudio
+# from 'install_packages_if_missing.R'; roughly alphabetical
+required_packages <- c("binom", "bookdown", "broman", "citr", "dplyr", "doBy",
+                       "beepr", # to play sounds
+                       "emmeans", "EMAtools", "grid", 
+                       "ggplot2", "ggdark", "ggstatplot",
+                       "ggpp", # grammar extension of ggplot2
+                       "ggpubr",
+                       "ggrain",
+                       "formatR", "janitor",
+                       "here", "knitr", "kableExtra",  "lme4",
+                       "png", "pryr", "papaja", "performance",
+                       "tidyverse", "Rmpfr", "rmarkdown", "rotations",
+                       "quarto",
+"starpolishr", "stargazer", "simr",
+                       "xtable")
+```
+
+Then, run this list through a for loop that checks whether you've got these packages installed already. If not, the package will be installed.
+
+```{r}
+for (package in required_packages) {
+  print(paste0("checking for install of ", package))
+  if (!requireNamespace(package)) install.packages(package, repos = "http://cran.rstudio.com")
+}
+```
+
+## Install dev packages: `devtools` and `remotes`
+
+Now install the packages that aren't on CRAN. First, install `devtools` and `remotes` if you don't already have them installed.
+
+```{r}
+# Install remotes package if necessary
+if(!requireNamespace("devtools", quietly = TRUE)) install.packages("devtools")
+```
+
+
+```{r}
+# Install remotes package if necessary
+if(!requireNamespace("remotes", quietly = TRUE)) install.packages("remotes")
+```
+
+### `ggrain` package
+
+For raincloud plots geom
+
+```{r}
+if (!require(remotes)) {
+    install.packages("remotes")
+}
+remotes::install_github('jorvlan/raincloudplots')
+
+library(raincloudplots)
+```
+
+
+### `papaja` package
+
+- APA formatted templates
+
+```{r}
+# download developer papaja (code https://github.com/crsh/papaja)
+
+# Install the stable development version from GitHub
+remotes::install_github("crsh/papaja")
+
+# Install the latest development snapshot from GitHub
+remotes::install_github("crsh/papaja@devel")
+```
+
+### `rbbt` package
+
+- integrates Zotero with RStudio
+
+```{r}
+# Install rbbt Addin from GitHub to use Zotero
+remotes::install_github("paleolimbot/rbbt")
+
+```
+
+To set-up a citation entry shortcut: RStudio > Tools > Modify Keyboard Shortcuts > enter 'Zotero' in the search > choose 'Insert Zotero Citations' > add a shortcut (I like Ctrl+K)
+
+
+### `brms` package
+
+- for running Bayesian models
+
+```{r}
+
+# brms packages ####
+
+# From https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started
+# run the next line if you already have rstan installed
+# remove.packages(c("StanHeaders", "rstan"))
+install.packages("rstan", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))
+```
+
+### `cmdstanr` package
+
+- for running Bayesian models
+
+```{r}
+# and cmdstanr (https://mc-stan.org/cmdstanr/)
+remotes::install_github("stan-dev/cmdstanr")
+# or
+# install cmdstanr
+cmdstanr::install_cmdstan(cores = parallel::detectCores(), overwrite = TRUE)
+```
+
+### `bcogsci` package
+
+- companion package for the textbook [An Introduction to Bayesian Data Analysis for Cognitive Science](https://vasishth.github.io/bayescogsci/book/)
+
+```{r}
+# run the nextline if you don't have 'devtools' already installed
+# install.packages("devtools")
+devtools::install_github("bnicenboim/bcogsci")
+```
+
+## Optional developer packages
+
+- these only need to be installed if specifically wanted
+
+### `stargazer` package
+
+- these steps were taken when updatin to R v.4.2.1 as a work around to a problem that cropped up; only run this chunk if you start having problems with stargazer
+- as of March 14, 2023 it's still needed
+
+```{r}
+
+# 31.08.2022: updated to R version 4.2.1 (2022-06-23), now stargazer won't compile tables where model names are too long
+# Solution: discussed here https://www.reddit.com/r/rstats/comments/ucmtdn/issue_with_stargazer_package_after_update_to_r_420/
+# code below from linked solution https://gist.github.com/alexeyknorre/b0780836f4cec04d41a863a683f91b53
+## Quick fix for stargazer <= 5.2.3 is.na() issue with long model names in R >= 4.2
+# Unload stargazer if loaded
+detach("package:stargazer",unload=T)
+# Delete it
+remove.packages("stargazer")
+# Download the source
+download.file("https://cran.r-project.org/src/contrib/stargazer_5.2.3.tar.gz", destfile = "stargazer_5.2.3.tar.gz")
+# Unpack
+untar("stargazer_5.2.3.tar.gz")
+# Read the sourcefile with .inside.bracket fun
+stargazer_src <- readLines("stargazer/R/stargazer-internal.R")
+# Move the length check 5 lines up so it precedes is.na(.)
+stargazer_src[1990] <- stargazer_src[1995]
+stargazer_src[1995] <- ""
+# Save back
+writeLines(stargazer_src, con="stargazer/R/stargazer-internal.R")
+# Compile and install the patched package
+install.packages("stargazer", repos = NULL, type="source")
+### FROM NOW ON: shorter model names for stargazer
+
+```
+
+### PsyTeachR `Introdataviz`
+
+- can produce violin plots and raincloud plots
+
+```{r}
+# how to install the introdataviz package to get split and half violin plots
+devtools::install_github("psyteachr/introdataviz", dependencies = TRUE)
+```
+
+### `starpolishr` package
+
+- availabile on [github](https://github.com/ChandlerLutz/starpolishr)
+- post-polishing of stargazer tables
+
+```{r}
+# install.packages("devtools")
+devtools::install_github("ChandlerLutz/starpolishr")
+```
+
+### CogSci paper template
+
+- used to write CogSci conference proceedings papers
+
+```{r}
+# Install CogSci paper template
+devtools::install_github("kemacdonald/cogsci2016")
+```
+
+### `BRRR` package
+
+- play sounds from different rappers
+
+```{r}
+if(!require(devtools)) {install.packages("devtools")}
+devtools::install_github("brooke-watson/BRRR")
+library("BRRR")
+skrrrahh("kendrick")
+```
+
+
+# Loading packages
+
+Moving forward, use the following code at the beginning of your scripts instead of the long list of `library(package)`. This will also check whether packages are installed, if they are it'll load them, and if they're not it'll install them and then load them.
+
+```{r, eval = F}
+# don't use scientific notation
+options(scipen=999)
+
+# copy this chunk at the beginning of new chapters; will automatically load packages and install needed packages
+
+## First specify the packages of interest
+packages <- c("here", "tidyverse", "dplyr", "formatR", "stringr",
+              "janitor", "dplyr", "ggplot2", "lmerTest", "stargazer",
+              "MASS", "afex", "knitr", "gridExtra", "grid",
+              "paletteer",
+              "remotes",
+              "Rmisc")
+
+## Now load or install&load all
+package.check <- lapply(
+  packages,
+  FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      install.packages(x, dependencies = TRUE)
+      library(x, character.only = TRUE)
+    }
+  }
+)
+```
+
+# Manual installs
+
+## tinyTex
+
+- to render documents with LaTeX under the hood, run the following in the *terminal*: `quarto install tinytex`
+
+## Citations with Zotero
+
+To use the `rbbt` package installed above, we need to have Zotero installed (and Better BibTex).
+
+### install Zotero
+
+https://www.zotero.org/download/
+
+### Better BibTex
+
+Install from the [website]{https://retorque.re/zotero-better-bibtex/installation/}
+
+- then in Zotero: Tools / Add-ins / Settings wheel / choose downloaded file / Restart Zotero
+
+- set your citation keys: Zotero > Settings > Better BibTex > Citation key formula > (I like "zotero.clean")
+  + if you need to update the BibTex key in your docs: 
+      +highlight all your files in the Zotero Library, right-click > Better BibTex > Refresh BibTex key
+
