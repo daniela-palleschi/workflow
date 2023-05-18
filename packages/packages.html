@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Daniela Palleschi">
-<meta name="dcterms.date" content="2023-05-17">
+<meta name="dcterms.date" content="2023-05-18">
 
 <title>R Packages for a Reproducibile Workflow</title>
 <style>
@@ -3015,9 +3015,11 @@ vertical-align: -.125em;
   <li><a href="#activate-or-init" id="toc-activate-or-init" class="nav-link" data-scroll-target="#activate-or-init"><span class="header-section-number">3.1</span> Activate or init</a></li>
   <li><a href="#snapshot" id="toc-snapshot" class="nav-link" data-scroll-target="#snapshot"><span class="header-section-number">3.2</span> Snapshot</a></li>
   <li><a href="#restore" id="toc-restore" class="nav-link" data-scroll-target="#restore"><span class="header-section-number">3.3</span> Restore</a></li>
+  <li><a href="#upgrade" id="toc-upgrade" class="nav-link" data-scroll-target="#upgrade"><span class="header-section-number">3.4</span> Upgrade</a></li>
+  <li><a href="#update-and-hydrate" id="toc-update-and-hydrate" class="nav-link" data-scroll-target="#update-and-hydrate"><span class="header-section-number">3.5</span> Update and Hydrate</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="packages.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -3040,7 +3042,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">May 17, 2023</p>
+      <p class="date">May 18, 2023</p>
     </div>
   </div>
   
@@ -3103,6 +3105,7 @@ vertical-align: -.125em;
 <div class="cell" data-hash="packages_cache/html/unnamed-chunk-5_7bc32296ccb5eaa1ab63b3e25a1c5135">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>After updating the <code>renv.lock</code> file, remember to commit/push these changes to git (if you’re using it)!</p>
 </section>
 <section id="restore" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="restore"><span class="header-section-number">3.3</span> Restore</h2>
@@ -3116,6 +3119,30 @@ vertical-align: -.125em;
 <div class="cell" data-hash="packages_cache/html/unnamed-chunk-6_5ece42fde32e3f0534fc8aabb415e893">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="upgrade" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="upgrade"><span class="header-section-number">3.4</span> Upgrade</h2>
+<ul>
+<li>to update the <code>renv</code> package:</li>
+</ul>
+<div class="cell" data-hash="packages_cache/html/unnamed-chunk-7_889a738755942894f5467743dfa4725a">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># upgrade renv version</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">upgrade</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="update-and-hydrate" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="update-and-hydrate"><span class="header-section-number">3.5</span> Update and Hydrate</h2>
+<div class="cell" data-hash="packages_cache/html/unnamed-chunk-8_5c9163f1607a29e1527ec362ac23c836">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># updates all packages (stored in renv.lock) in the renv cache</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">hydrate</span>(<span class="at">update =</span> <span class="st">&quot;all&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># update should have no effect now, but doesn&#39;t hurt to check</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">update</span>()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># now take a snapshot with the updated packages</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>After updating the <code>renv.lock</code> file, remember to commit/push these changes to git (if you’re using it)!</p>
 </section>
 </section>
 

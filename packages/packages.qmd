@@ -11,6 +11,15 @@ format:
     number-depth: 3
     code-overflow: wrap
     self-contained: true
+  pdf:
+    output-file: packages.pdf
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    code-link: true
+    code-overflow: wrap
+    code-tools: true
+    self-contained: true
 editor: source
 editor_options: 
   chunk_output_type: console
