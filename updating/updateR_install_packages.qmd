@@ -10,6 +10,7 @@ format:
     number-sections: true
     number-depth: 3
     code-overflow: wrap
+    self-contained: true
 editor: source
 editor_options: 
   chunk_output_type: console
@@ -44,6 +45,35 @@ devtools::install_github('andreacirilloac/updateR')
 ```{r}
 # run; you will be prompted for admin password
 updateR::updateR()
+```
+
+::: {.callout-warning}
+## `updateR` macOS compatibility
+
+As of mid-2023, `updateR()` spits out an error after entering your password:
+
+```{r}
+#| eval: false
+Updated ~/.Rprofile
+Password:Error in if (!compactible) stop(sprintf(e, status$latest, macOS), call. = FALSE) : 
+  argument is of length zero
+```
+
+This seems to have something to do with the newest Mac OS (see: [discussion on the package GitHub](https://github.com/AndreaCirilloAC/updateR/issues/37)). For now, manual update only directly from [CRAN](https://cran.r-project.org/bin/macosx/).
+:::
+
+# Check for R update on Windows: `installR`
+
+The `installR` package also has an `updateR()` function which only works on Windows. You will need to run the function in directly in R, *not* RStudio!
+
+```{r}
+# install installr
+install.packages("installr")
+```
+
+```{r}
+# run; you will be prompted for admin password
+installr::updateR()
 ```
 
 # Global options
@@ -85,7 +115,7 @@ required_packages <- c("binom", "bookdown", "broman", "citr", "dplyr", "doBy",
                        "ggpubr",
                        "ggrain",
                        "formatR", "janitor",
-                       "here", "knitr", "kableExtra",  "lme4",
+                       "here", "knitr", "kableExtra",  "lme4", "lmerTest",
                        "png", "pryr", "papaja", "performance",
                        "tidyverse", "Rmpfr", "rmarkdown", "rotations",
                        "quarto",
@@ -93,7 +123,7 @@ required_packages <- c("binom", "bookdown", "broman", "citr", "dplyr", "doBy",
                        "xtable")
 ```
 
-Then, run this list through a for loop that checks whether you've got these packages installed already. If not, the package will be installed.
+Then, run this list through a for-loop that checks whether you've got these packages installed already. If not, the package will be installed.
 
 ```{r}
 for (package in required_packages) {

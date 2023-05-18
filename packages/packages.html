@@ -9,7 +9,7 @@
 <meta name="author" content="Daniela Palleschi">
 <meta name="dcterms.date" content="2023-05-17">
 
-<title>UpdateR and (re-)Install Packages</title>
+<title>R Packages for a Reproducibile Workflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3008,39 +3008,13 @@ vertical-align: -.125em;
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#check-for-r-update-updater" id="toc-check-for-r-update-updater" class="nav-link active" data-scroll-target="#check-for-r-update-updater"><span class="header-section-number">1</span> Check for R update: <code>updateR</code></a></li>
-  <li><a href="#check-for-r-update-on-windows-installr" id="toc-check-for-r-update-on-windows-installr" class="nav-link" data-scroll-target="#check-for-r-update-on-windows-installr"><span class="header-section-number">2</span> Check for R update on Windows: <code>installR</code></a></li>
-  <li><a href="#global-options" id="toc-global-options" class="nav-link" data-scroll-target="#global-options"><span class="header-section-number">3</span> Global options</a></li>
-  <li><a href="#install-packages" id="toc-install-packages" class="nav-link" data-scroll-target="#install-packages"><span class="header-section-number">4</span> Install packages</a>
+  <li><a href="#here-package" id="toc-here-package" class="nav-link active" data-scroll-target="#here-package"><span class="header-section-number">1</span> <code>here</code> package</a></li>
+  <li><a href="#pacman-package" id="toc-pacman-package" class="nav-link" data-scroll-target="#pacman-package"><span class="header-section-number">2</span> <code>pacman</code> package</a></li>
+  <li><a href="#renv-package" id="toc-renv-package" class="nav-link" data-scroll-target="#renv-package"><span class="header-section-number">3</span> <code>renv</code> package</a>
   <ul class="collapse">
-  <li><a href="#cran-packages" id="toc-cran-packages" class="nav-link" data-scroll-target="#cran-packages"><span class="header-section-number">4.1</span> CRAN packages</a></li>
-  <li><a href="#install-dev-packages-devtools-and-remotes" id="toc-install-dev-packages-devtools-and-remotes" class="nav-link" data-scroll-target="#install-dev-packages-devtools-and-remotes"><span class="header-section-number">4.2</span> Install dev packages: <code>devtools</code> and <code>remotes</code></a>
-  <ul class="collapse">
-  <li><a href="#ggrain-package" id="toc-ggrain-package" class="nav-link" data-scroll-target="#ggrain-package"><span class="header-section-number">4.2.1</span> <code>ggrain</code> package</a></li>
-  <li><a href="#papaja-package" id="toc-papaja-package" class="nav-link" data-scroll-target="#papaja-package"><span class="header-section-number">4.2.2</span> <code>papaja</code> package</a></li>
-  <li><a href="#rbbt-package" id="toc-rbbt-package" class="nav-link" data-scroll-target="#rbbt-package"><span class="header-section-number">4.2.3</span> <code>rbbt</code> package</a></li>
-  <li><a href="#brms-package" id="toc-brms-package" class="nav-link" data-scroll-target="#brms-package"><span class="header-section-number">4.2.4</span> <code>brms</code> package</a></li>
-  <li><a href="#cmdstanr-package" id="toc-cmdstanr-package" class="nav-link" data-scroll-target="#cmdstanr-package"><span class="header-section-number">4.2.5</span> <code>cmdstanr</code> package</a></li>
-  <li><a href="#bcogsci-package" id="toc-bcogsci-package" class="nav-link" data-scroll-target="#bcogsci-package"><span class="header-section-number">4.2.6</span> <code>bcogsci</code> package</a></li>
-  </ul></li>
-  <li><a href="#optional-developer-packages" id="toc-optional-developer-packages" class="nav-link" data-scroll-target="#optional-developer-packages"><span class="header-section-number">4.3</span> Optional developer packages</a>
-  <ul class="collapse">
-  <li><a href="#stargazer-package" id="toc-stargazer-package" class="nav-link" data-scroll-target="#stargazer-package"><span class="header-section-number">4.3.1</span> <code>stargazer</code> package</a></li>
-  <li><a href="#psyteachr-introdataviz" id="toc-psyteachr-introdataviz" class="nav-link" data-scroll-target="#psyteachr-introdataviz"><span class="header-section-number">4.3.2</span> PsyTeachR <code>Introdataviz</code></a></li>
-  <li><a href="#starpolishr-package" id="toc-starpolishr-package" class="nav-link" data-scroll-target="#starpolishr-package"><span class="header-section-number">4.3.3</span> <code>starpolishr</code> package</a></li>
-  <li><a href="#cogsci-paper-template" id="toc-cogsci-paper-template" class="nav-link" data-scroll-target="#cogsci-paper-template"><span class="header-section-number">4.3.4</span> CogSci paper template</a></li>
-  <li><a href="#brrr-package" id="toc-brrr-package" class="nav-link" data-scroll-target="#brrr-package"><span class="header-section-number">4.3.5</span> <code>BRRR</code> package</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#loading-packages" id="toc-loading-packages" class="nav-link" data-scroll-target="#loading-packages"><span class="header-section-number">5</span> Loading packages</a></li>
-  <li><a href="#manual-installs" id="toc-manual-installs" class="nav-link" data-scroll-target="#manual-installs"><span class="header-section-number">6</span> Manual installs</a>
-  <ul class="collapse">
-  <li><a href="#tinytex" id="toc-tinytex" class="nav-link" data-scroll-target="#tinytex"><span class="header-section-number">6.1</span> tinyTex</a></li>
-  <li><a href="#citations-with-zotero" id="toc-citations-with-zotero" class="nav-link" data-scroll-target="#citations-with-zotero"><span class="header-section-number">6.2</span> Citations with Zotero</a>
-  <ul class="collapse">
-  <li><a href="#install-zotero" id="toc-install-zotero" class="nav-link" data-scroll-target="#install-zotero"><span class="header-section-number">6.2.1</span> install Zotero</a></li>
-  <li><a href="#better-bibtex" id="toc-better-bibtex" class="nav-link" data-scroll-target="#better-bibtex"><span class="header-section-number">6.2.2</span> Better BibTex</a></li>
-  </ul></li>
+  <li><a href="#activate-or-init" id="toc-activate-or-init" class="nav-link" data-scroll-target="#activate-or-init"><span class="header-section-number">3.1</span> Activate or init</a></li>
+  <li><a href="#snapshot" id="toc-snapshot" class="nav-link" data-scroll-target="#snapshot"><span class="header-section-number">3.2</span> Snapshot</a></li>
+  <li><a href="#restore" id="toc-restore" class="nav-link" data-scroll-target="#restore"><span class="header-section-number">3.3</span> Restore</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -3049,7 +3023,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">UpdateR and (re-)Install Packages</h1>
+<h1 class="title">R Packages for a Reproducibile Workflow</h1>
 </div>
 
 
@@ -3076,343 +3050,72 @@ vertical-align: -.125em;
 
 </header>
 
-<p>This script is to be run whenever you want to update R and/or install your required packages. Whenever you install a new package, try to remember to add it to this file. This way, whenver you update, you can just run this script and will then have all your required packages ready to go. Newer versions of RStudio automatically check for missing packages when opening a script, so forgetting to install CRAN packages will be less detrimental to your workflow.</p>
-<section id="check-for-r-update-updater" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Check for R update: <code>updateR</code></h1>
-<p>Do you need to update R? If using a Mac, you can do this by using the <code>updateR</code> package (some steps found <a href="https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/">here</a>):</p>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-2_ef81ac3f9c30a7d102221c904ea469ce">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install devtools if you don&#39;t have it already</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;devtools&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-3_1cdd705af680b5b2aa1d466c12431e5f">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install updateR</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;andreacirilloac/updateR&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-4_f0e9a960f111821a4a2cb986aef3d92d">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run; you will be prompted for admin password</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>updateR<span class="sc">::</span><span class="fu">updateR</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<code>updateR</code> macOS compatibility
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>As of mid-2023, <code>updateR()</code> spits out an error after entering your password:</p>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-5_e7555ec6d45aca5d6470c5d030c7e6f9">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Updated <span class="sc">~</span><span class="er">/</span>.Rprofile</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Password<span class="sc">:</span>Error <span class="cf">in</span> <span class="cf">if</span> (<span class="sc">!</span>compactible) <span class="fu">stop</span>(<span class="fu">sprintf</span>(e, status<span class="sc">$</span>latest, macOS), <span class="at">call. =</span> <span class="cn">FALSE</span>) <span class="sc">:</span> </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  argument is of length zero</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This seems to have something to do with the newest Mac OS (see: <a href="https://github.com/AndreaCirilloAC/updateR/issues/37">discussion on the package GitHub</a>). For now, manual update only directly from <a href="https://cran.r-project.org/bin/macosx/">CRAN</a>.</p>
-</div>
+<section id="here-package" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> <code>here</code> package</h1>
+<ul>
+<li>uses file path relative to the current project</li>
+</ul>
+<div class="cell" data-hash="packages_cache/html/unnamed-chunk-2_a1373528a29da958cd5d8e82f8d2eb49">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install here package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;here&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read in a csv file</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;folder&quot;</span>, <span class="st">&quot;subfolder&quot;</span>, <span class="st">&quot;subsubfolder&quot;</span>, <span class="st">&quot;file.csv&quot;</span>))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;folder/subfolder/subsubfolder/file.csv&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="check-for-r-update-on-windows-installr" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Check for R update on Windows: <code>installR</code></h1>
-<p>The <code>installR</code> package also has an <code>updateR()</code> function which only works on Windows. You will need to run the function in directly in R, <em>not</em> RStudio!</p>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-6_db2cc556cc52476a0ad842d336ac6333">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install installr</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;installr&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-7_38af2d1e179e17e62ded9e8dc39ecafc">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run; you will be prompted for admin password</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>installr<span class="sc">::</span><span class="fu">updateR</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="global-options" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Global options</h1>
-<p>My preferred global options (RStudio &gt; Tools &gt; Global options):</p>
+<section id="pacman-package" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> <code>pacman</code> package</h1>
 <ul>
-<li>General &gt; Basic
+<li><code>p_load()</code> function checks if listed packages are already installed
 <ul>
-<li><strong>R Sessions</strong>
-<ul>
-<li>uncheck ‘Restore previously open source documents at startup’</li>
-</ul></li>
-<li><strong>Workspace</strong> (for reproducibile workflow!!!)
-<ul>
-<li>uncheck ‘Restore .RData into workshapce at startup’</li>
-<li>Save workspace to .RData on exit: <strong><em>Never</em></strong></li>
-</ul></li>
-</ul></li>
-<li>Code &gt; Display
-<ul>
-<li>General
-<ul>
-<li>Show whitespace characters</li>
-<li>Allow scroll past end of document</li>
-<li>highlight selected line</li>
-</ul></li>
-</ul></li>
-<li>Appearance
-<ul>
-<li>Editor theme: Cobalt</li>
+<li>if yes, loads them (as with <code>library()</code>)</li>
+<li>if no, installs and then lodas them (as long as they’re CRAN packages!)</li>
 </ul></li>
 </ul>
-</section>
-<section id="install-packages" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Install packages</h1>
-<p>Packages can be available on CRAN or through developer versions.</p>
-<section id="cran-packages" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="cran-packages"><span class="header-section-number">4.1</span> CRAN packages</h2>
-<p>First make a list of your packages available on CRAN.</p>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-8_0eedd2d73f497248a58e6021f8c2b74e">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CRAN packages ####</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># run THIS chunk after updating R/RStudio</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># from &#39;install_packages_if_missing.R&#39;; roughly alphabetical</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>required_packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;binom&quot;</span>, <span class="st">&quot;bookdown&quot;</span>, <span class="st">&quot;broman&quot;</span>, <span class="st">&quot;citr&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;doBy&quot;</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;beepr&quot;</span>, <span class="co"># to play sounds</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;emmeans&quot;</span>, <span class="st">&quot;EMAtools&quot;</span>, <span class="st">&quot;grid&quot;</span>, </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;ggdark&quot;</span>, <span class="st">&quot;ggstatplot&quot;</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;ggpp&quot;</span>, <span class="co"># grammar extension of ggplot2</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;ggpubr&quot;</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;ggrain&quot;</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;formatR&quot;</span>, <span class="st">&quot;janitor&quot;</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;here&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;kableExtra&quot;</span>,  <span class="st">&quot;lme4&quot;</span>, <span class="st">&quot;lmerTest&quot;</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;png&quot;</span>, <span class="st">&quot;pryr&quot;</span>, <span class="st">&quot;papaja&quot;</span>, <span class="st">&quot;performance&quot;</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;Rmpfr&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>, <span class="st">&quot;rotations&quot;</span>,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;quarto&quot;</span>,</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;starpolishr&quot;</span>, <span class="st">&quot;stargazer&quot;</span>, <span class="st">&quot;simr&quot;</span>,</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>                       <span class="st">&quot;xtable&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then, run this list through a for-loop that checks whether you’ve got these packages installed already. If not, the package will be installed.</p>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-9_26fbb17ce569f9055174cf65b3d56197">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (package <span class="cf">in</span> required_packages) {</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;checking for install of &quot;</span>, package))</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(package)) <span class="fu">install.packages</span>(package, <span class="at">repos =</span> <span class="st">&quot;http://cran.rstudio.com&quot;</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="packages_cache/html/unnamed-chunk-3_357eaa089ad7452dd169afbeb7c34bba">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install pacman</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install and/or load packages</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(here,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               renv,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>               kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="install-dev-packages-devtools-and-remotes" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="install-dev-packages-devtools-and-remotes"><span class="header-section-number">4.2</span> Install dev packages: <code>devtools</code> and <code>remotes</code></h2>
-<p>Now install the packages that aren’t on CRAN. First, install <code>devtools</code> and <code>remotes</code> if you don’t already have them installed.</p>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-10_99a7ed93098d039792f7050fe9650a65">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install remotes package if necessary</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;devtools&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-11_ffbd1b0b64e99cd530ec34cb4f565fe3">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install remotes package if necessary</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">&quot;remotes&quot;</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="ggrain-package" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="ggrain-package"><span class="header-section-number">4.2.1</span> <code>ggrain</code> package</h3>
-<p>For raincloud plots geom</p>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-12_167f0ed9a0870f7ffef7e3083dd31dff">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(remotes)) {</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&#39;jorvlan/raincloudplots&#39;</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(raincloudplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="papaja-package" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="papaja-package"><span class="header-section-number">4.2.2</span> <code>papaja</code> package</h3>
+<section id="renv-package" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <code>renv</code> package</h1>
+<section id="activate-or-init" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="activate-or-init"><span class="header-section-number">3.1</span> Activate or init</h2>
 <ul>
-<li>APA formatted templates</li>
+<li>to initialise a new <em>project-local environment</em>:</li>
 </ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-13_a87951c872f760db9be558cc59226e85">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download developer papaja (code https://github.com/crsh/papaja)</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the stable development version from GitHub</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;crsh/papaja&quot;</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the latest development snapshot from GitHub</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;crsh/papaja@devel&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="packages_cache/html/unnamed-chunk-4_0f9e2b0ed0ef38e6ad7736fd80666edc">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="rbbt-package" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="rbbt-package"><span class="header-section-number">4.2.3</span> <code>rbbt</code> package</h3>
+<section id="snapshot" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="snapshot"><span class="header-section-number">3.2</span> Snapshot</h2>
 <ul>
-<li>integrates Zotero with RStudio</li>
+<li>update <code>renv.lock</code> file</li>
 </ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-14_00a05cb3f74ecaab82918dcf8c0d2c6e">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install rbbt Addin from GitHub to use Zotero</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;paleolimbot/rbbt&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>To set-up a citation entry shortcut: RStudio &gt; Tools &gt; Modify Keyboard Shortcuts &gt; enter ‘Zotero’ in the search &gt; choose ‘Insert Zotero Citations’ &gt; add a shortcut (I like Ctrl+K)</p>
-</section>
-<section id="brms-package" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="brms-package"><span class="header-section-number">4.2.4</span> <code>brms</code> package</h3>
-<ul>
-<li>for running Bayesian models</li>
-</ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-15_3af3a6077a93456db206a31e2665cc66">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># brms packages ####</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># From https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run the next line if you already have rstan installed</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># remove.packages(c(&quot;StanHeaders&quot;, &quot;rstan&quot;))</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rstan&quot;</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">&quot;https://mc-stan.org/r-packages/&quot;</span>, <span class="fu">getOption</span>(<span class="st">&quot;repos&quot;</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="packages_cache/html/unnamed-chunk-5_7bc32296ccb5eaa1ab63b3e25a1c5135">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="cmdstanr-package" class="level3" data-number="4.2.5">
-<h3 data-number="4.2.5" class="anchored" data-anchor-id="cmdstanr-package"><span class="header-section-number">4.2.5</span> <code>cmdstanr</code> package</h3>
+<section id="restore" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="restore"><span class="header-section-number">3.3</span> Restore</h2>
 <ul>
-<li>for running Bayesian models</li>
-</ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-16_17857d7426cdef8813fa960587365b45">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># and cmdstanr (https://mc-stan.org/cmdstanr/)</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;stan-dev/cmdstanr&quot;</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install cmdstanr</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>cmdstanr<span class="sc">::</span><span class="fu">install_cmdstan</span>(<span class="at">cores =</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>(), <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="bcogsci-package" class="level3" data-number="4.2.6">
-<h3 data-number="4.2.6" class="anchored" data-anchor-id="bcogsci-package"><span class="header-section-number">4.2.6</span> <code>bcogsci</code> package</h3>
+<li>will restore your project to the most recent <code>renv.lock</code> file versions
 <ul>
-<li>companion package for the textbook <a href="https://vasishth.github.io/bayescogsci/book/">An Introduction to Bayesian Data Analysis for Cognitive Science</a></li>
-</ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-17_1122bcd525cc6088ccb6969b103e0fbb">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the nextline if you don&#39;t have &#39;devtools&#39; already installed</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;bnicenboim/bcogsci&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="optional-developer-packages" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="optional-developer-packages"><span class="header-section-number">4.3</span> Optional developer packages</h2>
-<ul>
-<li>these only need to be installed if specifically wanted</li>
-</ul>
-<section id="stargazer-package" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="stargazer-package"><span class="header-section-number">4.3.1</span> <code>stargazer</code> package</h3>
-<ul>
-<li>these steps were taken when updatin to R v.4.2.1 as a work around to a problem that cropped up; only run this chunk if you start having problems with stargazer</li>
-<li>as of March 14, 2023 it’s still needed</li>
-</ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-18_5f6eb2ff1e6663aa7cc6eabc1112dd00">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 31.08.2022: updated to R version 4.2.1 (2022-06-23), now stargazer won&#39;t compile tables where model names are too long</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Solution: discussed here https://www.reddit.com/r/rstats/comments/ucmtdn/issue_with_stargazer_package_after_update_to_r_420/</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># code below from linked solution https://gist.github.com/alexeyknorre/b0780836f4cec04d41a863a683f91b53</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Quick fix for stargazer &lt;= 5.2.3 is.na() issue with long model names in R &gt;= 4.2</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Unload stargazer if loaded</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(<span class="st">&quot;package:stargazer&quot;</span>,<span class="at">unload=</span>T)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete it</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">remove.packages</span>(<span class="st">&quot;stargazer&quot;</span>)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the source</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://cran.r-project.org/src/contrib/stargazer_5.2.3.tar.gz&quot;</span>, <span class="at">destfile =</span> <span class="st">&quot;stargazer_5.2.3.tar.gz&quot;</span>)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Unpack</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="fu">untar</span>(<span class="st">&quot;stargazer_5.2.3.tar.gz&quot;</span>)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the sourcefile with .inside.bracket fun</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>stargazer_src <span class="ot">&lt;-</span> <span class="fu">readLines</span>(<span class="st">&quot;stargazer/R/stargazer-internal.R&quot;</span>)</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Move the length check 5 lines up so it precedes is.na(.)</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>stargazer_src[<span class="dv">1990</span>] <span class="ot">&lt;-</span> stargazer_src[<span class="dv">1995</span>]</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>stargazer_src[<span class="dv">1995</span>] <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Save back</span></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="fu">writeLines</span>(stargazer_src, <span class="at">con=</span><span class="st">&quot;stargazer/R/stargazer-internal.R&quot;</span>)</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Compile and install the patched package</span></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stargazer&quot;</span>, <span class="at">repos =</span> <span class="cn">NULL</span>, <span class="at">type=</span><span class="st">&quot;source&quot;</span>)</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="do">### FROM NOW ON: shorter model names for stargazer</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="psyteachr-introdataviz" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="psyteachr-introdataviz"><span class="header-section-number">4.3.2</span> PsyTeachR <code>Introdataviz</code></h3>
-<ul>
-<li>can produce violin plots and raincloud plots</li>
-</ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-19_87700b745ad3c521b3bf9f88e51cd24d">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># how to install the introdataviz package to get split and half violin plots</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;psyteachr/introdataviz&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="starpolishr-package" class="level3" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="starpolishr-package"><span class="header-section-number">4.3.3</span> <code>starpolishr</code> package</h3>
-<ul>
-<li>availabile on <a href="https://github.com/ChandlerLutz/starpolishr">github</a></li>
-<li>post-polishing of stargazer tables</li>
-</ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-20_8cb16c187e641e7bc97dffc655dedcdd">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ChandlerLutz/starpolishr&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="cogsci-paper-template" class="level3" data-number="4.3.4">
-<h3 data-number="4.3.4" class="anchored" data-anchor-id="cogsci-paper-template"><span class="header-section-number">4.3.4</span> CogSci paper template</h3>
-<ul>
-<li>used to write CogSci conference proceedings papers</li>
-</ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-21_50bf6999ea379ea9d11292ff61d08970">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install CogSci paper template</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;kemacdonald/cogsci2016&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="brrr-package" class="level3" data-number="4.3.5">
-<h3 data-number="4.3.5" class="anchored" data-anchor-id="brrr-package"><span class="header-section-number">4.3.5</span> <code>BRRR</code> package</h3>
-<ul>
-<li>play sounds from different rappers</li>
-</ul>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-22_7276dc73f6b8d13d862567c4f732ecd9">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(devtools)) {<span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)}</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;brooke-watson/BRRR&quot;</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;BRRR&quot;</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">skrrrahh</span>(<span class="st">&quot;kendrick&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-</section>
-<section id="loading-packages" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Loading packages</h1>
-<p>Moving forward, use the following code at the beginning of your scripts instead of the long list of <code>library(package)</code>. This will also check whether packages are installed, if they are it’ll load them, and if they’re not it’ll install them and then load them.</p>
-<div class="cell" data-hash="updateR_install_packages_cache/html/unnamed-chunk-23_6abed0d0005b8f8123bd1e60b2b4c7d5">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># don&#39;t use scientific notation</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># copy this chunk at the beginning of new chapters; will automatically load packages and install needed packages</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="do">## First specify the packages of interest</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;here&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;formatR&quot;</span>, <span class="st">&quot;stringr&quot;</span>,</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;janitor&quot;</span>, <span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;lmerTest&quot;</span>, <span class="st">&quot;stargazer&quot;</span>,</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;MASS&quot;</span>, <span class="st">&quot;afex&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;gridExtra&quot;</span>, <span class="st">&quot;grid&quot;</span>,</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;paletteer&quot;</span>,</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;remotes&quot;</span>,</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>              <span class="st">&quot;Rmisc&quot;</span>)</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Now load or install&amp;load all</span></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>package.check <span class="ot">&lt;-</span> <span class="fu">lapply</span>(</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>  packages,</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> <span class="cf">function</span>(x) {</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">install.packages</span>(x, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">library</span>(x, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="manual-installs" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Manual installs</h1>
-<section id="tinytex" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="tinytex"><span class="header-section-number">6.1</span> tinyTex</h2>
-<ul>
-<li>to render documents with LaTeX under the hood, run the following in the <em>terminal</em>: <code>quarto install tinytex</code></li>
-</ul>
-</section>
-<section id="citations-with-zotero" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="citations-with-zotero"><span class="header-section-number">6.2</span> Citations with Zotero</h2>
-<p>To use the <code>rbbt</code> package installed above, we need to have Zotero installed (and Better BibTex).</p>
-<section id="install-zotero" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="install-zotero"><span class="header-section-number">6.2.1</span> install Zotero</h3>
-<p>https://www.zotero.org/download/</p>
-</section>
-<section id="better-bibtex" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="better-bibtex"><span class="header-section-number">6.2.2</span> Better BibTex</h3>
-<p>Install from the [website]{https://retorque.re/zotero-better-bibtex/installation/}</p>
-<ul>
-<li><p>then in Zotero: Tools / Add-ins / Settings wheel / choose downloaded file / Restart Zotero</p></li>
-<li><p>set your citation keys: Zotero &gt; Settings &gt; Better BibTex &gt; Citation key formula &gt; (I like “zotero.clean”)</p>
-<ul>
-<li>if you need to update the BibTex key in your docs: +highlight all your files in the Zotero Library, right-click &gt; Better BibTex &gt; Refresh BibTex key</li>
+<li>this step follows <code>snapshot()</code>, which updates the <code>renv.lock</code> file</li>
 </ul></li>
+<li>very useful after updating R!</li>
 </ul>
-</section>
+<div class="cell" data-hash="packages_cache/html/unnamed-chunk-6_5ece42fde32e3f0534fc8aabb415e893">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 

@@ -1,0 +1,116 @@
+---
+title: "R Packages for a Reproducibile Workflow"
+author: "Daniela Palleschi"
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: true
+    html-math-method: katex
+    css: styles.css
+    number-sections: true
+    number-depth: 3
+    code-overflow: wrap
+    self-contained: true
+editor: source
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, echo = F}
+# set global options
+knitr::opts_chunk$set(eval = F, # run each code chunk?
+                      echo = T, # print code chunk?
+                      message = F, # print messages (e.g., warnings)?
+                      error = F, # print errors?
+                      cache = T # cache? (Session > Restart R to clear cache)
+                      ) 
+```
+
+# `here` package
+
+- uses file path relative to the current project
+
+```{r}
+# install here package
+install.packages("here")
+
+# read in a csv file
+readr::read_csv(here::here("folder", "subfolder", "subsubfolder", "file.csv"))
+# or
+readr::read_csv(here::here("folder/subfolder/subsubfolder/file.csv"))
+```
+
+
+# `pacman` package
+
+- `p_load()` function checks if listed packages are already installed
+  - if yes, loads them (as with `library()`)
+  - if no, installs and then lodas them (as long as they're CRAN packages!)
+  
+```{r}
+# install pacman
+install.packages("pacman")
+
+# install and/or load packages
+pacman::p_load(here,
+               renv,
+               kableExtra)
+```
+
+
+# `renv` package
+
+## Activate or init
+
+- to initialise a new *project-local environment*:
+
+```{r}
+renv::init()
+```
+
+
+## Snapshot
+
+- update `renv.lock` file
+
+```{r}
+renv::snapshot()
+```
+
+After updating the `renv.lock` file, remember to commit/push these changes to git (if you're using it)!
+
+## Restore
+
+- will restore your project to the most recent `renv.lock` file versions
+  - this step follows `snapshot()`, which updates the `renv.lock` file
+- very useful after updating R!
+
+```{r}
+renv::restore()
+```
+
+## Upgrade
+
+- to update the `renv` package:
+
+```{r}
+# upgrade renv version
+renv::upgrade()
+```
+
+## Update and Hydrate
+
+```{r}
+# updates all packages (stored in renv.lock) in the renv cache
+renv::hydrate(update = "all")
+
+# update should have no effect now, but doesn't hurt to check
+renv::update()
+
+# now take a snapshot with the updated packages
+renv::snapshot()
+```
+
+After updating the `renv.lock` file, remember to commit/push these changes to git (if you're using it)!
+
+

@@ -4,12 +4,14 @@ Documentation on maintaining a reproducible workflow. For my future self and who
 
 Folders
 
+- `updating/`: script for updating R, (re-)installing packages and addins, etc.
+- `troubleshooting/`: documenting major errors I encounter and their solutions
 - `git/`: setting up and working with git/GitHub/GitLab in RStudio
 - `RProjects/`: working with RProjects (coming soon)
 - `Zotero/`: Zotero and the rbbt addin (coming soon)
 - `docker/`: docker containers for reproducibility (coming soon-ish)
 
-Within each folder the following files are included:
+Within each folder the following files are (usually) included:
 
 - `filename.qmd` (source Quarto document)
 - `sheet-filename.html` (html output)
