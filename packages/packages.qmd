@@ -69,6 +69,27 @@ pacman::p_load(here,
 
 # `renv` package
 
+The `renv` packages stores your project-local environment. That is, it creates a time capsule of the R and package versions that you use *within an R Project*.
+
+The benefits:
+
+- your output is not dependent on whichever project version you currently have stored on your machine
+  + e.g., if you come back to an analysis after a long time, the output should still be the same even if a certain package version has deprecated a function your analysis uses.
+- makes the project *reproducible* for collaborators as well, who will likely have some different package versions (or will have missing packages) on their machine
+
+The hard-to-get-your-head-around (imo):
+
+- with each new R Project with a renv.lock file, you need to install all the necessary packages again (even if they're on your machine)
+  + this is because each `renv` doesn't look beyond your project folder!
+- remembering to update the `renv.lock` file frequently!
+
+::: {.callout-warning}
+## Running `renv` functions
+
+Remember to always run `renv` functions ***in the console***! You do not want e.g., `renv` initialising a new `renv.lock` file every time you render your documents.
+
+:::
+
 ## Activate or init
 
 - to initialise a new *project-local environment*:
@@ -87,6 +108,13 @@ renv::snapshot()
 ```
 
 After updating the `renv.lock` file, remember to commit/push these changes to git (if you're using it)!
+
+::: {.callout-tip}
+## Version control
+
+After updating the `renv.lock` file (i.e., running `renv::snapshot()`), remember to commit/push these changes to git (if you're using git)! Otherwise, your `renv.lock` file will be outdated compared to your output.
+
+:::
 
 ## Restore
 
@@ -120,6 +148,11 @@ renv::update()
 renv::snapshot()
 ```
 
-After updating the `renv.lock` file, remember to commit/push these changes to git (if you're using it)!
+::: {.callout-tip}
+## Version control (repeated)
+
+After updating the `renv.lock` file (i.e., running `renv::snapshot()`), remember to commit/push these changes to git (if you're using git)! Otherwise, your `renv.lock` file will be outdated compared to your output.
+
+:::
 
 
