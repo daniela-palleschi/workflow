@@ -445,6 +445,13 @@ push
 
 Alternatively, you don't need to use the Terminal at all (but it's good practice to know how to in order to understand the logic/workflow). In the 'Environment' pane, you should see a 'Git' tab (if git is indeed set up). You can tick the 'Staged' button for all files whose changes you want to commit. Then click 'commit'. A message window will come up, add your message and click 'Commit'. Then, Click 'Push' to push to GH.
 
+# Git for collaboration
+
+If you've got a git repo set up and want to add a member:
+
+In a GitLab repo:
+  + Repository > Members > Invite members
+  
 # New laptop or expired SSH key
 
 If you have everything backed up, and are running your same projects etc. on a new machine (or if your SSH key simply expired), then you just need to generate a new SSH key in RStudio. Then, go to your GitHub or GitLab Settings, go to the tab for SSH keys, and add a the new SSH key. In other words, follow these steps:
