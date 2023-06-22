@@ -352,5 +352,5 @@ Install from the [website]{https://retorque.re/zotero-better-bibtex/installation
 
 - set your citation keys: Zotero > Settings > Better BibTex > Citation key formula > (I like "zotero.clean")
   + if you need to update the BibTex key in your docs: 
-      +highlight all your files in the Zotero Library, right-click > Better BibTex > Refresh BibTex key
+      + highlight all your files in the Zotero Library, right-click > Better BibTex > Refresh BibTex key
 

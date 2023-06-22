@@ -35,6 +35,8 @@ format:
     self-contained: true
     scrollable: true
     slide-level: 3
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -51,6 +53,44 @@ I use git right in the Terminal window in RStudio. To get to the Terminal window
 For the purposes of this guideline, I'll be using my 'dissertation' folder as an example, which contains all the files and folders necessary to knit my dissertation with oxforddown.
 
 All code chunks below contain copy-and-pasted commands and output from my Terminal, so you can see exactly how it should look.
+
+
+# Summary of commands
+
+```{r}
+#| echo: false
+#| eval: true
+pacman::p_load(
+  tidyverse,
+  knitr,
+  kableExtra
+)
+```
+
+```{r}
+#| echo: false
+#| eval: true
+tib_git <- dplyr::tribble(
+  ~"command", ~"function",
+  "git init", "initiate git",
+  "git add folder/", "stage/add a folder and its contents",
+  "git add filename.ext", "stage/add a file",
+  "git add -u", "stage all modified but unstaged files",
+  'git commit -m "message"', "commit the changes to local git",
+  "git push", "push current state of local git to remote repo"
+)
+```
+
+```{r}
+#| echo: false
+#| eval: true
+#| label: tbl-git
+#| tbl-cap: "Summary of useful git commands to get started"
+tib_git %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
 
 # Local repositories
 
@@ -334,6 +374,12 @@ Author: Daniela Palleschi <palleschi.daniela@gmail.com>
 Date:   Fri Jul 1 14:16:26 2022 +0200
 
     Update Context Exp headers
+```
+
+Stage all modified files.
+
+```{r}
+git add -u
 ```
 
 # Remote repositories with RStudio
