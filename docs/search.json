@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "zotero.html",
+    "href": "zotero.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "zotero.html#zotero-group-library",
+    "href": "zotero.html#zotero-group-library",
+    "title": "",
+    "section": "1.1 Zotero group library",
+    "text": "1.1 Zotero group library\n\nGo to Zotero website\nCreate a group library\nOn main Zotero webpage &gt; Groups &gt; Manage members &gt; Send More Invitations"
+  },
+  {
+    "objectID": "zotero.html#update-citation-keys",
+    "href": "zotero.html#update-citation-keys",
+    "title": "",
+    "section": "1.2 Update citation keys",
+    "text": "1.2 Update citation keys\n\nhighlight relevant publication (or all)\n\nright click &gt; BibTex &gt; Refresh citation"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "",
@@ -12,6 +33,90 @@
     "title": "",
     "section": "1.1 Resources",
     "text": "1.1 Resources\n\nJenny Bryan, Project-oriented workflow (2017 Blogpost)"
+  },
+  {
+    "objectID": "docker.html",
+    "href": "docker.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "docker.html#open-dock",
+    "href": "docker.html#open-dock",
+    "title": "",
+    "section": "2.1 Open Dock",
+    "text": "2.1 Open Dock\nFind Docker on your machine and open it. You can select the recommended settings."
+  },
+  {
+    "objectID": "docker.html#set-up-hub.docker-account",
+    "href": "docker.html#set-up-hub.docker-account",
+    "title": "",
+    "section": "2.2 Set up hub.docker account",
+    "text": "2.2 Set up hub.docker account\nYou can do that here, or wait to be prompted when you open Docker."
+  },
+  {
+    "objectID": "git.html",
+    "href": "git.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "git.html#how-to-follow",
+    "href": "git.html#how-to-follow",
+    "title": "",
+    "section": "1.1 How to follow",
+    "text": "1.1 How to follow\nAll code should be added into the Terminal tab (in the Console pane in RStudio). Alternatively, you don’t need to use the Terminal at all, as RStudio adds a Git tab to the Environment pane. For a much more in-depth (and better) guide, follow the amazing Happy git with R book by the even more amazing Jenny Bryan.\nI use git right in the Terminal window in RStudio. To get to the Terminal window, look where you usually see the output from your code (probably the bottom left window, ‘Console’). You should see a tab ‘Terminal’. This is where you want to go. Now you can start setting up git using the following commands.\nFor the purposes of this guideline, I’ll be using my ‘dissertation’ folder as an example, which contains all the files and folders necessary to knit my dissertation with oxforddown.\nAll code chunks below contain copy-and-pasted commands and output from my Terminal, so you can see exactly how it should look."
+  },
+  {
+    "objectID": "git.html#summary-of-commands",
+    "href": "git.html#summary-of-commands",
+    "title": "",
+    "section": "1.2 Summary of commands",
+    "text": "1.2 Summary of commands\n\n\n\n\nTable 1: Summary of useful git commands to get started\n\n\ncommand\nfunction\n\n\n\n\ngit init\ninitiate git\n\n\ngit add folder/\nstage/add a folder and its contents\n\n\ngit add filename.ext\nstage/add a file\n\n\ngit add -u\nstage all modified but unstaged files\n\n\ngit commit -m \"message\"\ncommit the changes to local git\n\n\ngit push\npush current state of local git to remote repo\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\n\n\n\n\n\n\n\n\n\n\nTable 2: Summary of useful git commands for when things go wrong\n\n\ncommand\nfunction\n\n\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\ngit reset\nunstage all\n\n\ngit checkout\nremove unstaged changes\n\n\ngit log --oneline\nList the unique hash for each commit in a repo\n\n\ngit revert 2f5451f --no-edit\nundo a commit with the hash 2f5451f (replace this with the relevant commit hash)\n\n\ngit reset --soft HEAD~\nundo last commit (that was not pushed)\n\n\ngit reset --soft HEAD~2\nundo last 2 commits (that were not pushed)\n\n\ngit push -f origin master\noverwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you're sure nobody else has made changes to the remote branch you're pushing to!"
+  },
+  {
+    "objectID": "git.html#local-repositories",
+    "href": "git.html#local-repositories",
+    "title": "",
+    "section": "1.3 Local repositories",
+    "text": "1.3 Local repositories\nLocal repositories are those that are stored on your machine (computer). They’re great for tracking changes you make along the way, but if your machine is lost/stolen/damaged, your local repository goes along with it. It’s a great idea to get familiar with git in local contexts, but remote repositories are the real life savers (next section).\n\n1.3.1 Setting up git\n\n1.3.1.1 Install git\nYou’ll first need to already have git installed locally. To see how to do that, go here: https://git-scm.com/download/. If you don’t know whether you already have git installed, use the code in the section below (check git version).\n\n\n1.3.1.2 Check git version\ngit version = check your version of git\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git version # this is where i typed 'git version'\ngit version 2.32.1 (Apple Git-133) # and this was the output\n\ngit config --list = check your configurations\ngit config --global user.name \"your-name\" = globally set your name git config --global user.email \"your-email\" = globally set your email pwd = print working directory cd = change directory\n\npwd\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation\n\n\ncd dissertation\n# no output\n\n\npwd\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation/dissertation\n\n\n## What the Terminal should look like after you've run all 3 commands\n(base) administrators-MacBook-3:Dissertation danielapalleschi$ pwd # command 1\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation\n(base) administrators-MacBook-3:Dissertation danielapalleschi$ cd dissertation # command 2\n(base) administrators-MacBook-3:dissertation danielapalleschi$ pwd # command 3\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation/dissertation\n(base) administrators-MacBook-3:dissertation danielapalleschi$ \n\n\n\n\n1.3.2 Adding git repo\n\ngit status = check status of git repo\ngit init = put a git repo in to track changes\ngit add = add files/folders to track\n\n\n1.3.2.1 git status\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git status # command\nOn branch master\n\nNo commits yet\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        ../../../.DS_Store\n        ../../../.gitignore\n        ../../\n        ../../../Participant Money/\n        ../../../R template scripts/\n        ../../../Stats/\n        ../../../Talks/\n        ../../../presupposition.docx\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n(base) administrators-MacBook-3:dissertation danielapalleschi$ \n\n\n\n1.3.2.2 git init\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git init\nhint: Using 'master' as the name for the initial branch. This default branch name\nhint: is subject to change. To configure the initial branch name to use in all\nhint: of your new repositories, which will suppress this warning, call:\nhint: \nhint:   git config --global init.defaultBranch &lt;name&gt;\nhint: \nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint: \nhint:   git branch -m &lt;name&gt;\n\nHmm, GitHub recently changed ‘master’ to ‘main’. Let’s do the same, first globally but also locally:\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git config --global init.defaultBranch main\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git branch -m main\n\nNow let’s check the status of our repo:\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git status\nOn branch main # So changing 'master' to 'main' worked :)\n\nNo commits yet\n\nUntracked files: # list of all the files to add...\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        .github/\n        .gitignore\n        00-introduction.Rmd\n        00-introduction.tex\n        01-how-to-use.tex\n        01-processing.Rmd\n        01-processing.pdf\n        01-processing.tex\n        02-tense-lifetime.Rmd\n        02-tense-lifetime.pdf\n        02-tense-lifetime.tex\n        03-exp123.Rmd\n        03-exp123.log\n        03-exp123.maf\n        03-exp123.mtc\n        03-exp123.mtc0\n        03-exp123.pdf\n        03-exp123.tex\n        03-rmd-basics-cites-and-refs.tex\n        04-exp345.pdf\n        04-exp345.tex\n        04a-exp4-context.Rmd\n        04b-exp5-world.Rmd\n        04c-exp6-ps-replication.Rmd\n        05-dfg.Rmd\n        05-dfg.pdf\n        05-dfg.tex\n        06-conclusion.Rmd\n        LICENSE\n        README.md\n        _bookdown.yml\n        bibliography/\n        data/\n        docs/\n        figures/\n        front-and-back-matter/\n        index.Rmd\n        scripts_and_filters/\n        templates/\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n\nFor now, I want to commit the chapters I’m working on. So I’ll add them.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 03-exp123.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04a-exp4-context.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04b-exp5-world.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04c-exp6-ps-replication.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 05-dfg.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 01-processing.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 02-tense-lifetime.Rmd\nbase) administrators-MacBook-3:dissertation danielapalleschi$ git status # now check the status\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached &lt;file&gt;...\" to unstage)\n        new file:   01-processing.Rmd\n        new file:   02-tense-lifetime.Rmd\n        new file:   03-exp123.Rmd\n        new file:   04a-exp4-context.Rmd\n        new file:   04b-exp5-world.Rmd\n        new file:   04c-exp6-ps-replication.Rmd\n        new file:   05-dfg.Rmd\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        .github/\n        .gitignore\n        00-introduction.Rmd\n        00-introduction.tex\n        01-how-to-use.tex\n        01-processing.pdf\n        01-processing.tex\n        02-tense-lifetime.pdf\n        02-tense-lifetime.tex\n        03-exp123.log\n        03-exp123.maf\n        03-exp123.mtc\n        03-exp123.mtc0\n        03-exp123.pdf\n        03-exp123.tex\n        03-rmd-basics-cites-and-refs.tex\n        04-exp345.pdf\n        04-exp345.tex\n        05-dfg.pdf\n        05-dfg.tex\n        06-conclusion.Rmd\n        LICENSE\n        README.md\n        _bookdown.yml\n        bibliography/\n        data/\n        docs/\n        figures/\n        front-and-back-matter/\n        index.Rmd\n        scripts_and_filters/\n        templates/\n\n\n\n\n1.3.3 Tracking changes\n\ngit diff = Show unstaged changes between your index and working directory\ngit commit -m \"&lt;message&gt;\" = commit the changes, with the following message\ngit log = Display the entire commit history using the default format\n\nFirst, I made some changes: Rename ‘Interpretation’ to ‘Discussion’ and remove the ‘save.image…’ code chunk from the end of 04a-exp4-context.Rmd.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git diff # command\ndiff --git a/04a-exp4-context.Rmd b/04a-exp4-context.Rmd\nindex ab6a2bb..a883ab4 100644\n--- a/04a-exp4-context.Rmd\n+++ b/04a-exp4-context.Rmd\n\nCommit this change\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git commit -m \"Update Context Exp headers\"\n[main (root-commit) dabe29e] Update Context Exp headers\n 7 files changed, 10363 insertions(+)\n create mode 100644 01-processing.Rmd\n create mode 100644 02-tense-lifetime.Rmd\n create mode 100644 03-exp123.Rmd\n create mode 100644 04a-exp4-context.Rmd\n create mode 100644 04b-exp5-world.Rmd\n create mode 100644 04c-exp6-ps-replication.Rmd\n create mode 100644 05-dfg.Rmd\n\nCheck the log\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git log\ncommit dabe29e9d594c578971e07e09e1b57c89572b582 (HEAD -&gt; main)\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:16:26 2022 +0200\n\n    Update Context Exp headers\n\nBut this updated ‘main’. Let’s try to only update the relevant file.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git commit 04a-exp4-context.Rmd -m \"Updated Context Exp headers\"\n[main 85468f5] Updated Context Exp headers\n 1 file changed, 1 insertion(+), 4 deletions(-)\n\nGood. Now check log.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git log\ncommit 85468f585608b5c8d94d4b9af40898c5a961110c (HEAD -&gt; main)\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:18:08 2022 +0200\n\n    Updated Context Exp headers\n\ncommit dabe29e9d594c578971e07e09e1b57c89572b582\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:16:26 2022 +0200\n\n    Update Context Exp headers\n\nStage all modified files.\n\ngit add -u"
+  },
+  {
+    "objectID": "git.html#remote-repositories-with-rstudio",
+    "href": "git.html#remote-repositories-with-rstudio",
+    "title": "",
+    "section": "1.4 Remote repositories with RStudio",
+    "text": "1.4 Remote repositories with RStudio\n\n1.4.1 Taken for granted\nFrom this point on, I take for granted:\n\ngit is already installed on my machine\nI have a GitHub account\nalready got RStudio set up with an SSH key (Tools &gt; Global Options &gt; Git).\n\nwith an SSH key, I should always make sure to copy the SSH url and not the HTTPS (which would require a Personal Access Token (PAT))!\n\n\nIf these steps haven’t already been taken, check out the first chapter from https://happygitwithr.com/index.html\nIf you’ve done all that, follow along from here (following https://happygitwithr.com/rstudio-git-github.html#rstudio-git-github)\n\n\n1.4.2 Setting up\nSteps:\n\nCreate a repo in GitHub\n\n\nmake sure to click ‘create README.md’\n\n\nCreate a new RProject with Version Control\n\n\nadd the URL from your GitHub repo, press the green ‘Clone &lt;&gt;’ button\ncopy the url, but make sure you choose the relevant format! SSH if you’ve got an SSH key set up, or HTTPS if you’re using a personal access token (PAT)\n\n\nstage (add), commit, some arbitray changes\n\n\nusing either the Git tab, or preferably using the Terminal (see below for examples)\n\n\n# add a line to your README\necho \"This is a line from RStudio\" &gt;&gt; README.md\n# check the status\ngit status\n# stage the change\ngit add README.md\n# commit the change and add a message\ngit commit -m \"first commit from RStudio\"\n# push the change to GitHub\ngit push\n# now, go refresh your GH repo and see the change\n\n\n\n1.4.3 Other commands\n\ncheck working directory\n\n\n# print working directory; should be to your project folder\npwd\n\n\nchange working directory\n\n\n# change directory, in case not your project folder\ncd\n\n\nlist all files in working directory\n\n\n# list all files in WD\nls\n\n\nlist all files in working directory, including ignored ones\n\n\n# list all files including ignored ones\nls -a\n\n\ncheck git status (what’s been staged, what not)\n\n\n# check status\nstatus\n\n\nadd files to .gitignore (so they won’t be monitored)\n\n\n# add file/folder to gitignore (so git will ignore it)\necho Slides/ &gt;&gt; .gitignore\n\n\ncheck remote repo URL\n\n\n# check what your remote repo URL is\ngit remote -v\n\n\n\n1.4.4 Keeping up changes\nIf you’ve already started working on the project locally, you can just drag-and-drop your files/folders into the Terminal\n\n# stage change (need to do it every time)\nadd filename.Rmd\n# commit these changes to git\ncommit -m \"message about commit\"\n# check the status\nstatus\n# push these changes to remote repo\npush\n\nAlternatively, you don’t need to use the Terminal at all (but it’s good practice to know how to in order to understand the logic/workflow). In the ‘Environment’ pane, you should see a ‘Git’ tab (if git is indeed set up). You can tick the ‘Staged’ button for all files whose changes you want to commit. Then click ‘commit’. A message window will come up, add your message and click ‘Commit’. Then, Click ‘Push’ to push to GH."
+  },
+  {
+    "objectID": "git.html#git-for-collaboration",
+    "href": "git.html#git-for-collaboration",
+    "title": "",
+    "section": "1.5 Git for collaboration",
+    "text": "1.5 Git for collaboration\nIf you’ve got a git repo set up and want to add a member:\nIn a GitLab repo: + Project Information &gt; Members &gt; Invite members"
+  },
+  {
+    "objectID": "git.html#new-laptop-or-expired-ssh-key",
+    "href": "git.html#new-laptop-or-expired-ssh-key",
+    "title": "",
+    "section": "1.6 New laptop or expired SSH key",
+    "text": "1.6 New laptop or expired SSH key\nIf you have everything backed up, and are running your same projects etc. on a new machine (or if your SSH key simply expired), then you just need to generate a new SSH key in RStudio. Then, go to your GitHub or GitLab Settings, go to the tab for SSH keys, and add a the new SSH key. In other words, follow these steps:\n\nCreate SSH key (in RStudio) and save to clipboard (e.g., CTRL+C)\n\nRStudio &gt; Tools &gt; Global Options &gt; Git/SVN &gt; SSH key &gt; Create SSH Key… &gt; OK &gt; View public key; copy key\n\nAdd SSH key to you GitHub and/or GitLab account\n\nGitHub &gt; Settings &gt; SSH and GPG keys &gt; New SSH key; paste key\nGitLab &gt; Preferences &gt; SSH keys &gt; Key / title etc.; paste key"
+  },
+  {
+    "objectID": "quarto.html",
+    "href": "quarto.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n\nImportant differences I’ve noticed:\n\nYAML:\n\nRmd output = format in Quarto\nRmd html_document = html in Quarto"
+  },
+  {
+    "objectID": "quarto.html#quarto-versus-rmarkdown",
+    "href": "quarto.html#quarto-versus-rmarkdown",
+    "title": "Quarto",
+    "section": "",
+    "text": "Important differences I’ve noticed:\n\nYAML:\n\nRmd output = format in Quarto\nRmd html_document = html in Quarto"
   },
   {
     "objectID": "troubleshooting.html",
@@ -40,62 +145,6 @@
     "title": "Troubleshooting",
     "section": "6.1 Quick fix for stargazer <= 5.2.3 is.na() issue with long model names in R >= 4.2",
     "text": "6.1 Quick fix for stargazer &lt;= 5.2.3 is.na() issue with long model names in R &gt;= 4.2"
-  },
-  {
-    "objectID": "git.html#how-to-follow",
-    "href": "git.html#how-to-follow",
-    "title": "3  Git set-up",
-    "section": "3.1 How to follow",
-    "text": "3.1 How to follow\nAll code should be added into the Terminal tab (in the Console pane in RStudio). Alternatively, you don’t need to use the Terminal at all, as RStudio adds a Git tab to the Environment pane. For a much more in-depth (and better) guide, follow the amazing Happy git with R book by the even more amazing Jenny Bryan.\nI use git right in the Terminal window in RStudio. To get to the Terminal window, look where you usually see the output from your code (probably the bottom left window, ‘Console’). You should see a tab ‘Terminal’. This is where you want to go. Now you can start setting up git using the following commands.\nFor the purposes of this guideline, I’ll be using my ‘dissertation’ folder as an example, which contains all the files and folders necessary to knit my dissertation with oxforddown.\nAll code chunks below contain copy-and-pasted commands and output from my Terminal, so you can see exactly how it should look."
-  },
-  {
-    "objectID": "git.html#summary-of-commands",
-    "href": "git.html#summary-of-commands",
-    "title": "3  Git set-up",
-    "section": "3.2 Summary of commands",
-    "text": "3.2 Summary of commands\n\n\n\n\nTable 3.1: Summary of useful git commands to get started\n\n\ncommand\nfunction\n\n\n\n\ngit init\ninitiate git\n\n\ngit add folder/\nstage/add a folder and its contents\n\n\ngit add filename.ext\nstage/add a file\n\n\ngit add -u\nstage all modified but unstaged files\n\n\ngit commit -m \"message\"\ncommit the changes to local git\n\n\ngit push\npush current state of local git to remote repo\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\n\n\n\n\n\n\n\n\n\n\nTable 3.2: Summary of useful git commands for when things go wrong\n\n\ncommand\nfunction\n\n\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\ngit reset\nunstage all\n\n\ngit checkout\nremove unstaged changes\n\n\ngit log --oneline\nList the unique hash for each commit in a repo\n\n\ngit revert 2f5451f --no-edit\nundo a commit with the hash 2f5451f (replace this with the relevant commit hash)\n\n\ngit reset --soft HEAD~\nundo last commit (that was not pushed)\n\n\ngit reset --soft HEAD~2\nundo last 2 commits (that were not pushed)\n\n\ngit push -f origin master\noverwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you're sure nobody else has made changes to the remote branch you're pushing to!"
-  },
-  {
-    "objectID": "git.html#local-repositories",
-    "href": "git.html#local-repositories",
-    "title": "3  Git set-up",
-    "section": "3.3 Local repositories",
-    "text": "3.3 Local repositories\nLocal repositories are those that are stored on your machine (computer). They’re great for tracking changes you make along the way, but if your machine is lost/stolen/damaged, your local repository goes along with it. It’s a great idea to get familiar with git in local contexts, but remote repositories are the real life savers (next section).\n\n3.3.1 Setting up git\n\n3.3.1.1 Install git\nYou’ll first need to already have git installed locally. To see how to do that, go here: https://git-scm.com/download/. If you don’t know whether you already have git installed, use the code in the section below (check git version).\n\n\n3.3.1.2 Check git version\ngit version = check your version of git\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git version # this is where i typed 'git version'\ngit version 2.32.1 (Apple Git-133) # and this was the output\n\ngit config --list = check your configurations\ngit config --global user.name \"your-name\" = globally set your name git config --global user.email \"your-email\" = globally set your email pwd = print working directory cd = change directory\n\npwd\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation\n\n\ncd dissertation\n# no output\n\n\npwd\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation/dissertation\n\n\n## What the Terminal should look like after you've run all 3 commands\n(base) administrators-MacBook-3:Dissertation danielapalleschi$ pwd # command 1\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation\n(base) administrators-MacBook-3:Dissertation danielapalleschi$ cd dissertation # command 2\n(base) administrators-MacBook-3:dissertation danielapalleschi$ pwd # command 3\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation/dissertation\n(base) administrators-MacBook-3:dissertation danielapalleschi$ \n\n\n\n\n3.3.2 Adding git repo\n\ngit status = check status of git repo\ngit init = put a git repo in to track changes\ngit add = add files/folders to track\n\n\n3.3.2.1 git status\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git status # command\nOn branch master\n\nNo commits yet\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        ../../../.DS_Store\n        ../../../.gitignore\n        ../../\n        ../../../Participant Money/\n        ../../../R template scripts/\n        ../../../Stats/\n        ../../../Talks/\n        ../../../presupposition.docx\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n(base) administrators-MacBook-3:dissertation danielapalleschi$ \n\n\n\n3.3.2.2 git init\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git init\nhint: Using 'master' as the name for the initial branch. This default branch name\nhint: is subject to change. To configure the initial branch name to use in all\nhint: of your new repositories, which will suppress this warning, call:\nhint: \nhint:   git config --global init.defaultBranch &lt;name&gt;\nhint: \nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint: \nhint:   git branch -m &lt;name&gt;\n\nHmm, GitHub recently changed ‘master’ to ‘main’. Let’s do the same, first globally but also locally:\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git config --global init.defaultBranch main\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git branch -m main\n\nNow let’s check the status of our repo:\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git status\nOn branch main # So changing 'master' to 'main' worked :)\n\nNo commits yet\n\nUntracked files: # list of all the files to add...\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        .github/\n        .gitignore\n        00-introduction.Rmd\n        00-introduction.tex\n        01-how-to-use.tex\n        01-processing.Rmd\n        01-processing.pdf\n        01-processing.tex\n        02-tense-lifetime.Rmd\n        02-tense-lifetime.pdf\n        02-tense-lifetime.tex\n        03-exp123.Rmd\n        03-exp123.log\n        03-exp123.maf\n        03-exp123.mtc\n        03-exp123.mtc0\n        03-exp123.pdf\n        03-exp123.tex\n        03-rmd-basics-cites-and-refs.tex\n        04-exp345.pdf\n        04-exp345.tex\n        04a-exp4-context.Rmd\n        04b-exp5-world.Rmd\n        04c-exp6-ps-replication.Rmd\n        05-dfg.Rmd\n        05-dfg.pdf\n        05-dfg.tex\n        06-conclusion.Rmd\n        LICENSE\n        README.md\n        _bookdown.yml\n        bibliography/\n        data/\n        docs/\n        figures/\n        front-and-back-matter/\n        index.Rmd\n        scripts_and_filters/\n        templates/\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n\nFor now, I want to commit the chapters I’m working on. So I’ll add them.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 03-exp123.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04a-exp4-context.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04b-exp5-world.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04c-exp6-ps-replication.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 05-dfg.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 01-processing.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 02-tense-lifetime.Rmd\nbase) administrators-MacBook-3:dissertation danielapalleschi$ git status # now check the status\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached &lt;file&gt;...\" to unstage)\n        new file:   01-processing.Rmd\n        new file:   02-tense-lifetime.Rmd\n        new file:   03-exp123.Rmd\n        new file:   04a-exp4-context.Rmd\n        new file:   04b-exp5-world.Rmd\n        new file:   04c-exp6-ps-replication.Rmd\n        new file:   05-dfg.Rmd\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        .github/\n        .gitignore\n        00-introduction.Rmd\n        00-introduction.tex\n        01-how-to-use.tex\n        01-processing.pdf\n        01-processing.tex\n        02-tense-lifetime.pdf\n        02-tense-lifetime.tex\n        03-exp123.log\n        03-exp123.maf\n        03-exp123.mtc\n        03-exp123.mtc0\n        03-exp123.pdf\n        03-exp123.tex\n        03-rmd-basics-cites-and-refs.tex\n        04-exp345.pdf\n        04-exp345.tex\n        05-dfg.pdf\n        05-dfg.tex\n        06-conclusion.Rmd\n        LICENSE\n        README.md\n        _bookdown.yml\n        bibliography/\n        data/\n        docs/\n        figures/\n        front-and-back-matter/\n        index.Rmd\n        scripts_and_filters/\n        templates/\n\n\n\n\n3.3.3 Tracking changes\n\ngit diff = Show unstaged changes between your index and working directory\ngit commit -m \"&lt;message&gt;\" = commit the changes, with the following message\ngit log = Display the entire commit history using the default format\n\nFirst, I made some changes: Rename ‘Interpretation’ to ‘Discussion’ and remove the ‘save.image…’ code chunk from the end of 04a-exp4-context.Rmd.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git diff # command\ndiff --git a/04a-exp4-context.Rmd b/04a-exp4-context.Rmd\nindex ab6a2bb..a883ab4 100644\n--- a/04a-exp4-context.Rmd\n+++ b/04a-exp4-context.Rmd\n\nCommit this change\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git commit -m \"Update Context Exp headers\"\n[main (root-commit) dabe29e] Update Context Exp headers\n 7 files changed, 10363 insertions(+)\n create mode 100644 01-processing.Rmd\n create mode 100644 02-tense-lifetime.Rmd\n create mode 100644 03-exp123.Rmd\n create mode 100644 04a-exp4-context.Rmd\n create mode 100644 04b-exp5-world.Rmd\n create mode 100644 04c-exp6-ps-replication.Rmd\n create mode 100644 05-dfg.Rmd\n\nCheck the log\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git log\ncommit dabe29e9d594c578971e07e09e1b57c89572b582 (HEAD -&gt; main)\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:16:26 2022 +0200\n\n    Update Context Exp headers\n\nBut this updated ‘main’. Let’s try to only update the relevant file.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git commit 04a-exp4-context.Rmd -m \"Updated Context Exp headers\"\n[main 85468f5] Updated Context Exp headers\n 1 file changed, 1 insertion(+), 4 deletions(-)\n\nGood. Now check log.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git log\ncommit 85468f585608b5c8d94d4b9af40898c5a961110c (HEAD -&gt; main)\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:18:08 2022 +0200\n\n    Updated Context Exp headers\n\ncommit dabe29e9d594c578971e07e09e1b57c89572b582\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:16:26 2022 +0200\n\n    Update Context Exp headers\n\nStage all modified files.\n\ngit add -u"
-  },
-  {
-    "objectID": "git.html#remote-repositories-with-rstudio",
-    "href": "git.html#remote-repositories-with-rstudio",
-    "title": "3  Git set-up",
-    "section": "3.4 Remote repositories with RStudio",
-    "text": "3.4 Remote repositories with RStudio\n\n3.4.1 Taken for granted\nFrom this point on, I take for granted:\n\ngit is already installed on my machine\nI have a GitHub account\nalready got RStudio set up with an SSH key (Tools &gt; Global Options &gt; Git).\n\nwith an SSH key, I should always make sure to copy the SSH url and not the HTTPS (which would require a Personal Access Token (PAT))!\n\n\nIf these steps haven’t already been taken, check out the first chapter from https://happygitwithr.com/index.html\nIf you’ve done all that, follow along from here (following https://happygitwithr.com/rstudio-git-github.html#rstudio-git-github)\n\n\n3.4.2 Setting up\nSteps:\n\nCreate a repo in GitHub\n\n\nmake sure to click ‘create README.md’\n\n\nCreate a new RProject with Version Control\n\n\nadd the URL from your GitHub repo, press the green ‘Clone &lt;&gt;’ button\ncopy the url, but make sure you choose the relevant format! SSH if you’ve got an SSH key set up, or HTTPS if you’re using a personal access token (PAT)\n\n\nstage (add), commit, some arbitray changes\n\n\nusing either the Git tab, or preferably using the Terminal (see below for examples)\n\n\n# add a line to your README\necho \"This is a line from RStudio\" &gt;&gt; README.md\n# check the status\ngit status\n# stage the change\ngit add README.md\n# commit the change and add a message\ngit commit -m \"first commit from RStudio\"\n# push the change to GitHub\ngit push\n# now, go refresh your GH repo and see the change\n\n\n\n3.4.3 Other commands\n\ncheck working directory\n\n\n# print working directory; should be to your project folder\npwd\n\n\nchange working directory\n\n\n# change directory, in case not your project folder\ncd\n\n\nlist all files in working directory\n\n\n# list all files in WD\nls\n\n\nlist all files in working directory, including ignored ones\n\n\n# list all files including ignored ones\nls -a\n\n\ncheck git status (what’s been staged, what not)\n\n\n# check status\nstatus\n\n\nadd files to .gitignore (so they won’t be monitored)\n\n\n# add file/folder to gitignore (so git will ignore it)\necho Slides/ &gt;&gt; .gitignore\n\n\ncheck remote repo URL\n\n\n# check what your remote repo URL is\ngit remote -v\n\n\n\n3.4.4 Keeping up changes\nIf you’ve already started working on the project locally, you can just drag-and-drop your files/folders into the Terminal\n\n# stage change (need to do it every time)\nadd filename.Rmd\n# commit these changes to git\ncommit -m \"message about commit\"\n# check the status\nstatus\n# push these changes to remote repo\npush\n\nAlternatively, you don’t need to use the Terminal at all (but it’s good practice to know how to in order to understand the logic/workflow). In the ‘Environment’ pane, you should see a ‘Git’ tab (if git is indeed set up). You can tick the ‘Staged’ button for all files whose changes you want to commit. Then click ‘commit’. A message window will come up, add your message and click ‘Commit’. Then, Click ‘Push’ to push to GH."
-  },
-  {
-    "objectID": "git.html#git-for-collaboration",
-    "href": "git.html#git-for-collaboration",
-    "title": "3  Git set-up",
-    "section": "3.5 Git for collaboration",
-    "text": "3.5 Git for collaboration\nIf you’ve got a git repo set up and want to add a member:\nIn a GitLab repo: + Project Information &gt; Members &gt; Invite members"
-  },
-  {
-    "objectID": "git.html#new-laptop-or-expired-ssh-key",
-    "href": "git.html#new-laptop-or-expired-ssh-key",
-    "title": "3  Git set-up",
-    "section": "3.6 New laptop or expired SSH key",
-    "text": "3.6 New laptop or expired SSH key\nIf you have everything backed up, and are running your same projects etc. on a new machine (or if your SSH key simply expired), then you just need to generate a new SSH key in RStudio. Then, go to your GitHub or GitLab Settings, go to the tab for SSH keys, and add a the new SSH key. In other words, follow these steps:\n\nCreate SSH key (in RStudio) and save to clipboard (e.g., CTRL+C)\n\nRStudio &gt; Tools &gt; Global Options &gt; Git/SVN &gt; SSH key &gt; Create SSH Key… &gt; OK &gt; View public key; copy key\n\nAdd SSH key to you GitHub and/or GitLab account\n\nGitHub &gt; Settings &gt; SSH and GPG keys &gt; New SSH key; paste key\nGitLab &gt; Preferences &gt; SSH keys &gt; Key / title etc.; paste key"
-  },
-  {
-    "objectID": "quarto.html",
-    "href": "quarto.html",
-    "title": "Quarto",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n\nImportant differences I’ve noticed:\n\nYAML:\n\nRmd output = format in Quarto\nRmd html_document = html in Quarto"
-  },
-  {
-    "objectID": "quarto.html#quarto-versus-rmarkdown",
-    "href": "quarto.html#quarto-versus-rmarkdown",
-    "title": "Quarto",
-    "section": "",
-    "text": "Important differences I’ve noticed:\n\nYAML:\n\nRmd output = format in Quarto\nRmd html_document = html in Quarto"
   },
   {
     "objectID": "packages.html",
@@ -140,6 +189,27 @@
     "text": "3.5 Update and Hydrate\n\n# updates all packages (stored in renv.lock) in the renv cache\nrenv::hydrate(update = \"all\")\n\n# update should have no effect now, but doesn't hurt to check\nrenv::update()\n\n# now take a snapshot with the updated packages\nrenv::snapshot()\n\n\n\n\n\n\n\nVersion control (repeated)\n\n\n\nAfter updating the renv.lock file (i.e., running renv::snapshot()), remember to commit/push these changes to git (if you’re using git)! Otherwise, your renv.lock file will be outdated compared to your output."
   },
   {
+    "objectID": "gh-pages-quarto.html",
+    "href": "gh-pages-quarto.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "gh-pages-quarto.html#github",
+    "href": "gh-pages-quarto.html#github",
+    "title": "",
+    "section": "1.1 GitHub",
+    "text": "1.1 GitHub\nI always start a remote repo first (GitHub &gt; + &gt; new repo with README). Then I copy the SSH key (&lt;/&gt; Code &gt; copy SSH) and in RStudio create a New Project &gt; Version Control &gt; Enter SSH key. Then, build the project locally in RStudio (or, if you’ve already done so, just bring all your docs into the new RProject).\nAlready have SSH key set-up (see Section on Git)\n\nNew remote repo on GitHub\nCopy SSH link (&lt;/&gt; Code &gt; copy SSH)\nRStudio: New Project &gt; Version Control &gt; paste SSH link\nMake changes locally\n\n\nin _quarto.yml: make sure you have output-dir: docs under project\ngit add files.rmd\ngit add docs/\ngit commit -m \"informative message\"\ngit push\nquarto publish\n\nfirst time? Choose gh-pages\nthis will create a new branch called gh-pages\nnever make changes to this branch yourself, rather work in the main (or some other branch) and when you want to publish your changes run quarto publish\nin GitHub repo settings: Pages &gt; Branch &gt; gh-pages and / (root) &gt; Save"
+  },
+  {
+    "objectID": "updateR_install_packages.html",
+    "href": "updateR_install_packages.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
     "objectID": "updateR_install_packages.html#check-for-r-update-updater",
     "href": "updateR_install_packages.html#check-for-r-update-updater",
     "title": "",
@@ -180,68 +250,5 @@
     "title": "",
     "section": "1.6 Manual installs",
     "text": "1.6 Manual installs\n\n1.6.1 tinyTex\n\nto render documents with LaTeX under the hood, run the following in the terminal: quarto install tinytex\n\n\n\n1.6.2 Citations with Zotero\nTo use the rbbt package installed above, we need to have Zotero installed (and Better BibTex).\n\n1.6.2.1 install Zotero\nhttps://www.zotero.org/download/\n\n\n1.6.2.2 Better BibTex\nInstall from the [website]{https://retorque.re/zotero-better-bibtex/installation/}\n\nthen in Zotero: Tools / Add-ins / Settings wheel / choose downloaded file / Restart Zotero\nset your citation keys: Zotero &gt; Settings &gt; Better BibTex &gt; Citation key formula &gt; (I like “zotero.clean”)\n\nif you need to update the BibTex key in your docs:\n\nhighlight all your files in the Zotero Library, right-click &gt; Better BibTex &gt; Refresh BibTex key"
-  },
-  {
-    "objectID": "zotero.html#zotero-group-library",
-    "href": "zotero.html#zotero-group-library",
-    "title": "",
-    "section": "1.1 Zotero group library",
-    "text": "1.1 Zotero group library\n\nGo to Zotero website\nCreate a group library\nOn main Zotero webpage &gt; Groups &gt; Manage members &gt; Send More Invitations"
-  },
-  {
-    "objectID": "zotero.html#update-citation-keys",
-    "href": "zotero.html#update-citation-keys",
-    "title": "",
-    "section": "1.2 Update citation keys",
-    "text": "1.2 Update citation keys\n\nhighlight relevant publication (or all)\n\nright click &gt; BibTex &gt; Refresh citation"
-  },
-  {
-    "objectID": "docker.html",
-    "href": "docker.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "docker.html#open-dock",
-    "href": "docker.html#open-dock",
-    "title": "",
-    "section": "2.1 Open Dock",
-    "text": "2.1 Open Dock\nFind Docker on your machine and open it. You can select the recommended settings."
-  },
-  {
-    "objectID": "docker.html#set-up-hub.docker-account",
-    "href": "docker.html#set-up-hub.docker-account",
-    "title": "",
-    "section": "2.2 Set up hub.docker account",
-    "text": "2.2 Set up hub.docker account\nYou can do that here, or wait to be prompted when you open Docker."
-  },
-  {
-    "objectID": "gh-pages-quarto.html",
-    "href": "gh-pages-quarto.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "gh-pages-quarto.html#github",
-    "href": "gh-pages-quarto.html#github",
-    "title": "",
-    "section": "1.1 GitHub",
-    "text": "1.1 GitHub\nI always start a remote repo first (GitHub &gt; + &gt; new repo with README). Then I copy the SSH key (&lt;/&gt; Code &gt; copy SSH) and in RStudio create a New Project &gt; Version Control &gt; Enter SSH key. Then, build the project locally in RStudio (or, if you’ve already done so, just bring all your docs into the new RProject).\nAlready have SSH key set-up (see Section on Git)\n\nNew remote repo on GitHub\nCopy SSH link (&lt;/&gt; Code &gt; copy SSH)\nRStudio: New Project &gt; Version Control &gt; paste SSH link\nMake changes locally\n\n\nin _quarto.yml: make sure you have output-dir: docs under project\ngit add files.rmd\ngit add docs/\ngit commit -m \"informative message\"\ngit push\nquarto publish\n\nfirst time? Choose gh-pages\nthis will create a new branch called gh-pages\nnever make changes to this branch yourself, rather work in the main (or some other branch) and when you want to publish your changes run quarto publish\nin GitHub repo settings: Pages &gt; Branch &gt; gh-pages and / (root) &gt; Save"
-  },
-  {
-    "objectID": "updateR_install_packages.html",
-    "href": "updateR_install_packages.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "zotero.html",
-    "href": "zotero.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
   }
 ]

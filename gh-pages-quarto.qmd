@@ -1,0 +1,26 @@
+# Quarto and Git Pages
+
+
+This describes my preferred workflow. I'm by no means an expert, and am a compentent novice with git at best. I am however a pretty savvy Quarto user, so more of my energy is spent sorting out the git side rather than the Quarto side.
+
+## GitHub
+
+I always start a remote repo first (GitHub > + > new repo with README). Then I copy the SSH key (</> Code > copy SSH) and in RStudio create a New Project > Version Control > Enter SSH key. Then, build the project locally in RStudio (or, if you've already done so, just bring all your docs into the new RProject).
+
+Already have SSH key set-up (see Section on Git)
+
+1. New remote repo on GitHub
+2. Copy SSH link (</> Code > copy SSH)
+3. RStudio: New Project > Version Control > paste SSH link
+4. Make changes locally
+  + in `_quarto.yml`: make sure you have `output-dir: docs` under `project`
+  + `git add files.rmd`
+  + `git add docs/`
+  + `git commit -m "informative message"`
+  + `git push`
+  + `quarto publish`
+    + first time? Choose `gh-pages`
+    + this will create a new branch called `gh-pages`
+    + never make changes to this branch yourself, rather work in the `main` (or some other branch) and when you want to publish your changes run `quarto publish`
+    + in GitHub repo settings: Pages > Branch > `gh-pages` and `/ (root)` > Save
+
