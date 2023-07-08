@@ -1,37 +1,87 @@
 project:
-  type: book
+  type: website
   output-dir: docs
   
-
-book:
+website:
   title: "R Workflow"
-  subtitle: "Summer Semester 2023"
-  author: "Daniela Palleschi"
-  date: "`r Sys.Date()`"
-  date-format: medium
-  twitter-card: true
-  back-to-top-navigation: true
-  downloads: pdf
-  chapters:
-    - index.qmd
-    - troubleshooting.qmd
-    - git.qmd
-    - quarto.qmd
-    - packages.qmd
-    - updateR_install_packages.qmd
-    - zotero.qmd
-    - docker.qmd
+  sidebar:
+    style: "docked"
+    search: true
+    downloads: revealjs
+    contents:
+      - index.qmd
+      - section: "Basics"
+        contents:
+          - troubleshooting.qmd
+          - quarto.qmd
+          - packages.qmd
+          - updateR_install_packages.qmd
+          - zotero.qmd
+      - section: "Next level"
+        contents:
+          - git.qmd
+          - docker.qmd
   navbar:
-    right:
-      - icon: home
-        href: https://daniela-palleschi.github.io/
+    tools:
+      - icon: twitter
+        href: https://twitter.com/dpalleswho
+      - href: https://daniela-palleschi.github.io
         text: D. Palleschi
       - icon: github
-        href: https://github.com/daniela-palleschi/daniela-palleschi.github.io/
-        aria-label: Source Code
-      - icon: life-preserver
-        href: https://moodle.hu-berlin.de/course/view.php?id=119097
-        aria-label: Course Moodle
+        menu:
+          - text: Source Code
+            url:  https://github.com/daniela-palleschi/daniela-palleschi.github.io/
+            
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    code-tools: true
+    css: styles.css
+    toc: true
+    number-sections: true
+    include-after-body: custom.html
+    page-layout: full
+    self-contained: true
+    execute:
+      message: false
+      warning: false
+      echo: false
+  revealjs: 
+    include-after-body: custom.html
+    theme: [dark]
+    width: 1600
+    height: 900
+    progress: true
+    # smaller: true
+    scrollable: true
+    slide-number: c/t
+    code-link: true
+    code-overflow: wrap
+    code-tools: true
+    # logo: logos/hu_logo.png
+    # css: logo.css
+    incremental: true
+    number-depth: 1
+    toc: false
+    toc-depth: 1
+    toc-title: 'Überblick'
+    navigation-mode: linear
+    controls-layout: bottom-right
+    fig-cap-location: top
+    font-size: 0.6em
+    slide-level: 4
+    self-contained: true
+    # chalkboard: true
+    title-slide-attributes: 
+      data-background-image: logos/logos.tif
+      data-background-size: 15%
+      data-background-position: 50% 92%
+    execute:
+      fig-width: 6
+      fig-asp: .618
+      fig-align: centre
 
 bibliography: references.bib
 
@@ -40,21 +90,6 @@ crossref:
   # labels: alpha a        # (default is arabic)
   # subref-labels: alpha t # (default is alpha a)
 
-format:
-  html:
-    toc: true
-    number-sections: true
-    include-after-body: custom.html
-    code-tools: true
-    page-layout: full
-    self-contained: true
-    theme:
-      light: flatly
-      dark: darkly
-    execute:
-      message: false
-      warning: false
-      echo: false
 
 
 
