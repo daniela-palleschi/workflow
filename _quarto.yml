@@ -21,6 +21,7 @@ website:
         contents:
           - git.qmd
           - docker.qmd
+          - gh-pages-quarto.qmd
   navbar:
     tools:
       - icon: twitter
@@ -48,40 +49,7 @@ format:
       message: false
       warning: false
       echo: false
-  revealjs: 
-    include-after-body: custom.html
-    theme: [dark]
-    width: 1600
-    height: 900
-    progress: true
-    # smaller: true
-    scrollable: true
-    slide-number: c/t
-    code-link: true
-    code-overflow: wrap
-    code-tools: true
-    # logo: logos/hu_logo.png
-    # css: logo.css
-    incremental: true
-    number-depth: 1
-    toc: false
-    toc-depth: 1
-    toc-title: 'Überblick'
-    navigation-mode: linear
-    controls-layout: bottom-right
-    fig-cap-location: top
-    font-size: 0.6em
-    slide-level: 4
-    self-contained: true
-    # chalkboard: true
-    title-slide-attributes: 
-      data-background-image: logos/logos.tif
-      data-background-size: 15%
-      data-background-position: 50% 92%
-    execute:
-      fig-width: 6
-      fig-asp: .618
-      fig-align: centre
+
 
 bibliography: references.bib
 

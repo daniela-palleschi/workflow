@@ -1,4 +1,4 @@
-# Git set-up
+# Git and GitHub {#sec-git}
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,
