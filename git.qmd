@@ -63,7 +63,7 @@ dplyr::tribble(
   "git revert 2f5451f --no-edit", "undo a commit with the hash 2f5451f (replace this with the relevant commit hash)",
   "git reset --soft HEAD~", "undo last commit (that was not pushed)",
   "git reset --soft HEAD~2", "undo last 2 commits (that were not pushed)",
-  "git push -f origin master", "overwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you're sure nobody else has made changes to the remote branch you're pushing to!"
+  "git push -f origin main", "overwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you're sure nobody else has made changes to the remote branch you're pushing to!"
 ) %>% 
   knitr::kable() %>% 
   kableExtra::kable_styling()
