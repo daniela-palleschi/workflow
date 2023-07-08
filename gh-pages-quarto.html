@@ -4633,7 +4633,8 @@ vertical-align: -.125em;
   <ul>
   <li><a href="#quarto-and-git-pages" id="toc-quarto-and-git-pages" class="nav-link active" data-scroll-target="#quarto-and-git-pages"><span class="header-section-number">1</span> Quarto and Git Pages</a>
   <ul class="collapse">
-  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github"><span class="header-section-number">1.1</span> GitHub</a></li>
+  <li><a href="#setting-up" id="toc-setting-up" class="nav-link" data-scroll-target="#setting-up"><span class="header-section-number">1.1</span> Setting up</a></li>
+  <li><a href="#updating" id="toc-updating" class="nav-link" data-scroll-target="#updating"><span class="header-section-number">1.2</span> Updating</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -4646,8 +4647,9 @@ vertical-align: -.125em;
 <section id="quarto-and-git-pages" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Quarto and Git Pages</h1>
 <p>This describes my preferred workflow. I’m by no means an expert, and am a compentent novice with git at best. I am however a pretty savvy Quarto user, so more of my energy is spent sorting out the git side rather than the Quarto side.</p>
-<section id="github" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="github"><span class="header-section-number">1.1</span> GitHub</h2>
+<p>You’ll need some working knowledge of Quarto (and RStudio), git, and GitHub. It would also be advantageous for you to be very comfortable in either Quarto or git/GitHub to mitigate growing pains.</p>
+<section id="setting-up" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="setting-up"><span class="header-section-number">1.1</span> Setting up</h2>
 <p>I always start a remote repo first (GitHub &gt; + &gt; new repo with README). Then I copy the SSH key (&lt;/&gt; Code &gt; copy SSH) and in RStudio create a New Project &gt; Version Control &gt; Enter SSH key. Then, build the project locally in RStudio (or, if you’ve already done so, just bring all your docs into the new RProject).</p>
 <p>Already have SSH key set-up (see Section on Git)</p>
 <ol type="1">
@@ -4670,6 +4672,23 @@ vertical-align: -.125em;
 <li>in GitHub repo settings: Pages &gt; Branch &gt; <code>gh-pages</code> and <code>/ (root)</code> &gt; Save</li>
 </ul></li>
 </ul>
+</section>
+<section id="updating" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="updating"><span class="header-section-number">1.2</span> Updating</h2>
+<p>After I’ve updated the source code of the website and previewed it, I typically run the following in the Terminal (while paying attention to the output):</p>
+<ol type="1">
+<li><code>git status</code>: were the modified files what I expect?</li>
+<li><code>git add -u</code>: stage all modified/deleted files
+<ul>
+<li>alternatively, <code>git add filename.ext</code> or <code>folder/</code> or <code>folder/*.ext</code>, etc</li>
+</ul></li>
+<li><code>git commit -m &#39;message&#39;</code></li>
+<li><code>git push</code> : push these changes to the branch i’m currently on (usually main)</li>
+<li><code>quarto publish</code> &gt; when prompted for GitHub pages, <code>Y</code>
+<ul>
+<li>push these changes to the <code>gh-pages</code> branch</li>
+</ul></li>
+</ol>
 
 
 <!-- -->
@@ -5087,29 +5106,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Quarto and Git Pages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>This describes my preferred workflow. I&#39;m by no means an expert, and am a compentent novice with git at best. I am however a pretty savvy Quarto user, so more of my energy is spent sorting out the git side rather than the Quarto side.</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## GitHub</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>I always start a remote repo first (GitHub &gt; + &gt; new repo with README). Then I copy the SSH key (&lt;/&gt; Code &gt; copy SSH) and in RStudio create a New Project &gt; Version Control &gt; Enter SSH key. Then, build the project locally in RStudio (or, if you&#39;ve already done so, just bring all your docs into the new RProject).</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Already have SSH key set-up (see Section on Git)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>New remote repo on GitHub</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Copy SSH link (&lt;/&gt; Code &gt; copy SSH)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>RStudio: New Project &gt; Version Control &gt; paste SSH link</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Make changes locally</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>in <span class="in">`_quarto.yml`</span>: make sure you have <span class="in">`output-dir: docs`</span> under <span class="in">`project`</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`git add files.rmd`</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`git add docs/`</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`git commit -m &quot;informative message&quot;`</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`git push`</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`quarto publish`</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>first time? Choose <span class="in">`gh-pages`</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>this will create a new branch called <span class="in">`gh-pages`</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>never make changes to this branch yourself, rather work in the <span class="in">`main`</span> (or some other branch) and when you want to publish your changes run <span class="in">`quarto publish`</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>in GitHub repo settings: Pages &gt; Branch &gt; <span class="in">`gh-pages`</span> and <span class="in">`/ (root)`</span> &gt; Save</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>This describes my preferred workflow. I&#39;m by no means an expert, and am a compentent novice with git at best. I am however a pretty savvy Quarto user, so more of my energy is spent sorting out the git side rather than the Quarto side.</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>You&#39;ll need some working knowledge of Quarto (and RStudio), git, and GitHub. It would also be advantageous for you to be very comfortable in either Quarto or git/GitHub to mitigate growing pains.</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setting up</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>I always start a remote repo first (GitHub &gt; + &gt; new repo with README). Then I copy the SSH key (&lt;/&gt; Code &gt; copy SSH) and in RStudio create a New Project &gt; Version Control &gt; Enter SSH key. Then, build the project locally in RStudio (or, if you&#39;ve already done so, just bring all your docs into the new RProject).</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Already have SSH key set-up (see Section on Git)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>New remote repo on GitHub</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Copy SSH link (&lt;/&gt; Code &gt; copy SSH)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>RStudio: New Project &gt; Version Control &gt; paste SSH link</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Make changes locally</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>in <span class="in">`_quarto.yml`</span>: make sure you have <span class="in">`output-dir: docs`</span> under <span class="in">`project`</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`git add files.rmd`</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`git add docs/`</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`git commit -m &quot;informative message&quot;`</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`git push`</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span><span class="in">`quarto publish`</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>first time? Choose <span class="in">`gh-pages`</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>this will create a new branch called <span class="in">`gh-pages`</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>never make changes to this branch yourself, rather work in the <span class="in">`main`</span> (or some other branch) and when you want to publish your changes run <span class="in">`quarto publish`</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>in GitHub repo settings: Pages &gt; Branch &gt; <span class="in">`gh-pages`</span> and <span class="in">`/ (root)`</span> &gt; Save</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Updating</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>After I&#39;ve updated the source code of the website and previewed it, I typically run the following in the Terminal (while paying attention to the output):</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span><span class="in">`git status`</span>: were the modified files what I expect?</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span><span class="in">`git add -u`</span>: stage all modified/deleted files</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>alternatively, <span class="in">`git add filename.ext`</span> or <span class="in">`folder/`</span> or <span class="in">`folder/*.ext`</span>, etc</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span><span class="in">`git commit -m &#39;message&#39;`</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span><span class="in">`git push`</span> : push these changes to the branch i&#39;m currently on (usually main)</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span><span class="in">`quarto publish`</span> &gt; when prompted for GitHub pages, <span class="in">`Y`</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">    + </span>push these changes to the <span class="in">`gh-pages`</span> branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

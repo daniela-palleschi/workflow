@@ -74,7 +74,7 @@
     "href": "git.html#summary-of-commands",
     "title": "",
     "section": "1.2 Summary of commands",
-    "text": "1.2 Summary of commands\n\n\n\n\nTable 1: Summary of useful git commands to get started\n\n\ncommand\nfunction\n\n\n\n\ngit init\ninitiate git\n\n\ngit add folder/\nstage/add a folder and its contents\n\n\ngit add filename.ext\nstage/add a file\n\n\ngit add -u\nstage all modified but unstaged files\n\n\ngit commit -m \"message\"\ncommit the changes to local git\n\n\ngit push\npush current state of local git to remote repo\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\n\n\n\n\n\n\n\n\n\n\nTable 2: Summary of useful git commands for when things go wrong\n\n\ncommand\nfunction\n\n\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\ngit reset\nunstage all\n\n\ngit checkout\nremove unstaged changes\n\n\ngit log --oneline\nList the unique hash for each commit in a repo\n\n\ngit revert 2f5451f --no-edit\nundo a commit with the hash 2f5451f (replace this with the relevant commit hash)\n\n\ngit reset --soft HEAD~\nundo last commit (that was not pushed)\n\n\ngit reset --soft HEAD~2\nundo last 2 commits (that were not pushed)\n\n\ngit push -f origin master\noverwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you're sure nobody else has made changes to the remote branch you're pushing to!"
+    "text": "1.2 Summary of commands\n\n\n\n\nTable 1: Summary of useful git commands to get started\n\n\ncommand\nfunction\n\n\n\n\ngit init\ninitiate git\n\n\ngit add folder/\nstage/add a folder and its contents\n\n\ngit add filename.ext\nstage/add a file\n\n\ngit add -u\nstage all modified but unstaged files\n\n\ngit commit -m \"message\"\ncommit the changes to local git\n\n\ngit push\npush current state of local git to remote repo\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\n\n\n\n\n\n\n\n\n\n\nTable 2: Summary of useful git commands for when things go wrong\n\n\ncommand\nfunction\n\n\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\ngit reset\nunstage all\n\n\ngit checkout\nremove unstaged changes\n\n\ngit log --oneline\nList the unique hash for each commit in a repo\n\n\ngit revert 2f5451f --no-edit\nundo a commit with the hash 2f5451f (replace this with the relevant commit hash)\n\n\ngit reset --soft HEAD~\nundo last commit (that was not pushed)\n\n\ngit reset --soft HEAD~2\nundo last 2 commits (that were not pushed)\n\n\ngit push -f origin main\noverwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you're sure nobody else has made changes to the remote branch you're pushing to!"
   },
   {
     "objectID": "git.html#local-repositories",
@@ -196,11 +196,18 @@
     "text": "Code"
   },
   {
-    "objectID": "gh-pages-quarto.html#github",
-    "href": "gh-pages-quarto.html#github",
+    "objectID": "gh-pages-quarto.html#setting-up",
+    "href": "gh-pages-quarto.html#setting-up",
     "title": "",
-    "section": "1.1 GitHub",
-    "text": "1.1 GitHub\nI always start a remote repo first (GitHub &gt; + &gt; new repo with README). Then I copy the SSH key (&lt;/&gt; Code &gt; copy SSH) and in RStudio create a New Project &gt; Version Control &gt; Enter SSH key. Then, build the project locally in RStudio (or, if you’ve already done so, just bring all your docs into the new RProject).\nAlready have SSH key set-up (see Section on Git)\n\nNew remote repo on GitHub\nCopy SSH link (&lt;/&gt; Code &gt; copy SSH)\nRStudio: New Project &gt; Version Control &gt; paste SSH link\nMake changes locally\n\n\nin _quarto.yml: make sure you have output-dir: docs under project\ngit add files.rmd\ngit add docs/\ngit commit -m \"informative message\"\ngit push\nquarto publish\n\nfirst time? Choose gh-pages\nthis will create a new branch called gh-pages\nnever make changes to this branch yourself, rather work in the main (or some other branch) and when you want to publish your changes run quarto publish\nin GitHub repo settings: Pages &gt; Branch &gt; gh-pages and / (root) &gt; Save"
+    "section": "1.1 Setting up",
+    "text": "1.1 Setting up\nI always start a remote repo first (GitHub &gt; + &gt; new repo with README). Then I copy the SSH key (&lt;/&gt; Code &gt; copy SSH) and in RStudio create a New Project &gt; Version Control &gt; Enter SSH key. Then, build the project locally in RStudio (or, if you’ve already done so, just bring all your docs into the new RProject).\nAlready have SSH key set-up (see Section on Git)\n\nNew remote repo on GitHub\nCopy SSH link (&lt;/&gt; Code &gt; copy SSH)\nRStudio: New Project &gt; Version Control &gt; paste SSH link\nMake changes locally\n\n\nin _quarto.yml: make sure you have output-dir: docs under project\ngit add files.rmd\ngit add docs/\ngit commit -m \"informative message\"\ngit push\nquarto publish\n\nfirst time? Choose gh-pages\nthis will create a new branch called gh-pages\nnever make changes to this branch yourself, rather work in the main (or some other branch) and when you want to publish your changes run quarto publish\nin GitHub repo settings: Pages &gt; Branch &gt; gh-pages and / (root) &gt; Save"
+  },
+  {
+    "objectID": "gh-pages-quarto.html#updating",
+    "href": "gh-pages-quarto.html#updating",
+    "title": "",
+    "section": "1.2 Updating",
+    "text": "1.2 Updating\nAfter I’ve updated the source code of the website and previewed it, I typically run the following in the Terminal (while paying attention to the output):\n\ngit status: were the modified files what I expect?\ngit add -u: stage all modified/deleted files\n\nalternatively, git add filename.ext or folder/ or folder/*.ext, etc\n\ngit commit -m 'message'\ngit push : push these changes to the branch i’m currently on (usually main)\nquarto publish &gt; when prompted for GitHub pages, Y\n\npush these changes to the gh-pages branch"
   },
   {
     "objectID": "updateR_install_packages.html",
