@@ -1,219 +1,254 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "R Workflow",
+    "objectID": "zotero.html",
+    "href": "zotero.html",
+    "title": "",
     "section": "",
-    "text": "1 Preface\nThis book contains my tips-for-future-me regarding how I like to build and maintain my workflow with R. It began as a series of Quarto docs I kept in an RProject for me to refer back to whenever I forgot how I had done something or which git command I used to achieve something. It is informal and likely flawed. I make an effort to provide links to source of important info where relevant.\nThese documents were originally intended to be privately used. I’ll slowly brush them up to improve readibly/quality, but this is definitely a work-in-progress."
-  },
-  {
-    "objectID": "index.html#resources",
-    "href": "index.html#resources",
-    "title": "R Workflow",
-    "section": "1.1 Resources",
-    "text": "1.1 Resources\n\nJenny Bryan, Project-oriented workflow (2017 Blogpost)"
-  },
-  {
-    "objectID": "troubleshooting.html",
-    "href": "troubleshooting.html",
-    "title": "2  Troubleshooting",
-    "section": "",
-    "text": "3 Rmarkdown knitting PDF\nError message:\ntlmgr update --all --self\nfmtutil [ERROR]: format directory not writable: /usr/local/texlive/2019/texmf-var/web2c\ntlmgr: package repository https://mirror.clientvps.com/CTAN/systems/texlive/tlnet (not verified: gpg unavailable)\ntlmgr install: package already present: l3kernel\n! LaTeX Error: Mismatched LaTeX support files detected.\n(LaTeX)        Loading 'expl3.sty' aborted!\n(LaTeX)        \n(LaTeX)        The L3 programming layer in the LaTeX format\n(LaTeX)        is dated 2023-02-01, but in your TeX tree the files require\n(LaTeX)        at least 2023-02-02.\n\nError: LaTeX failed to compile 03-exp123.tex. See https://yihui.org/tinytex/r/#debugging for debugging tips. See 03-exp123.log for more info.\nIn addition: Warning messages:\n1: Removed 156 rows containing non-finite values (stat_ydensity). \n2: Removed 156 rows containing non-finite values (stat_boxplot). \n3: Removed 156 rows containing non-finite values (stat_summary). \n4: Removed 156 rows containing non-finite values (stat_summary). \n5: Removed 156 rows containing non-finite values (stat_ydensity). \n6: Removed 156 rows containing non-finite values (stat_boxplot). \n7: Removed 156 rows containing non-finite values (stat_summary). \n8: Removed 156 rows containing non-finite values (stat_summary). \nExecution halted\nIn the Terminal, I type\nkpsewhich --all --engine=pdftex pdflatex.fmt\nAnd get:\n(base) administrators-MacBook-3:Lifetime Project danielapalleschi$ kpsewhich --all --engine=pdftex pdflatex.fmt\n/usr/local/texlive/2019/texmf-var/web2c/pdftex/pdflatex.fmt\nSo my pdftex version is from 2019 or soemthing.\nIn the Terminal, I typed:\nsudo fmtutil-sys --all\nAnd entered my laptop’s administrator Password when prompted (it won’t show that you’re typing, but just type the password and hit Enter). Then Terminal was running for a couple of minutes, and ended with the output:\nTranscript written on mex.log.\nfmtutil [INFO]: /usr/local/texlive/2019/texmf-var/web2c/pdftex/mex.fmt installed.\nfmtutil [INFO]: Disabled formats: 6\nfmtutil [INFO]: Successfully rebuilt formats: 45\nfmtutil [INFO]: Total formats: 51\nfmtutil [INFO]: exiting with status 0\nWhen I went to knit a PDF I still got the same errors.\nThen I ran\nfmtutil-user --all\nNo password required, it ran again for a few minutes. At the end, I got\nTranscript written on mf.log.\nfmtutil [INFO]: /Users/danielapalleschi/Library/texlive/2019/texmf-var/web2c/metafont/mf.base installed.\nfmtutil [INFO]: Disabled formats: 6\nfmtutil [INFO]: Successfully rebuilt formats: 45\nfmtutil [INFO]: Total formats: 51\nfmtutil [INFO]: exiting with status 0\ndetach(“package:stargazer”,unload=T) # Delete it remove.packages(“stargazer”) # Download the source download.file(“https://cran.r-project.org/src/contrib/stargazer_5.2.3.tar.gz”, destfile = “stargazer_5.2.3.tar.gz”) # Unpack untar(“stargazer_5.2.3.tar.gz”) # Read the sourcefile with .inside.bracket fun stargazer_src &lt;- readLines(“stargazer/R/stargazer-internal.R”) # Move the length check 5 lines up so it precedes is.na(.) stargazer_src[1990] &lt;- stargazer_src[1995] stargazer_src[1995] &lt;- “” # Save back writeLines(stargazer_src, con=“stargazer/R/stargazer-internal.R”) # Compile and install the patched package install.packages(“stargazer”, repos = NULL, type=“source”) ### FROM NOW ON: shorter model names for stargazer\n`"
-  },
-  {
-    "objectID": "troubleshooting.html#solution",
-    "href": "troubleshooting.html#solution",
-    "title": "2  Troubleshooting",
-    "section": "3.1 Solution",
-    "text": "3.1 Solution\nIn the end I went into my Time Machine (external harddrive) to a point right before this problem started happening, and restored the ‘Macintosh HD/Library’ folder, because presumably something happened to the TexLive file or something in there. That solved the problem."
-  },
-  {
-    "objectID": "troubleshooting.html#solution-1",
-    "href": "troubleshooting.html#solution-1",
-    "title": "2  Troubleshooting",
-    "section": "5.1 Solution",
-    "text": "5.1 Solution"
-  },
-  {
-    "objectID": "troubleshooting.html#quick-fix-for-stargazer-5.2.3-is.na-issue-with-long-model-names-in-r-4.2",
-    "href": "troubleshooting.html#quick-fix-for-stargazer-5.2.3-is.na-issue-with-long-model-names-in-r-4.2",
-    "title": "2  Troubleshooting",
-    "section": "8.1 Quick fix for stargazer <= 5.2.3 is.na() issue with long model names in R >= 4.2",
-    "text": "8.1 Quick fix for stargazer &lt;= 5.2.3 is.na() issue with long model names in R &gt;= 4.2"
-  },
-  {
-    "objectID": "git.html#how-to-follow",
-    "href": "git.html#how-to-follow",
-    "title": "3  Git set-up",
-    "section": "3.1 How to follow",
-    "text": "3.1 How to follow\nAll code should be added into the Terminal tab (in the Console pane in RStudio). Alternatively, you don’t need to use the Terminal at all, as RStudio adds a Git tab to the Environment pane. For a much more in-depth (and better) guide, follow the amazing Happy git with R book by the even more amazing Jenny Bryan.\nI use git right in the Terminal window in RStudio. To get to the Terminal window, look where you usually see the output from your code (probably the bottom left window, ‘Console’). You should see a tab ‘Terminal’. This is where you want to go. Now you can start setting up git using the following commands.\nFor the purposes of this guideline, I’ll be using my ‘dissertation’ folder as an example, which contains all the files and folders necessary to knit my dissertation with oxforddown.\nAll code chunks below contain copy-and-pasted commands and output from my Terminal, so you can see exactly how it should look."
-  },
-  {
-    "objectID": "git.html#summary-of-commands",
-    "href": "git.html#summary-of-commands",
-    "title": "3  Git set-up",
-    "section": "3.2 Summary of commands",
-    "text": "3.2 Summary of commands\n\n\n\n\nTable 3.1: Summary of useful git commands to get started\n\n\ncommand\nfunction\n\n\n\n\ngit init\ninitiate git\n\n\ngit add folder/\nstage/add a folder and its contents\n\n\ngit add filename.ext\nstage/add a file\n\n\ngit add -u\nstage all modified but unstaged files\n\n\ngit commit -m \"message\"\ncommit the changes to local git\n\n\ngit push\npush current state of local git to remote repo\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\n\n\n\n\n\n\n\n\n\n\nTable 3.2: Summary of useful git commands for when things go wrong\n\n\ncommand\nfunction\n\n\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\ngit reset\nunstage all\n\n\ngit checkout\nremove unstaged changes\n\n\ngit log --oneline\nList the unique hash for each commit in a repo\n\n\ngit revert 2f5451f --no-edit\nundo a commit with the hash 2f5451f (replace this with the relevant commit hash)\n\n\ngit reset --soft HEAD~\nundo last commit (that was not pushed)\n\n\ngit reset --soft HEAD~2\nundo last 2 commits (that were not pushed)\n\n\ngit push -f origin master\noverwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you're sure nobody else has made changes to the remote branch you're pushing to!"
-  },
-  {
-    "objectID": "git.html#local-repositories",
-    "href": "git.html#local-repositories",
-    "title": "3  Git set-up",
-    "section": "3.3 Local repositories",
-    "text": "3.3 Local repositories\nLocal repositories are those that are stored on your machine (computer). They’re great for tracking changes you make along the way, but if your machine is lost/stolen/damaged, your local repository goes along with it. It’s a great idea to get familiar with git in local contexts, but remote repositories are the real life savers (next section).\n\n3.3.1 Setting up git\n\n3.3.1.1 Install git\nYou’ll first need to already have git installed locally. To see how to do that, go here: https://git-scm.com/download/. If you don’t know whether you already have git installed, use the code in the section below (check git version).\n\n\n3.3.1.2 Check git version\ngit version = check your version of git\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git version # this is where i typed 'git version'\ngit version 2.32.1 (Apple Git-133) # and this was the output\n\ngit config --list = check your configurations\ngit config --global user.name \"your-name\" = globally set your name git config --global user.email \"your-email\" = globally set your email pwd = print working directory cd = change directory\n\npwd\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation\n\n\ncd dissertation\n# no output\n\n\npwd\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation/dissertation\n\n\n## What the Terminal should look like after you've run all 3 commands\n(base) administrators-MacBook-3:Dissertation danielapalleschi$ pwd # command 1\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation\n(base) administrators-MacBook-3:Dissertation danielapalleschi$ cd dissertation # command 2\n(base) administrators-MacBook-3:dissertation danielapalleschi$ pwd # command 3\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation/dissertation\n(base) administrators-MacBook-3:dissertation danielapalleschi$ \n\n\n\n\n3.3.2 Adding git repo\n\ngit status = check status of git repo\ngit init = put a git repo in to track changes\ngit add = add files/folders to track\n\n\n3.3.2.1 git status\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git status # command\nOn branch master\n\nNo commits yet\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        ../../../.DS_Store\n        ../../../.gitignore\n        ../../\n        ../../../Participant Money/\n        ../../../R template scripts/\n        ../../../Stats/\n        ../../../Talks/\n        ../../../presupposition.docx\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n(base) administrators-MacBook-3:dissertation danielapalleschi$ \n\n\n\n3.3.2.2 git init\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git init\nhint: Using 'master' as the name for the initial branch. This default branch name\nhint: is subject to change. To configure the initial branch name to use in all\nhint: of your new repositories, which will suppress this warning, call:\nhint: \nhint:   git config --global init.defaultBranch &lt;name&gt;\nhint: \nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint: \nhint:   git branch -m &lt;name&gt;\n\nHmm, GitHub recently changed ‘master’ to ‘main’. Let’s do the same, first globally but also locally:\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git config --global init.defaultBranch main\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git branch -m main\n\nNow let’s check the status of our repo:\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git status\nOn branch main # So changing 'master' to 'main' worked :)\n\nNo commits yet\n\nUntracked files: # list of all the files to add...\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        .github/\n        .gitignore\n        00-introduction.Rmd\n        00-introduction.tex\n        01-how-to-use.tex\n        01-processing.Rmd\n        01-processing.pdf\n        01-processing.tex\n        02-tense-lifetime.Rmd\n        02-tense-lifetime.pdf\n        02-tense-lifetime.tex\n        03-exp123.Rmd\n        03-exp123.log\n        03-exp123.maf\n        03-exp123.mtc\n        03-exp123.mtc0\n        03-exp123.pdf\n        03-exp123.tex\n        03-rmd-basics-cites-and-refs.tex\n        04-exp345.pdf\n        04-exp345.tex\n        04a-exp4-context.Rmd\n        04b-exp5-world.Rmd\n        04c-exp6-ps-replication.Rmd\n        05-dfg.Rmd\n        05-dfg.pdf\n        05-dfg.tex\n        06-conclusion.Rmd\n        LICENSE\n        README.md\n        _bookdown.yml\n        bibliography/\n        data/\n        docs/\n        figures/\n        front-and-back-matter/\n        index.Rmd\n        scripts_and_filters/\n        templates/\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n\nFor now, I want to commit the chapters I’m working on. So I’ll add them.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 03-exp123.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04a-exp4-context.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04b-exp5-world.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04c-exp6-ps-replication.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 05-dfg.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 01-processing.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 02-tense-lifetime.Rmd\nbase) administrators-MacBook-3:dissertation danielapalleschi$ git status # now check the status\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached &lt;file&gt;...\" to unstage)\n        new file:   01-processing.Rmd\n        new file:   02-tense-lifetime.Rmd\n        new file:   03-exp123.Rmd\n        new file:   04a-exp4-context.Rmd\n        new file:   04b-exp5-world.Rmd\n        new file:   04c-exp6-ps-replication.Rmd\n        new file:   05-dfg.Rmd\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        .github/\n        .gitignore\n        00-introduction.Rmd\n        00-introduction.tex\n        01-how-to-use.tex\n        01-processing.pdf\n        01-processing.tex\n        02-tense-lifetime.pdf\n        02-tense-lifetime.tex\n        03-exp123.log\n        03-exp123.maf\n        03-exp123.mtc\n        03-exp123.mtc0\n        03-exp123.pdf\n        03-exp123.tex\n        03-rmd-basics-cites-and-refs.tex\n        04-exp345.pdf\n        04-exp345.tex\n        05-dfg.pdf\n        05-dfg.tex\n        06-conclusion.Rmd\n        LICENSE\n        README.md\n        _bookdown.yml\n        bibliography/\n        data/\n        docs/\n        figures/\n        front-and-back-matter/\n        index.Rmd\n        scripts_and_filters/\n        templates/\n\n\n\n\n3.3.3 Tracking changes\n\ngit diff = Show unstaged changes between your index and working directory\ngit commit -m \"&lt;message&gt;\" = commit the changes, with the following message\ngit log = Display the entire commit history using the default format\n\nFirst, I made some changes: Rename ‘Interpretation’ to ‘Discussion’ and remove the ‘save.image…’ code chunk from the end of 04a-exp4-context.Rmd.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git diff # command\ndiff --git a/04a-exp4-context.Rmd b/04a-exp4-context.Rmd\nindex ab6a2bb..a883ab4 100644\n--- a/04a-exp4-context.Rmd\n+++ b/04a-exp4-context.Rmd\n\nCommit this change\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git commit -m \"Update Context Exp headers\"\n[main (root-commit) dabe29e] Update Context Exp headers\n 7 files changed, 10363 insertions(+)\n create mode 100644 01-processing.Rmd\n create mode 100644 02-tense-lifetime.Rmd\n create mode 100644 03-exp123.Rmd\n create mode 100644 04a-exp4-context.Rmd\n create mode 100644 04b-exp5-world.Rmd\n create mode 100644 04c-exp6-ps-replication.Rmd\n create mode 100644 05-dfg.Rmd\n\nCheck the log\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git log\ncommit dabe29e9d594c578971e07e09e1b57c89572b582 (HEAD -&gt; main)\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:16:26 2022 +0200\n\n    Update Context Exp headers\n\nBut this updated ‘main’. Let’s try to only update the relevant file.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git commit 04a-exp4-context.Rmd -m \"Updated Context Exp headers\"\n[main 85468f5] Updated Context Exp headers\n 1 file changed, 1 insertion(+), 4 deletions(-)\n\nGood. Now check log.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git log\ncommit 85468f585608b5c8d94d4b9af40898c5a961110c (HEAD -&gt; main)\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:18:08 2022 +0200\n\n    Updated Context Exp headers\n\ncommit dabe29e9d594c578971e07e09e1b57c89572b582\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:16:26 2022 +0200\n\n    Update Context Exp headers\n\nStage all modified files.\n\ngit add -u"
-  },
-  {
-    "objectID": "git.html#remote-repositories-with-rstudio",
-    "href": "git.html#remote-repositories-with-rstudio",
-    "title": "3  Git set-up",
-    "section": "3.4 Remote repositories with RStudio",
-    "text": "3.4 Remote repositories with RStudio\n\n3.4.1 Taken for granted\nFrom this point on, I take for granted:\n\ngit is already installed on my machine\nI have a GitHub account\nalready got RStudio set up with an SSH key (Tools &gt; Global Options &gt; Git).\n\nwith an SSH key, I should always make sure to copy the SSH url and not the HTTPS (which would require a Personal Access Token (PAT))!\n\n\nIf these steps haven’t already been taken, check out the first chapter from https://happygitwithr.com/index.html\nIf you’ve done all that, follow along from here (following https://happygitwithr.com/rstudio-git-github.html#rstudio-git-github)\n\n\n3.4.2 Setting up\nSteps:\n\nCreate a repo in GitHub\n\n\nmake sure to click ‘create README.md’\n\n\nCreate a new RProject with Version Control\n\n\nadd the URL from your GitHub repo, press the green ‘Clone &lt;&gt;’ button\ncopy the url, but make sure you choose the relevant format! SSH if you’ve got an SSH key set up, or HTTPS if you’re using a personal access token (PAT)\n\n\nstage (add), commit, some arbitray changes\n\n\nusing either the Git tab, or preferably using the Terminal (see below for examples)\n\n\n# add a line to your README\necho \"This is a line from RStudio\" &gt;&gt; README.md\n# check the status\ngit status\n# stage the change\ngit add README.md\n# commit the change and add a message\ngit commit -m \"first commit from RStudio\"\n# push the change to GitHub\ngit push\n# now, go refresh your GH repo and see the change\n\n\n\n3.4.3 Other commands\n\ncheck working directory\n\n\n# print working directory; should be to your project folder\npwd\n\n\nchange working directory\n\n\n# change directory, in case not your project folder\ncd\n\n\nlist all files in working directory\n\n\n# list all files in WD\nls\n\n\nlist all files in working directory, including ignored ones\n\n\n# list all files including ignored ones\nls -a\n\n\ncheck git status (what’s been staged, what not)\n\n\n# check status\nstatus\n\n\nadd files to .gitignore (so they won’t be monitored)\n\n\n# add file/folder to gitignore (so git will ignore it)\necho Slides/ &gt;&gt; .gitignore\n\n\ncheck remote repo URL\n\n\n# check what your remote repo URL is\ngit remote -v\n\n\n\n3.4.4 Keeping up changes\nIf you’ve already started working on the project locally, you can just drag-and-drop your files/folders into the Terminal\n\n# stage change (need to do it every time)\nadd filename.Rmd\n# commit these changes to git\ncommit -m \"message about commit\"\n# check the status\nstatus\n# push these changes to remote repo\npush\n\nAlternatively, you don’t need to use the Terminal at all (but it’s good practice to know how to in order to understand the logic/workflow). In the ‘Environment’ pane, you should see a ‘Git’ tab (if git is indeed set up). You can tick the ‘Staged’ button for all files whose changes you want to commit. Then click ‘commit’. A message window will come up, add your message and click ‘Commit’. Then, Click ‘Push’ to push to GH."
-  },
-  {
-    "objectID": "git.html#git-for-collaboration",
-    "href": "git.html#git-for-collaboration",
-    "title": "3  Git set-up",
-    "section": "3.5 Git for collaboration",
-    "text": "3.5 Git for collaboration\nIf you’ve got a git repo set up and want to add a member:\nIn a GitLab repo: + Project Information &gt; Members &gt; Invite members"
-  },
-  {
-    "objectID": "git.html#new-laptop-or-expired-ssh-key",
-    "href": "git.html#new-laptop-or-expired-ssh-key",
-    "title": "3  Git set-up",
-    "section": "3.6 New laptop or expired SSH key",
-    "text": "3.6 New laptop or expired SSH key\nIf you have everything backed up, and are running your same projects etc. on a new machine (or if your SSH key simply expired), then you just need to generate a new SSH key in RStudio. Then, go to your GitHub or GitLab Settings, go to the tab for SSH keys, and add a the new SSH key. In other words, follow these steps:\n\nCreate SSH key (in RStudio) and save to clipboard (e.g., CTRL+C)\n\nRStudio &gt; Tools &gt; Global Options &gt; Git/SVN &gt; SSH key &gt; Create SSH Key… &gt; OK &gt; View public key; copy key\n\nAdd SSH key to you GitHub and/or GitLab account\n\nGitHub &gt; Settings &gt; SSH and GPG keys &gt; New SSH key; paste key\nGitLab &gt; Preferences &gt; SSH keys &gt; Key / title etc.; paste key"
-  },
-  {
-    "objectID": "quarto.html",
-    "href": "quarto.html",
-    "title": "4  Quarto",
-    "section": "",
-    "text": "5 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
-  },
-  {
-    "objectID": "quarto.html#quarto-versus-rmarkdown",
-    "href": "quarto.html#quarto-versus-rmarkdown",
-    "title": "4  Quarto",
-    "section": "5.1 Quarto versus Rmarkdown",
-    "text": "5.1 Quarto versus Rmarkdown\nImportant differences I’ve noticed:\n\nYAML:\n\nRmd output = format in Quarto\nRmd html_document = html in Quarto"
-  },
-  {
-    "objectID": "packages.html",
-    "href": "packages.html",
-    "title": "5  R Packages for a Reproducibile Workflow",
-    "section": "",
-    "text": "6 here package\n# install here package\ninstall.packages(\"here\")\n\n# read in a csv file\nreadr::read_csv(here::here(\"folder\", \"subfolder\", \"subsubfolder\", \"file.csv\"))\n# or\nreadr::read_csv(here::here(\"folder/subfolder/subsubfolder/file.csv\"))\n# install pacman\ninstall.packages(\"pacman\")\n\n# install and/or load packages\npacman::p_load(here,\n               renv,\n               kableExtra)\nThe renv packages stores your project-local environment. That is, it creates a time capsule of the R and package versions that you use within an R Project.\nThe benefits:\nThe hard-to-get-your-head-around (imo):"
-  },
-  {
-    "objectID": "packages.html#activate-or-init",
-    "href": "packages.html#activate-or-init",
-    "title": "5  R Packages for a Reproducibile Workflow",
-    "section": "8.1 Activate or init",
-    "text": "8.1 Activate or init\n\nto initialise a new project-local environment:\n\n\nrenv::init()"
-  },
-  {
-    "objectID": "packages.html#snapshot",
-    "href": "packages.html#snapshot",
-    "title": "5  R Packages for a Reproducibile Workflow",
-    "section": "8.2 Snapshot",
-    "text": "8.2 Snapshot\n\nupdate renv.lock file\n\n\nrenv::snapshot()\n\nAfter updating the renv.lock file, remember to commit/push these changes to git (if you’re using it)!\n\n\n\n\n\n\nVersion control\n\n\n\nAfter updating the renv.lock file (i.e., running renv::snapshot()), remember to commit/push these changes to git (if you’re using git)! Otherwise, your renv.lock file will be outdated compared to your output."
-  },
-  {
-    "objectID": "packages.html#restore",
-    "href": "packages.html#restore",
-    "title": "5  R Packages for a Reproducibile Workflow",
-    "section": "8.3 Restore",
-    "text": "8.3 Restore\n\nwill restore your project to the most recent renv.lock file versions\n\nthis step follows snapshot(), which updates the renv.lock file\n\nvery useful after updating R!\n\n\nrenv::restore()"
-  },
-  {
-    "objectID": "packages.html#upgrade",
-    "href": "packages.html#upgrade",
-    "title": "5  R Packages for a Reproducibile Workflow",
-    "section": "8.4 Upgrade",
-    "text": "8.4 Upgrade\n\nto update the renv package:\n\n\n# upgrade renv version\nrenv::upgrade()"
-  },
-  {
-    "objectID": "packages.html#update-and-hydrate",
-    "href": "packages.html#update-and-hydrate",
-    "title": "5  R Packages for a Reproducibile Workflow",
-    "section": "8.5 Update and Hydrate",
-    "text": "8.5 Update and Hydrate\n\n# updates all packages (stored in renv.lock) in the renv cache\nrenv::hydrate(update = \"all\")\n\n# update should have no effect now, but doesn't hurt to check\nrenv::update()\n\n# now take a snapshot with the updated packages\nrenv::snapshot()\n\n\n\n\n\n\n\nVersion control (repeated)\n\n\n\nAfter updating the renv.lock file (i.e., running renv::snapshot()), remember to commit/push these changes to git (if you’re using git)! Otherwise, your renv.lock file will be outdated compared to your output."
-  },
-  {
-    "objectID": "updateR_install_packages.html#check-for-r-update-updater",
-    "href": "updateR_install_packages.html#check-for-r-update-updater",
-    "title": "6  UpdateR and (re-)Install Packages",
-    "section": "6.1 Check for R update: updateR",
-    "text": "6.1 Check for R update: updateR\nDo you need to update R? If using a Mac, you can do this by using the updateR package (some steps found here):\n\n# install devtools if you don't have it already\ninstall.packages('devtools')\n\n\n# install updateR\ndevtools::install_github('andreacirilloac/updateR')\n\n\n# run; you will be prompted for admin password\nupdateR::updateR()\n\n\n\n\n\n\n\nupdateR macOS compatibility\n\n\n\nAs of mid-2023, updateR() spits out an error after entering your password:\n\nUpdated ~/.Rprofile\nPassword:Error in if (!compactible) stop(sprintf(e, status$latest, macOS), call. = FALSE) : \n  argument is of length zero\n\nThis seems to have something to do with the newest Mac OS (see: discussion on the package GitHub). For now, manual update only directly from CRAN."
-  },
-  {
-    "objectID": "updateR_install_packages.html#check-for-r-update-on-windows-installr",
-    "href": "updateR_install_packages.html#check-for-r-update-on-windows-installr",
-    "title": "6  UpdateR and (re-)Install Packages",
-    "section": "6.2 Check for R update on Windows: installR",
-    "text": "6.2 Check for R update on Windows: installR\nThe installR package also has an updateR() function which only works on Windows. You will need to run the function in directly in R, not RStudio!\n\n# install installr\ninstall.packages(\"installr\")\n\n\n# run; you will be prompted for admin password\ninstallr::updateR()"
-  },
-  {
-    "objectID": "updateR_install_packages.html#global-options",
-    "href": "updateR_install_packages.html#global-options",
-    "title": "6  UpdateR and (re-)Install Packages",
-    "section": "6.3 Global options",
-    "text": "6.3 Global options\nMy preferred global options (RStudio &gt; Tools &gt; Global options):\n\nGeneral &gt; Basic\n\nR Sessions\n\nuncheck ‘Restore previously open source documents at startup’\n\nWorkspace (for reproducibile workflow!!!)\n\nuncheck ‘Restore .RData into workshapce at startup’\nSave workspace to .RData on exit: Never\n\n\nCode &gt; Display\n\nGeneral\n\nShow whitespace characters\nAllow scroll past end of document\nhighlight selected line\n\n\nAppearance\n\nEditor theme: Cobalt"
-  },
-  {
-    "objectID": "updateR_install_packages.html#install-packages",
-    "href": "updateR_install_packages.html#install-packages",
-    "title": "6  UpdateR and (re-)Install Packages",
-    "section": "6.4 Install packages",
-    "text": "6.4 Install packages\nPackages can be available on CRAN or through developer versions.\n\n6.4.1 CRAN packages\nFirst make a list of your packages available on CRAN.\n\n# CRAN packages ####\n\n# run THIS chunk after updating R/RStudio\n# from 'install_packages_if_missing.R'; roughly alphabetical\nrequired_packages &lt;- c(\"binom\", \"bookdown\", \"broman\", \"citr\", \"dplyr\", \"doBy\",\n                       \"beepr\", # to play sounds\n                       \"emmeans\", \"EMAtools\", \"grid\", \n                       \"ggplot2\", \"ggdark\", \"ggstatplot\",\n                       \"ggpp\", # grammar extension of ggplot2\n                       \"ggpubr\",\n                       \"ggrain\",\n                       \"formatR\", \"janitor\",\n                       \"here\", \"knitr\", \"kableExtra\",  \"lme4\", \"lmerTest\",\n                       \"png\", \"pryr\", \"papaja\", \"performance\",\n                       \"tidyverse\", \"Rmpfr\", \"rmarkdown\", \"rotations\",\n                       \"quarto\",\n\"starpolishr\", \"stargazer\", \"simr\",\n                       \"xtable\")\n\nThen, run this list through a for-loop that checks whether you’ve got these packages installed already. If not, the package will be installed.\n\nfor (package in required_packages) {\n  print(paste0(\"checking for install of \", package))\n  if (!requireNamespace(package)) install.packages(package, repos = \"http://cran.rstudio.com\")\n}\n\n\n\n6.4.2 Install dev packages: devtools and remotes\nNow install the packages that aren’t on CRAN. First, install devtools and remotes if you don’t already have them installed.\n\n# Install remotes package if necessary\nif(!requireNamespace(\"devtools\", quietly = TRUE)) install.packages(\"devtools\")\n\n\n# Install remotes package if necessary\nif(!requireNamespace(\"remotes\", quietly = TRUE)) install.packages(\"remotes\")\n\n\n6.4.2.1 ggrain package\nFor raincloud plots geom\n\nif (!require(remotes)) {\n    install.packages(\"remotes\")\n}\nremotes::install_github('jorvlan/raincloudplots')\n\nlibrary(raincloudplots)\n\n\n\n6.4.2.2 papaja package\n\nAPA formatted templates\n\n\n# download developer papaja (code https://github.com/crsh/papaja)\n\n# Install the stable development version from GitHub\nremotes::install_github(\"crsh/papaja\")\n\n# Install the latest development snapshot from GitHub\nremotes::install_github(\"crsh/papaja@devel\")\n\n\n\n6.4.2.3 rbbt package\n\nintegrates Zotero with RStudio\n\n\n# Install rbbt Addin from GitHub to use Zotero\nremotes::install_github(\"paleolimbot/rbbt\")\n\nTo set-up a citation entry shortcut: RStudio &gt; Tools &gt; Modify Keyboard Shortcuts &gt; enter ‘Zotero’ in the search &gt; choose ‘Insert Zotero Citations’ &gt; add a shortcut (I like Ctrl+K)\n\n\n6.4.2.4 brms package\n\nfor running Bayesian models\n\n\n# brms packages ####\n\n# From https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started\n# run the next line if you already have rstan installed\n# remove.packages(c(\"StanHeaders\", \"rstan\"))\ninstall.packages(\"rstan\", repos = c(\"https://mc-stan.org/r-packages/\", getOption(\"repos\")))\n\n\n\n6.4.2.5 cmdstanr package\n\nfor running Bayesian models\n\n\n# and cmdstanr (https://mc-stan.org/cmdstanr/)\nremotes::install_github(\"stan-dev/cmdstanr\")\n# or\n# install cmdstanr\ncmdstanr::install_cmdstan(cores = parallel::detectCores(), overwrite = TRUE)\n\n\n\n6.4.2.6 bcogsci package\n\ncompanion package for the textbook An Introduction to Bayesian Data Analysis for Cognitive Science\n\n\n# run the nextline if you don't have 'devtools' already installed\n# install.packages(\"devtools\")\ndevtools::install_github(\"bnicenboim/bcogsci\")\n\n\n\n\n6.4.3 Optional developer packages\n\nthese only need to be installed if specifically wanted\n\n\n6.4.3.1 stargazer package\n\nthese steps were taken when updatin to R v.4.2.1 as a work around to a problem that cropped up; only run this chunk if you start having problems with stargazer\nas of March 14, 2023 it’s still needed\n\n\n# 31.08.2022: updated to R version 4.2.1 (2022-06-23), now stargazer won't compile tables where model names are too long\n# Solution: discussed here https://www.reddit.com/r/rstats/comments/ucmtdn/issue_with_stargazer_package_after_update_to_r_420/\n# code below from linked solution https://gist.github.com/alexeyknorre/b0780836f4cec04d41a863a683f91b53\n## Quick fix for stargazer &lt;= 5.2.3 is.na() issue with long model names in R &gt;= 4.2\n# Unload stargazer if loaded\ndetach(\"package:stargazer\",unload=T)\n# Delete it\nremove.packages(\"stargazer\")\n# Download the source\ndownload.file(\"https://cran.r-project.org/src/contrib/stargazer_5.2.3.tar.gz\", destfile = \"stargazer_5.2.3.tar.gz\")\n# Unpack\nuntar(\"stargazer_5.2.3.tar.gz\")\n# Read the sourcefile with .inside.bracket fun\nstargazer_src &lt;- readLines(\"stargazer/R/stargazer-internal.R\")\n# Move the length check 5 lines up so it precedes is.na(.)\nstargazer_src[1990] &lt;- stargazer_src[1995]\nstargazer_src[1995] &lt;- \"\"\n# Save back\nwriteLines(stargazer_src, con=\"stargazer/R/stargazer-internal.R\")\n# Compile and install the patched package\ninstall.packages(\"stargazer\", repos = NULL, type=\"source\")\n### FROM NOW ON: shorter model names for stargazer\n\n\n\n6.4.3.2 PsyTeachR Introdataviz\n\ncan produce violin plots and raincloud plots\n\n\n# how to install the introdataviz package to get split and half violin plots\ndevtools::install_github(\"psyteachr/introdataviz\", dependencies = TRUE)\n\n\n\n6.4.3.3 starpolishr package\n\navailabile on github\npost-polishing of stargazer tables\n\n\n# install.packages(\"devtools\")\ndevtools::install_github(\"ChandlerLutz/starpolishr\")\n\n\n\n6.4.3.4 CogSci paper template\n\nused to write CogSci conference proceedings papers\n\n\n# Install CogSci paper template\ndevtools::install_github(\"kemacdonald/cogsci2016\")\n\n\n\n6.4.3.5 BRRR package\n\nplay sounds from different rappers\n\n\nif(!require(devtools)) {install.packages(\"devtools\")}\ndevtools::install_github(\"brooke-watson/BRRR\")\nlibrary(\"BRRR\")\nskrrrahh(\"kendrick\")"
-  },
-  {
-    "objectID": "updateR_install_packages.html#loading-packages",
-    "href": "updateR_install_packages.html#loading-packages",
-    "title": "6  UpdateR and (re-)Install Packages",
-    "section": "6.5 Loading packages",
-    "text": "6.5 Loading packages\nMoving forward, use the following code at the beginning of your scripts instead of the long list of library(package). This will also check whether packages are installed, if they are it’ll load them, and if they’re not it’ll install them and then load them.\n\n# don't use scientific notation\noptions(scipen=999)\n\n# copy this chunk at the beginning of new chapters; will automatically load packages and install needed packages\n\n## First specify the packages of interest\npackages &lt;- c(\"here\", \"tidyverse\", \"dplyr\", \"formatR\", \"stringr\",\n              \"janitor\", \"dplyr\", \"ggplot2\", \"lmerTest\", \"stargazer\",\n              \"MASS\", \"afex\", \"knitr\", \"gridExtra\", \"grid\",\n              \"paletteer\",\n              \"remotes\",\n              \"Rmisc\")\n\n## Now load or install&load all\npackage.check &lt;- lapply(\n  packages,\n  FUN = function(x) {\n    if (!require(x, character.only = TRUE)) {\n      install.packages(x, dependencies = TRUE)\n      library(x, character.only = TRUE)\n    }\n  }\n)"
-  },
-  {
-    "objectID": "updateR_install_packages.html#manual-installs",
-    "href": "updateR_install_packages.html#manual-installs",
-    "title": "6  UpdateR and (re-)Install Packages",
-    "section": "6.6 Manual installs",
-    "text": "6.6 Manual installs\n\n6.6.1 tinyTex\n\nto render documents with LaTeX under the hood, run the following in the terminal: quarto install tinytex\n\n\n\n6.6.2 Citations with Zotero\nTo use the rbbt package installed above, we need to have Zotero installed (and Better BibTex).\n\n6.6.2.1 install Zotero\nhttps://www.zotero.org/download/\n\n\n6.6.2.2 Better BibTex\nInstall from the [website]{https://retorque.re/zotero-better-bibtex/installation/}\n\nthen in Zotero: Tools / Add-ins / Settings wheel / choose downloaded file / Restart Zotero\nset your citation keys: Zotero &gt; Settings &gt; Better BibTex &gt; Citation key formula &gt; (I like “zotero.clean”)\n\nif you need to update the BibTex key in your docs:\n\nhighlight all your files in the Zotero Library, right-click &gt; Better BibTex &gt; Refresh BibTex key"
+    "text": "Code"
   },
   {
     "objectID": "zotero.html#zotero-group-library",
     "href": "zotero.html#zotero-group-library",
-    "title": "7  Zotero",
-    "section": "7.1 Zotero group library",
-    "text": "7.1 Zotero group library\n\nGo to Zotero website\nCreate a group library\nOn main Zotero webpage &gt; Groups &gt; Manage members &gt; Send More Invitations"
+    "title": "",
+    "section": "1.1 Zotero group library",
+    "text": "1.1 Zotero group library\n\nGo to Zotero website\nCreate a group library\nOn main Zotero webpage &gt; Groups &gt; Manage members &gt; Send More Invitations"
   },
   {
     "objectID": "zotero.html#update-citation-keys",
     "href": "zotero.html#update-citation-keys",
-    "title": "7  Zotero",
-    "section": "7.2 Update citation keys",
-    "text": "7.2 Update citation keys\n\nhighlight relevant publication (or all)\n\nright click &gt; BibTex &gt; Refresh citation"
+    "title": "",
+    "section": "1.2 Update citation keys",
+    "text": "1.2 Update citation keys\n\nhighlight relevant publication (or all)\n\nright click &gt; BibTex &gt; Refresh citation"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "index.html#resources",
+    "href": "index.html#resources",
+    "title": "",
+    "section": "1.1 Resources",
+    "text": "1.1 Resources\n\nJenny Bryan, Project-oriented workflow (2017 Blogpost)"
   },
   {
     "objectID": "docker.html",
     "href": "docker.html",
-    "title": "8  Docker",
+    "title": "",
     "section": "",
-    "text": "9 Install\nhttps://www.docker.com/"
+    "text": "Code"
   },
   {
     "objectID": "docker.html#open-dock",
     "href": "docker.html#open-dock",
-    "title": "8  Docker",
-    "section": "9.1 Open Dock",
-    "text": "9.1 Open Dock\nFind Docker on your machine and open it. You can select the recommended settings."
+    "title": "",
+    "section": "2.1 Open Dock",
+    "text": "2.1 Open Dock\nFind Docker on your machine and open it. You can select the recommended settings."
   },
   {
     "objectID": "docker.html#set-up-hub.docker-account",
     "href": "docker.html#set-up-hub.docker-account",
-    "title": "8  Docker",
-    "section": "9.2 Set up hub.docker account",
-    "text": "9.2 Set up hub.docker account\nYou can do that here, or wait to be prompted when you open Docker."
+    "title": "",
+    "section": "2.2 Set up hub.docker account",
+    "text": "2.2 Set up hub.docker account\nYou can do that here, or wait to be prompted when you open Docker."
+  },
+  {
+    "objectID": "git.html",
+    "href": "git.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "git.html#how-to-follow",
+    "href": "git.html#how-to-follow",
+    "title": "",
+    "section": "1.1 How to follow",
+    "text": "1.1 How to follow\nAll code should be added into the Terminal tab (in the Console pane in RStudio). Alternatively, you don’t need to use the Terminal at all, as RStudio adds a Git tab to the Environment pane. For a much more in-depth (and better) guide, follow the amazing Happy git with R book by the even more amazing Jenny Bryan.\nI use git right in the Terminal window in RStudio. To get to the Terminal window, look where you usually see the output from your code (probably the bottom left window, ‘Console’). You should see a tab ‘Terminal’. This is where you want to go. Now you can start setting up git using the following commands.\nFor the purposes of this guideline, I’ll be using my ‘dissertation’ folder as an example, which contains all the files and folders necessary to knit my dissertation with oxforddown.\nAll code chunks below contain copy-and-pasted commands and output from my Terminal, so you can see exactly how it should look."
+  },
+  {
+    "objectID": "git.html#summary-of-commands",
+    "href": "git.html#summary-of-commands",
+    "title": "",
+    "section": "1.2 Summary of commands",
+    "text": "1.2 Summary of commands\n\n\n\n\nTable 1: Summary of useful git commands to get started\n\n\ncommand\nfunction\n\n\n\n\ngit init\ninitiate git\n\n\ngit add folder/\nstage/add a folder and its contents\n\n\ngit add filename.ext\nstage/add a file\n\n\ngit add -u\nstage all modified but unstaged files\n\n\ngit commit -m \"message\"\ncommit the changes to local git\n\n\ngit push\npush current state of local git to remote repo\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\n\n\n\n\n\n\n\n\n\n\nTable 2: Summary of useful git commands for when things go wrong\n\n\ncommand\nfunction\n\n\n\n\ngit remote -v\nprint remote fetch/pull URLs\n\n\ngit reset\nunstage all\n\n\ngit checkout\nremove unstaged changes\n\n\ngit log --oneline\nList the unique hash for each commit in a repo\n\n\ngit revert 2f5451f --no-edit\nundo a commit with the hash 2f5451f (replace this with the relevant commit hash)\n\n\ngit reset --soft HEAD~\nundo last commit (that was not pushed)\n\n\ngit reset --soft HEAD~2\nundo last 2 commits (that were not pushed)\n\n\ngit push -f origin master\noverwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you're sure nobody else has made changes to the remote branch you're pushing to!"
+  },
+  {
+    "objectID": "git.html#local-repositories",
+    "href": "git.html#local-repositories",
+    "title": "",
+    "section": "1.3 Local repositories",
+    "text": "1.3 Local repositories\nLocal repositories are those that are stored on your machine (computer). They’re great for tracking changes you make along the way, but if your machine is lost/stolen/damaged, your local repository goes along with it. It’s a great idea to get familiar with git in local contexts, but remote repositories are the real life savers (next section).\n\n1.3.1 Setting up git\n\n1.3.1.1 Install git\nYou’ll first need to already have git installed locally. To see how to do that, go here: https://git-scm.com/download/. If you don’t know whether you already have git installed, use the code in the section below (check git version).\n\n\n1.3.1.2 Check git version\ngit version = check your version of git\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git version # this is where i typed 'git version'\ngit version 2.32.1 (Apple Git-133) # and this was the output\n\ngit config --list = check your configurations\ngit config --global user.name \"your-name\" = globally set your name git config --global user.email \"your-email\" = globally set your email pwd = print working directory cd = change directory\n\npwd\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation\n\n\ncd dissertation\n# no output\n\n\npwd\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation/dissertation\n\n\n## What the Terminal should look like after you've run all 3 commands\n(base) administrators-MacBook-3:Dissertation danielapalleschi$ pwd # command 1\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation\n(base) administrators-MacBook-3:Dissertation danielapalleschi$ cd dissertation # command 2\n(base) administrators-MacBook-3:dissertation danielapalleschi$ pwd # command 3\n/Users/danielapalleschi/Documents/PhD/Dissertation Project/Lifetime Project/Dissertation/dissertation\n(base) administrators-MacBook-3:dissertation danielapalleschi$ \n\n\n\n\n1.3.2 Adding git repo\n\ngit status = check status of git repo\ngit init = put a git repo in to track changes\ngit add = add files/folders to track\n\n\n1.3.2.1 git status\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git status # command\nOn branch master\n\nNo commits yet\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        ../../../.DS_Store\n        ../../../.gitignore\n        ../../\n        ../../../Participant Money/\n        ../../../R template scripts/\n        ../../../Stats/\n        ../../../Talks/\n        ../../../presupposition.docx\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n(base) administrators-MacBook-3:dissertation danielapalleschi$ \n\n\n\n1.3.2.2 git init\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git init\nhint: Using 'master' as the name for the initial branch. This default branch name\nhint: is subject to change. To configure the initial branch name to use in all\nhint: of your new repositories, which will suppress this warning, call:\nhint: \nhint:   git config --global init.defaultBranch &lt;name&gt;\nhint: \nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint: \nhint:   git branch -m &lt;name&gt;\n\nHmm, GitHub recently changed ‘master’ to ‘main’. Let’s do the same, first globally but also locally:\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git config --global init.defaultBranch main\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git branch -m main\n\nNow let’s check the status of our repo:\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git status\nOn branch main # So changing 'master' to 'main' worked :)\n\nNo commits yet\n\nUntracked files: # list of all the files to add...\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        .github/\n        .gitignore\n        00-introduction.Rmd\n        00-introduction.tex\n        01-how-to-use.tex\n        01-processing.Rmd\n        01-processing.pdf\n        01-processing.tex\n        02-tense-lifetime.Rmd\n        02-tense-lifetime.pdf\n        02-tense-lifetime.tex\n        03-exp123.Rmd\n        03-exp123.log\n        03-exp123.maf\n        03-exp123.mtc\n        03-exp123.mtc0\n        03-exp123.pdf\n        03-exp123.tex\n        03-rmd-basics-cites-and-refs.tex\n        04-exp345.pdf\n        04-exp345.tex\n        04a-exp4-context.Rmd\n        04b-exp5-world.Rmd\n        04c-exp6-ps-replication.Rmd\n        05-dfg.Rmd\n        05-dfg.pdf\n        05-dfg.tex\n        06-conclusion.Rmd\n        LICENSE\n        README.md\n        _bookdown.yml\n        bibliography/\n        data/\n        docs/\n        figures/\n        front-and-back-matter/\n        index.Rmd\n        scripts_and_filters/\n        templates/\n\nnothing added to commit but untracked files present (use \"git add\" to track)\n\nFor now, I want to commit the chapters I’m working on. So I’ll add them.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 03-exp123.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04a-exp4-context.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04b-exp5-world.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 04c-exp6-ps-replication.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 05-dfg.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 01-processing.Rmd\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git add 02-tense-lifetime.Rmd\nbase) administrators-MacBook-3:dissertation danielapalleschi$ git status # now check the status\nOn branch main\n\nNo commits yet\n\nChanges to be committed:\n  (use \"git rm --cached &lt;file&gt;...\" to unstage)\n        new file:   01-processing.Rmd\n        new file:   02-tense-lifetime.Rmd\n        new file:   03-exp123.Rmd\n        new file:   04a-exp4-context.Rmd\n        new file:   04b-exp5-world.Rmd\n        new file:   04c-exp6-ps-replication.Rmd\n        new file:   05-dfg.Rmd\n\nUntracked files:\n  (use \"git add &lt;file&gt;...\" to include in what will be committed)\n        .github/\n        .gitignore\n        00-introduction.Rmd\n        00-introduction.tex\n        01-how-to-use.tex\n        01-processing.pdf\n        01-processing.tex\n        02-tense-lifetime.pdf\n        02-tense-lifetime.tex\n        03-exp123.log\n        03-exp123.maf\n        03-exp123.mtc\n        03-exp123.mtc0\n        03-exp123.pdf\n        03-exp123.tex\n        03-rmd-basics-cites-and-refs.tex\n        04-exp345.pdf\n        04-exp345.tex\n        05-dfg.pdf\n        05-dfg.tex\n        06-conclusion.Rmd\n        LICENSE\n        README.md\n        _bookdown.yml\n        bibliography/\n        data/\n        docs/\n        figures/\n        front-and-back-matter/\n        index.Rmd\n        scripts_and_filters/\n        templates/\n\n\n\n\n1.3.3 Tracking changes\n\ngit diff = Show unstaged changes between your index and working directory\ngit commit -m \"&lt;message&gt;\" = commit the changes, with the following message\ngit log = Display the entire commit history using the default format\n\nFirst, I made some changes: Rename ‘Interpretation’ to ‘Discussion’ and remove the ‘save.image…’ code chunk from the end of 04a-exp4-context.Rmd.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git diff # command\ndiff --git a/04a-exp4-context.Rmd b/04a-exp4-context.Rmd\nindex ab6a2bb..a883ab4 100644\n--- a/04a-exp4-context.Rmd\n+++ b/04a-exp4-context.Rmd\n\nCommit this change\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git commit -m \"Update Context Exp headers\"\n[main (root-commit) dabe29e] Update Context Exp headers\n 7 files changed, 10363 insertions(+)\n create mode 100644 01-processing.Rmd\n create mode 100644 02-tense-lifetime.Rmd\n create mode 100644 03-exp123.Rmd\n create mode 100644 04a-exp4-context.Rmd\n create mode 100644 04b-exp5-world.Rmd\n create mode 100644 04c-exp6-ps-replication.Rmd\n create mode 100644 05-dfg.Rmd\n\nCheck the log\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git log\ncommit dabe29e9d594c578971e07e09e1b57c89572b582 (HEAD -&gt; main)\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:16:26 2022 +0200\n\n    Update Context Exp headers\n\nBut this updated ‘main’. Let’s try to only update the relevant file.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git commit 04a-exp4-context.Rmd -m \"Updated Context Exp headers\"\n[main 85468f5] Updated Context Exp headers\n 1 file changed, 1 insertion(+), 4 deletions(-)\n\nGood. Now check log.\n\n(base) administrators-MacBook-3:dissertation danielapalleschi$ git log\ncommit 85468f585608b5c8d94d4b9af40898c5a961110c (HEAD -&gt; main)\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:18:08 2022 +0200\n\n    Updated Context Exp headers\n\ncommit dabe29e9d594c578971e07e09e1b57c89572b582\nAuthor: Daniela Palleschi &lt;palleschi.daniela@gmail.com&gt;\nDate:   Fri Jul 1 14:16:26 2022 +0200\n\n    Update Context Exp headers\n\nStage all modified files.\n\ngit add -u"
+  },
+  {
+    "objectID": "git.html#remote-repositories-with-rstudio",
+    "href": "git.html#remote-repositories-with-rstudio",
+    "title": "",
+    "section": "1.4 Remote repositories with RStudio",
+    "text": "1.4 Remote repositories with RStudio\n\n1.4.1 Taken for granted\nFrom this point on, I take for granted:\n\ngit is already installed on my machine\nI have a GitHub account\nalready got RStudio set up with an SSH key (Tools &gt; Global Options &gt; Git).\n\nwith an SSH key, I should always make sure to copy the SSH url and not the HTTPS (which would require a Personal Access Token (PAT))!\n\n\nIf these steps haven’t already been taken, check out the first chapter from https://happygitwithr.com/index.html\nIf you’ve done all that, follow along from here (following https://happygitwithr.com/rstudio-git-github.html#rstudio-git-github)\n\n\n1.4.2 Setting up\nSteps:\n\nCreate a repo in GitHub\n\n\nmake sure to click ‘create README.md’\n\n\nCreate a new RProject with Version Control\n\n\nadd the URL from your GitHub repo, press the green ‘Clone &lt;&gt;’ button\ncopy the url, but make sure you choose the relevant format! SSH if you’ve got an SSH key set up, or HTTPS if you’re using a personal access token (PAT)\n\n\nstage (add), commit, some arbitray changes\n\n\nusing either the Git tab, or preferably using the Terminal (see below for examples)\n\n\n# add a line to your README\necho \"This is a line from RStudio\" &gt;&gt; README.md\n# check the status\ngit status\n# stage the change\ngit add README.md\n# commit the change and add a message\ngit commit -m \"first commit from RStudio\"\n# push the change to GitHub\ngit push\n# now, go refresh your GH repo and see the change\n\n\n\n1.4.3 Other commands\n\ncheck working directory\n\n\n# print working directory; should be to your project folder\npwd\n\n\nchange working directory\n\n\n# change directory, in case not your project folder\ncd\n\n\nlist all files in working directory\n\n\n# list all files in WD\nls\n\n\nlist all files in working directory, including ignored ones\n\n\n# list all files including ignored ones\nls -a\n\n\ncheck git status (what’s been staged, what not)\n\n\n# check status\nstatus\n\n\nadd files to .gitignore (so they won’t be monitored)\n\n\n# add file/folder to gitignore (so git will ignore it)\necho Slides/ &gt;&gt; .gitignore\n\n\ncheck remote repo URL\n\n\n# check what your remote repo URL is\ngit remote -v\n\n\n\n1.4.4 Keeping up changes\nIf you’ve already started working on the project locally, you can just drag-and-drop your files/folders into the Terminal\n\n# stage change (need to do it every time)\nadd filename.Rmd\n# commit these changes to git\ncommit -m \"message about commit\"\n# check the status\nstatus\n# push these changes to remote repo\npush\n\nAlternatively, you don’t need to use the Terminal at all (but it’s good practice to know how to in order to understand the logic/workflow). In the ‘Environment’ pane, you should see a ‘Git’ tab (if git is indeed set up). You can tick the ‘Staged’ button for all files whose changes you want to commit. Then click ‘commit’. A message window will come up, add your message and click ‘Commit’. Then, Click ‘Push’ to push to GH."
+  },
+  {
+    "objectID": "git.html#git-for-collaboration",
+    "href": "git.html#git-for-collaboration",
+    "title": "",
+    "section": "1.5 Git for collaboration",
+    "text": "1.5 Git for collaboration\nIf you’ve got a git repo set up and want to add a member:\nIn a GitLab repo: + Project Information &gt; Members &gt; Invite members"
+  },
+  {
+    "objectID": "git.html#new-laptop-or-expired-ssh-key",
+    "href": "git.html#new-laptop-or-expired-ssh-key",
+    "title": "",
+    "section": "1.6 New laptop or expired SSH key",
+    "text": "1.6 New laptop or expired SSH key\nIf you have everything backed up, and are running your same projects etc. on a new machine (or if your SSH key simply expired), then you just need to generate a new SSH key in RStudio. Then, go to your GitHub or GitLab Settings, go to the tab for SSH keys, and add a the new SSH key. In other words, follow these steps:\n\nCreate SSH key (in RStudio) and save to clipboard (e.g., CTRL+C)\n\nRStudio &gt; Tools &gt; Global Options &gt; Git/SVN &gt; SSH key &gt; Create SSH Key… &gt; OK &gt; View public key; copy key\n\nAdd SSH key to you GitHub and/or GitLab account\n\nGitHub &gt; Settings &gt; SSH and GPG keys &gt; New SSH key; paste key\nGitLab &gt; Preferences &gt; SSH keys &gt; Key / title etc.; paste key"
+  },
+  {
+    "objectID": "quarto.html",
+    "href": "quarto.html",
+    "title": "Quarto",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n\nImportant differences I’ve noticed:\n\nYAML:\n\nRmd output = format in Quarto\nRmd html_document = html in Quarto"
+  },
+  {
+    "objectID": "quarto.html#quarto-versus-rmarkdown",
+    "href": "quarto.html#quarto-versus-rmarkdown",
+    "title": "Quarto",
+    "section": "",
+    "text": "Important differences I’ve noticed:\n\nYAML:\n\nRmd output = format in Quarto\nRmd html_document = html in Quarto"
+  },
+  {
+    "objectID": "troubleshooting.html",
+    "href": "troubleshooting.html",
+    "title": "Troubleshooting",
+    "section": "",
+    "text": "library(knitr)\nhook_output = knit_hooks$get('output')\nknit_hooks$set(output = function(x, options) {\n  # this hook is used only when the linewidth option is not NULL\n  if (!is.null(n &lt;- options$linewidth)) {\n    x = xfun::split_lines(x)\n    # any lines wider than n should be wrapped\n    if (any(nchar(x) &gt; n)) x = strwrap(x, width = n)\n    x = paste(x, collapse = '\\n')\n  }\n  hook_output(x, options)\n})\nIn this document I record errors that I encounter and how I resolved them. Solutions will typically be from Googling, relevant links will be provided."
+  },
+  {
+    "objectID": "troubleshooting.html#solution",
+    "href": "troubleshooting.html#solution",
+    "title": "Troubleshooting",
+    "section": "1.1 Solution",
+    "text": "1.1 Solution\nIn the end I went into my Time Machine (external harddrive) to a point right before this problem started happening, and restored the ‘Macintosh HD/Library’ folder, because presumably something happened to the TexLive file or something in there. That solved the problem."
+  },
+  {
+    "objectID": "troubleshooting.html#solution-1",
+    "href": "troubleshooting.html#solution-1",
+    "title": "Troubleshooting",
+    "section": "3.1 Solution",
+    "text": "3.1 Solution"
+  },
+  {
+    "objectID": "troubleshooting.html#quick-fix-for-stargazer-5.2.3-is.na-issue-with-long-model-names-in-r-4.2",
+    "href": "troubleshooting.html#quick-fix-for-stargazer-5.2.3-is.na-issue-with-long-model-names-in-r-4.2",
+    "title": "Troubleshooting",
+    "section": "6.1 Quick fix for stargazer <= 5.2.3 is.na() issue with long model names in R >= 4.2",
+    "text": "6.1 Quick fix for stargazer &lt;= 5.2.3 is.na() issue with long model names in R &gt;= 4.2"
+  },
+  {
+    "objectID": "packages.html",
+    "href": "packages.html",
+    "title": "R Packages for a Reproducibile Workflow",
+    "section": "",
+    "text": "uses file path relative to the current project\n\n\n# install here package\ninstall.packages(\"here\")\n\n# read in a csv file\nreadr::read_csv(here::here(\"folder\", \"subfolder\", \"subsubfolder\", \"file.csv\"))\n# or\nreadr::read_csv(here::here(\"folder/subfolder/subsubfolder/file.csv\"))"
+  },
+  {
+    "objectID": "packages.html#activate-or-init",
+    "href": "packages.html#activate-or-init",
+    "title": "R Packages for a Reproducibile Workflow",
+    "section": "3.1 Activate or init",
+    "text": "3.1 Activate or init\n\nto initialise a new project-local environment:\n\n\nrenv::init()"
+  },
+  {
+    "objectID": "packages.html#snapshot",
+    "href": "packages.html#snapshot",
+    "title": "R Packages for a Reproducibile Workflow",
+    "section": "3.2 Snapshot",
+    "text": "3.2 Snapshot\n\nupdate renv.lock file\n\n\nrenv::snapshot()\n\nAfter updating the renv.lock file, remember to commit/push these changes to git (if you’re using it)!\n\n\n\n\n\n\nVersion control\n\n\n\nAfter updating the renv.lock file (i.e., running renv::snapshot()), remember to commit/push these changes to git (if you’re using git)! Otherwise, your renv.lock file will be outdated compared to your output."
+  },
+  {
+    "objectID": "packages.html#restore",
+    "href": "packages.html#restore",
+    "title": "R Packages for a Reproducibile Workflow",
+    "section": "3.3 Restore",
+    "text": "3.3 Restore\n\nwill restore your project to the most recent renv.lock file versions\n\nthis step follows snapshot(), which updates the renv.lock file\n\nvery useful after updating R!\n\n\nrenv::restore()"
+  },
+  {
+    "objectID": "packages.html#upgrade",
+    "href": "packages.html#upgrade",
+    "title": "R Packages for a Reproducibile Workflow",
+    "section": "3.4 Upgrade",
+    "text": "3.4 Upgrade\n\nto update the renv package:\n\n\n# upgrade renv version\nrenv::upgrade()"
+  },
+  {
+    "objectID": "packages.html#update-and-hydrate",
+    "href": "packages.html#update-and-hydrate",
+    "title": "R Packages for a Reproducibile Workflow",
+    "section": "3.5 Update and Hydrate",
+    "text": "3.5 Update and Hydrate\n\n# updates all packages (stored in renv.lock) in the renv cache\nrenv::hydrate(update = \"all\")\n\n# update should have no effect now, but doesn't hurt to check\nrenv::update()\n\n# now take a snapshot with the updated packages\nrenv::snapshot()\n\n\n\n\n\n\n\nVersion control (repeated)\n\n\n\nAfter updating the renv.lock file (i.e., running renv::snapshot()), remember to commit/push these changes to git (if you’re using git)! Otherwise, your renv.lock file will be outdated compared to your output."
+  },
+  {
+    "objectID": "gh-pages-quarto.html",
+    "href": "gh-pages-quarto.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "gh-pages-quarto.html#github",
+    "href": "gh-pages-quarto.html#github",
+    "title": "",
+    "section": "1.1 GitHub",
+    "text": "1.1 GitHub\nI always start a remote repo first (GitHub &gt; + &gt; new repo with README). Then I copy the SSH key (&lt;/&gt; Code &gt; copy SSH) and in RStudio create a New Project &gt; Version Control &gt; Enter SSH key. Then, build the project locally in RStudio (or, if you’ve already done so, just bring all your docs into the new RProject).\nAlready have SSH key set-up (see Section on Git)\n\nNew remote repo on GitHub\nCopy SSH link (&lt;/&gt; Code &gt; copy SSH)\nRStudio: New Project &gt; Version Control &gt; paste SSH link\nMake changes locally\n\n\nin _quarto.yml: make sure you have output-dir: docs under project\ngit add files.rmd\ngit add docs/\ngit commit -m \"informative message\"\ngit push\nquarto publish\n\nfirst time? Choose gh-pages\nthis will create a new branch called gh-pages\nnever make changes to this branch yourself, rather work in the main (or some other branch) and when you want to publish your changes run quarto publish\nin GitHub repo settings: Pages &gt; Branch &gt; gh-pages and / (root) &gt; Save"
+  },
+  {
+    "objectID": "updateR_install_packages.html",
+    "href": "updateR_install_packages.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "updateR_install_packages.html#check-for-r-update-updater",
+    "href": "updateR_install_packages.html#check-for-r-update-updater",
+    "title": "",
+    "section": "1.1 Check for R update: updateR",
+    "text": "1.1 Check for R update: updateR\nDo you need to update R? If using a Mac, you can do this by using the updateR package (some steps found here):\n\n# install devtools if you don't have it already\ninstall.packages('devtools')\n\n\n# install updateR\ndevtools::install_github('andreacirilloac/updateR')\n\n\n# run; you will be prompted for admin password\nupdateR::updateR()\n\n\n\n\n\n\n\nupdateR macOS compatibility\n\n\n\nAs of mid-2023, updateR() spits out an error after entering your password:\n\nUpdated ~/.Rprofile\nPassword:Error in if (!compactible) stop(sprintf(e, status$latest, macOS), call. = FALSE) : \n  argument is of length zero\n\nThis seems to have something to do with the newest Mac OS (see: discussion on the package GitHub). For now, manual update only directly from CRAN."
+  },
+  {
+    "objectID": "updateR_install_packages.html#check-for-r-update-on-windows-installr",
+    "href": "updateR_install_packages.html#check-for-r-update-on-windows-installr",
+    "title": "",
+    "section": "1.2 Check for R update on Windows: installR",
+    "text": "1.2 Check for R update on Windows: installR\nThe installR package also has an updateR() function which only works on Windows. You will need to run the function in directly in R, not RStudio!\n\n# install installr\ninstall.packages(\"installr\")\n\n\n# run; you will be prompted for admin password\ninstallr::updateR()"
+  },
+  {
+    "objectID": "updateR_install_packages.html#global-options",
+    "href": "updateR_install_packages.html#global-options",
+    "title": "",
+    "section": "1.3 Global options",
+    "text": "1.3 Global options\nMy preferred global options (RStudio &gt; Tools &gt; Global options):\n\nGeneral &gt; Basic\n\nR Sessions\n\nuncheck ‘Restore previously open source documents at startup’\n\nWorkspace (for reproducibile workflow!!!)\n\nuncheck ‘Restore .RData into workshapce at startup’\nSave workspace to .RData on exit: Never\n\n\nCode &gt; Display\n\nGeneral\n\nShow whitespace characters\nAllow scroll past end of document\nhighlight selected line\n\n\nAppearance\n\nEditor theme: Cobalt"
+  },
+  {
+    "objectID": "updateR_install_packages.html#install-packages",
+    "href": "updateR_install_packages.html#install-packages",
+    "title": "",
+    "section": "1.4 Install packages",
+    "text": "1.4 Install packages\nPackages can be available on CRAN or through developer versions.\n\n1.4.1 CRAN packages\nFirst make a list of your packages available on CRAN.\n\n# CRAN packages ####\n\n# run THIS chunk after updating R/RStudio\n# from 'install_packages_if_missing.R'; roughly alphabetical\nrequired_packages &lt;- c(\"binom\", \"bookdown\", \"broman\", \"citr\", \"dplyr\", \"doBy\",\n                       \"beepr\", # to play sounds\n                       \"emmeans\", \"EMAtools\", \"grid\", \n                       \"ggplot2\", \"ggdark\", \"ggstatplot\",\n                       \"ggpp\", # grammar extension of ggplot2\n                       \"ggpubr\",\n                       \"ggrain\",\n                       \"formatR\", \"janitor\",\n                       \"here\", \"knitr\", \"kableExtra\",  \"lme4\", \"lmerTest\",\n                       \"png\", \"pryr\", \"papaja\", \"performance\",\n                       \"tidyverse\", \"Rmpfr\", \"rmarkdown\", \"rotations\",\n                       \"quarto\",\n\"starpolishr\", \"stargazer\", \"simr\",\n                       \"xtable\")\n\nThen, run this list through a for-loop that checks whether you’ve got these packages installed already. If not, the package will be installed.\n\nfor (package in required_packages) {\n  print(paste0(\"checking for install of \", package))\n  if (!requireNamespace(package)) install.packages(package, repos = \"http://cran.rstudio.com\")\n}\n\n\n\n1.4.2 Install dev packages: devtools and remotes\nNow install the packages that aren’t on CRAN. First, install devtools and remotes if you don’t already have them installed.\n\n# Install remotes package if necessary\nif(!requireNamespace(\"devtools\", quietly = TRUE)) install.packages(\"devtools\")\n\n\n# Install remotes package if necessary\nif(!requireNamespace(\"remotes\", quietly = TRUE)) install.packages(\"remotes\")\n\n\n1.4.2.1 ggrain package\nFor raincloud plots geom\n\nif (!require(remotes)) {\n    install.packages(\"remotes\")\n}\nremotes::install_github('jorvlan/raincloudplots')\n\nlibrary(raincloudplots)\n\n\n\n1.4.2.2 papaja package\n\nAPA formatted templates\n\n\n# download developer papaja (code https://github.com/crsh/papaja)\n\n# Install the stable development version from GitHub\nremotes::install_github(\"crsh/papaja\")\n\n# Install the latest development snapshot from GitHub\nremotes::install_github(\"crsh/papaja@devel\")\n\n\n\n1.4.2.3 rbbt package\n\nintegrates Zotero with RStudio\n\n\n# Install rbbt Addin from GitHub to use Zotero\nremotes::install_github(\"paleolimbot/rbbt\")\n\nTo set-up a citation entry shortcut: RStudio &gt; Tools &gt; Modify Keyboard Shortcuts &gt; enter ‘Zotero’ in the search &gt; choose ‘Insert Zotero Citations’ &gt; add a shortcut (I like Ctrl+K)\n\n\n1.4.2.4 brms package\n\nfor running Bayesian models\n\n\n# brms packages ####\n\n# From https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started\n# run the next line if you already have rstan installed\n# remove.packages(c(\"StanHeaders\", \"rstan\"))\ninstall.packages(\"rstan\", repos = c(\"https://mc-stan.org/r-packages/\", getOption(\"repos\")))\n\n\n\n1.4.2.5 cmdstanr package\n\nfor running Bayesian models\n\n\n# and cmdstanr (https://mc-stan.org/cmdstanr/)\nremotes::install_github(\"stan-dev/cmdstanr\")\n# or\n# install cmdstanr\ncmdstanr::install_cmdstan(cores = parallel::detectCores(), overwrite = TRUE)\n\n\n\n1.4.2.6 bcogsci package\n\ncompanion package for the textbook An Introduction to Bayesian Data Analysis for Cognitive Science\n\n\n# run the nextline if you don't have 'devtools' already installed\n# install.packages(\"devtools\")\ndevtools::install_github(\"bnicenboim/bcogsci\")\n\n\n\n\n1.4.3 Optional developer packages\n\nthese only need to be installed if specifically wanted\n\n\n1.4.3.1 stargazer package\n\nthese steps were taken when updatin to R v.4.2.1 as a work around to a problem that cropped up; only run this chunk if you start having problems with stargazer\nas of March 14, 2023 it’s still needed\n\n\n# 31.08.2022: updated to R version 4.2.1 (2022-06-23), now stargazer won't compile tables where model names are too long\n# Solution: discussed here https://www.reddit.com/r/rstats/comments/ucmtdn/issue_with_stargazer_package_after_update_to_r_420/\n# code below from linked solution https://gist.github.com/alexeyknorre/b0780836f4cec04d41a863a683f91b53\n## Quick fix for stargazer &lt;= 5.2.3 is.na() issue with long model names in R &gt;= 4.2\n# Unload stargazer if loaded\ndetach(\"package:stargazer\",unload=T)\n# Delete it\nremove.packages(\"stargazer\")\n# Download the source\ndownload.file(\"https://cran.r-project.org/src/contrib/stargazer_5.2.3.tar.gz\", destfile = \"stargazer_5.2.3.tar.gz\")\n# Unpack\nuntar(\"stargazer_5.2.3.tar.gz\")\n# Read the sourcefile with .inside.bracket fun\nstargazer_src &lt;- readLines(\"stargazer/R/stargazer-internal.R\")\n# Move the length check 5 lines up so it precedes is.na(.)\nstargazer_src[1990] &lt;- stargazer_src[1995]\nstargazer_src[1995] &lt;- \"\"\n# Save back\nwriteLines(stargazer_src, con=\"stargazer/R/stargazer-internal.R\")\n# Compile and install the patched package\ninstall.packages(\"stargazer\", repos = NULL, type=\"source\")\n### FROM NOW ON: shorter model names for stargazer\n\n\n\n1.4.3.2 PsyTeachR Introdataviz\n\ncan produce violin plots and raincloud plots\n\n\n# how to install the introdataviz package to get split and half violin plots\ndevtools::install_github(\"psyteachr/introdataviz\", dependencies = TRUE)\n\n\n\n1.4.3.3 starpolishr package\n\navailabile on github\npost-polishing of stargazer tables\n\n\n# install.packages(\"devtools\")\ndevtools::install_github(\"ChandlerLutz/starpolishr\")\n\n\n\n1.4.3.4 CogSci paper template\n\nused to write CogSci conference proceedings papers\n\n\n# Install CogSci paper template\ndevtools::install_github(\"kemacdonald/cogsci2016\")\n\n\n\n1.4.3.5 BRRR package\n\nplay sounds from different rappers\n\n\nif(!require(devtools)) {install.packages(\"devtools\")}\ndevtools::install_github(\"brooke-watson/BRRR\")\nlibrary(\"BRRR\")\nskrrrahh(\"kendrick\")"
+  },
+  {
+    "objectID": "updateR_install_packages.html#loading-packages",
+    "href": "updateR_install_packages.html#loading-packages",
+    "title": "",
+    "section": "1.5 Loading packages",
+    "text": "1.5 Loading packages\nMoving forward, use the following code at the beginning of your scripts instead of the long list of library(package). This will also check whether packages are installed, if they are it’ll load them, and if they’re not it’ll install them and then load them.\n\n# don't use scientific notation\noptions(scipen=999)\n\n# copy this chunk at the beginning of new chapters; will automatically load packages and install needed packages\n\n## First specify the packages of interest\npackages &lt;- c(\"here\", \"tidyverse\", \"dplyr\", \"formatR\", \"stringr\",\n              \"janitor\", \"dplyr\", \"ggplot2\", \"lmerTest\", \"stargazer\",\n              \"MASS\", \"afex\", \"knitr\", \"gridExtra\", \"grid\",\n              \"paletteer\",\n              \"remotes\",\n              \"Rmisc\")\n\n## Now load or install&load all\npackage.check &lt;- lapply(\n  packages,\n  FUN = function(x) {\n    if (!require(x, character.only = TRUE)) {\n      install.packages(x, dependencies = TRUE)\n      library(x, character.only = TRUE)\n    }\n  }\n)"
+  },
+  {
+    "objectID": "updateR_install_packages.html#manual-installs",
+    "href": "updateR_install_packages.html#manual-installs",
+    "title": "",
+    "section": "1.6 Manual installs",
+    "text": "1.6 Manual installs\n\n1.6.1 tinyTex\n\nto render documents with LaTeX under the hood, run the following in the terminal: quarto install tinytex\n\n\n\n1.6.2 Citations with Zotero\nTo use the rbbt package installed above, we need to have Zotero installed (and Better BibTex).\n\n1.6.2.1 install Zotero\nhttps://www.zotero.org/download/\n\n\n1.6.2.2 Better BibTex\nInstall from the [website]{https://retorque.re/zotero-better-bibtex/installation/}\n\nthen in Zotero: Tools / Add-ins / Settings wheel / choose downloaded file / Restart Zotero\nset your citation keys: Zotero &gt; Settings &gt; Better BibTex &gt; Citation key formula &gt; (I like “zotero.clean”)\n\nif you need to update the BibTex key in your docs:\n\nhighlight all your files in the Zotero Library, right-click &gt; Better BibTex &gt; Refresh BibTex key"
   }
 ]
