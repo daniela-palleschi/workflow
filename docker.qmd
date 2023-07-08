@@ -1,0 +1,20 @@
+# Docker
+
+Text from [freecodecamp.org](https://www.freecodecamp.org/news/a-beginners-guide-to-docker-how-to-create-your-first-docker-application-cc03de9b639f/).
+
+> Docker is a free software developed by Docker Inc. It was presented to the general public on March 13, 2013 and has become since that day a must in the world of IT development.
+It allows users to create independent and isolated environments to launch and deploy its applications. These environments are then called containers.
+This will let the developer run a container on any machine.
+As you can see, with Docker, there are no more dependency or compilation problems. All you have to do is launch your container and your application will launch immediately.
+
+# Install
+
+https://www.docker.com/
+
+## Open Dock
+
+Find Docker on your machine and open it. You can select the recommended settings.
+
+## Set up hub.docker account
+
+You can do that [here](https://hub.docker.com/signup?auth_parameters=audience%3Dhttps%253A%252F%252Fhub.docker.com%26client_id%3DEuDxIQ7g0c9D75lvatTuvsT5V5BAjvwv%26code_challenge%3DDsxEsDSnT9gKBlerfXbXQBxeW0JzeF6V3Zeeyb4mX2Y%26code_challenge_method%3DS256%26redirect_uri%3Dhttps%253A%252F%252Fhub.docker.com%252Fauth%252Fdesktop%252Fredirect%26response_type%3Dcode%26scope%3Dopenid%2Bprofile%2Boffline_access%26state%3D-F91D_tXwDbrTk11L93eDjk3BTVN1TZHVAxZDMCqLl0), or wait to be prompted when you open Docker.

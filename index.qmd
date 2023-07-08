@@ -1,0 +1,15 @@
+---
+format: 
+  pdf: default
+  html: default
+---
+
+# Preface
+
+This book contains my tips-for-future-me regarding how I like to build and maintain my workflow with R. It began as a series of Quarto docs I kept in an RProject for me to refer back to whenever I forgot how I had done something or which git command I used to achieve something. It is informal and likely flawed. I make an effort to provide links to source of important info where relevant.
+
+These documents were originally intended to be privately used. I'll slowly brush them up to improve readibly/quality, but this is definitely a work-in-progress.
+
+## Resources
+
+- Jenny Bryan, [Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) (2017 Blogpost)

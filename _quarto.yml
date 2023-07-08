@@ -1,0 +1,60 @@
+project:
+  type: book
+  output-dir: docs
+  
+
+book:
+  title: "R Workflow"
+  subtitle: "Summer Semester 2023"
+  author: "Daniela Palleschi"
+  date: "`r Sys.Date()`"
+  date-format: medium
+  twitter-card: true
+  back-to-top-navigation: true
+  downloads: pdf
+  chapters:
+    - index.qmd
+    - troubleshooting.qmd
+    - git.qmd
+    - quarto.qmd
+    - packages.qmd
+    - updateR_install_packages.qmd
+    - zotero.qmd
+    - docker.qmd
+  navbar:
+    right:
+      - icon: home
+        href: https://daniela-palleschi.github.io/
+        text: D. Palleschi
+      - icon: github
+        href: https://github.com/daniela-palleschi/daniela-palleschi.github.io/
+        aria-label: Source Code
+      - icon: life-preserver
+        href: https://moodle.hu-berlin.de/course/view.php?id=119097
+        aria-label: Course Moodle
+
+bibliography: references.bib
+
+crossref:
+  exm-prefix: ex.   # (default is "Figure")
+  # labels: alpha a        # (default is arabic)
+  # subref-labels: alpha t # (default is alpha a)
+
+format:
+  html:
+    toc: true
+    number-sections: true
+    include-after-body: custom.html
+    code-tools: true
+    page-layout: full
+    self-contained: true
+    theme:
+      light: flatly
+      dark: darkly
+    execute:
+      message: false
+      warning: false
+      echo: false
+
+
+

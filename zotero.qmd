@@ -1,0 +1,15 @@
+# Zotero
+
+## Zotero group library
+
+1. Go to Zotero website
+2. Create a group library
+3. On main Zotero webpage > Groups > Manage members > Send More Invitations
+
+## Update citation keys
+
+- highlight relevant publication (or all)
+  + right click > BibTex > Refresh citation
+
+
+
