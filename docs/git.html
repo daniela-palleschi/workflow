@@ -4983,7 +4983,7 @@ border: 0;
 <td style="text-align: left;">undo last 2 commits (that were not pushed)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">git push -f origin master</td>
+<td style="text-align: left;">git push -f origin main</td>
 <td style="text-align: left;">overwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you&#39;re sure nobody else has made changes to the remote branch you&#39;re pushing to!</td>
 </tr>
 </tbody>
@@ -5880,7 +5880,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;git revert 2f5451f --no-edit&quot;</span>, <span class="st">&quot;undo a commit with the hash 2f5451f (replace this with the relevant commit hash)&quot;</span>,</span>
 <span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;git reset --soft HEAD~&quot;</span>, <span class="st">&quot;undo last commit (that was not pushed)&quot;</span>,</span>
 <span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;git reset --soft HEAD~2&quot;</span>, <span class="st">&quot;undo last 2 commits (that were not pushed)&quot;</span>,</span>
-<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;git push -f origin master&quot;</span>, <span class="st">&quot;overwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you&#39;re sure nobody else has made changes to the remote branch you&#39;re pushing to!&quot;</span></span>
+<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;git push -f origin main&quot;</span>, <span class="st">&quot;overwrite remote repo with local repo code (force changes, even when discrepancies are present; DO NOT do this on a collaboration repo unless you&#39;re sure nobody else has made changes to the remote branch you&#39;re pushing to!&quot;</span></span>
 <span id="cb26-73"><a href="#cb26-73" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> </span>
 <span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a>  kableExtra<span class="sc">::</span><span class="fu">kable_styling</span>()</span>

@@ -35,7 +35,7 @@ website:
       - icon: github
         menu:
           - text: Source Code
-            url:  https://github.com/daniela-palleschi/daniela-palleschi.github.io/
+            url:  https://github.com/daniela-palleschi/workflow/
             
 format:
   html:
