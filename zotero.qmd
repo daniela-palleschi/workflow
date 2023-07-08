@@ -1,3 +1,9 @@
+---
+format: 
+  pdf: default
+  html: default
+---
+
 # Zotero
 
 ## Zotero group library
