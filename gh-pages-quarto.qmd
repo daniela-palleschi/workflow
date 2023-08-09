@@ -34,6 +34,8 @@ After I've updated the source code of the website and previewed it, I typically 
     + alternatively, `git add filename.ext` or `folder/` or `folder/*.ext`, etc
 3. `git commit -m 'message'`
 4. `git push` : push these changes to the branch i'm currently on (usually main)
+5. `quarto render` : render all formats listed in `_quarto.yml`
+    + or `quarto render --to html` : render only html (or `pdf` or whatever you want)
 5. `quarto publish` > when prompted for GitHub pages, `Y`
     + push these changes to the `gh-pages` branch
 

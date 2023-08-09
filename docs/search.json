@@ -207,7 +207,7 @@
     "href": "gh-pages-quarto.html#updating",
     "title": "",
     "section": "1.2 Updating",
-    "text": "1.2 Updating\nAfter I’ve updated the source code of the website and previewed it, I typically run the following in the Terminal (while paying attention to the output):\n\ngit status: were the modified files what I expect?\ngit add -u: stage all modified/deleted files\n\nalternatively, git add filename.ext or folder/ or folder/*.ext, etc\n\ngit commit -m 'message'\ngit push : push these changes to the branch i’m currently on (usually main)\nquarto publish &gt; when prompted for GitHub pages, Y\n\npush these changes to the gh-pages branch"
+    "text": "1.2 Updating\nAfter I’ve updated the source code of the website and previewed it, I typically run the following in the Terminal (while paying attention to the output):\n\ngit status: were the modified files what I expect?\ngit add -u: stage all modified/deleted files\n\nalternatively, git add filename.ext or folder/ or folder/*.ext, etc\n\ngit commit -m 'message'\ngit push : push these changes to the branch i’m currently on (usually main)\nquarto render : render all formats listed in _quarto.yml\n\nor quarto render --to html : render only html (or pdf or whatever you want)\n\nquarto publish &gt; when prompted for GitHub pages, Y\n\npush these changes to the gh-pages branch"
   },
   {
     "objectID": "updateR_install_packages.html",

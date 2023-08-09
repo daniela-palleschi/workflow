@@ -3,8 +3,9 @@ project:
   output-dir: docs
   
 website:
-  title: "R Workflow"
+  title: "Daniela Palleschi"
   sidebar:
+    title: "R Workflow"
     style: "docked"
     search: true
     downloads: revealjs
@@ -12,7 +13,7 @@ website:
       - index.qmd
       - section: "Basics"
         contents:
-          - troubleshooting.qmd
+          # - troubleshooting.qmd
           - quarto.qmd
           - packages.qmd
           - updateR_install_packages.qmd
