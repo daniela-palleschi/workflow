@@ -156,3 +156,59 @@ After updating the `renv.lock` file (i.e., running `renv::snapshot()`), remember
 :::
 
 
+# `usethis` package
+
+The `usethis` package automates project set-up and development, and is also useful when creating a package (see the package [Documentation](https://usethis.r-lib.org/index.html) for more info).
+
+```{r}
+#| echo: false
+#| eval: true
+pacman::p_load(
+  tidyverse,
+  knitr,
+  kableExtra
+)
+```
+
+```{r}
+#| echo: false
+#| eval: true
+#| label: tbl-usethis
+#| tbl-cap: "Summary of useful commands from the usethis package"
+
+dplyr::tribble(
+  ~"command", ~"function",
+  "git_token_help()", "print crediential situation",
+  "git_sitrep()", "print more verbose credential information",
+  "git_vaccinate()", "add appropriate files to .gitignore (remember to stage, commit, and push)",
+  "browse_github()", "view project GitHub",
+  "browse_project() / _package()", "visit project-related pages",
+  "browse_github_actions()", "view overview of GitHub actions",
+  "git_credentials()", "print credentials",
+  "create_github_token()", "create a Personal Access Token (PAT)",
+  "gitcreds_set()", "add your PAT"
+) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
+# `gitcreds` package
+
+Has some similar functionality to `usethis` with regards to using git/GitHub in an R project. See the package [GitHub page](https://github.com/r-lib/gitcreds) for more information.
+
+```{r}
+#| echo: false
+#| eval: true
+#| label: tbl-gitcreds
+#| tbl-cap: "Summary of useful commands from the gitcreds package"
+
+dplyr::tribble(
+  ~"command", ~"function",
+  "gitcreds_get()", "print git/GitHub credentials",
+  "gitcreds_set()", "set/replace credentials",
+  "gitcreds_delete()", "delete credentials"
+) %>% 
+  knitr::kable() %>% 
+  kableExtra::kable_styling()
+```
+
