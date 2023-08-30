@@ -96,7 +96,7 @@ sudo fmtutil-sys --all
 
 And entered my laptop's administrator Password when prompted (it won't show that you're typing, but just type the password and hit Enter). Then Terminal was running for a couple of minutes, and ended with the output:
 
-```{r}
+```
 Transcript written on mex.log.
 fmtutil [INFO]: /usr/local/texlive/2019/texmf-var/web2c/pdftex/mex.fmt installed.
 fmtutil [INFO]: Disabled formats: 6
@@ -109,13 +109,13 @@ When I went to knit a PDF I still got the same errors.
 
 Then I ran 
 
-```{r}
+```
 fmtutil-user --all
 ```
 
 No password required, it ran again for a few minutes. At the end, I got
 
-```{r}
+```
 Transcript written on mf.log.
 fmtutil [INFO]: /Users/danielapalleschi/Library/texlive/2019/texmf-var/web2c/metafont/mf.base installed.
 fmtutil [INFO]: Disabled formats: 6
@@ -159,4 +159,4 @@ writeLines(stargazer_src, con="stargazer/R/stargazer-internal.R")
 install.packages("stargazer", repos = NULL, type="source")
 ### FROM NOW ON: shorter model names for stargazer
 
-`
+```
