@@ -1,0 +1,119 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Data dictionary {#sec-data-dictionary}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      eval = F)
+```
+
+A data dictionary is (usually) a table defining each variable in a dataset, often including information like data type (continuous, categorical, etc.) and a description of its values. It's helpful for collaborators, others trying to reproduce your analyses, and of course future-you.
+
+## Data dictionary in R
+
+I first started creating data dictionaries based on a free Coding Club I attended on [creating an R package](https://psyteachr.github.io/intro-r-pkgs/), given by [Lisa DeBruine](https://debruine.github.io/).
+
+You'll need the package `dplyr` from the `tidyverse`.
+
+```{r}
+library(tidyverse)
+```
+
+I prefer to load packages in using the function `p_load` from the `pacman` package. It will install and load packages that you don't already have installed, otherwise it simply loads a package.
+
+```{r}
+# install.packages("pacman")
+pacman::p_load(tidyverse)
+```
+
+
+### Step 1: Load in data
+
+```{r}
+#| eval: true
+df_penguins <- palmerpenguins::penguins
+```
+
+
+### Step 2: Get variable names
+
+```{r}
+dput(names(df_penguins))
+```
+
+Copy list of names (without `c(` and `)`) and place them in `tribble()` from `dplyr`. Add varible headers `~variable` and `~description`, or whatever you like.
+
+```{r}
+tribble(
+  ~ "variable", ~ "description",
+  "species", "island", "bill_length_mm", "bill_depth_mm", "flipper_length_mm", 
+"body_mass_g", "sex", "year"
+)
+```
+
+Highlight the variable names, and use the keyboard shortcut `Cmd/Ctrl+Shift+A` to format the list, making a single row for each. Then add `"",` after each variable name. Now we've got all our variable names, which will appear under the header `variable`, and an empty string where we can write the variable description that will appear under the heading `despcription`. Try printing this to see how the table looks.
+
+```{r}
+tribble(
+  ~ "variable", ~ "description",
+  "species", "",
+  "island",  "",
+  "bill_length_mm",  "",
+  "bill_depth_mm",  "",
+  "flipper_length_mm",  "",
+  "body_mass_g",  "",
+  "sex",  "",
+  "year",  ""
+)
+```
+
+### Step 3: Create table
+
+Fill in all the variable descriptions. Then feed the tibble through your favourite table formatter. I'll use `kable()` from `knitr` and `kable_styling()` from `kableExtra` for some extra HTML formatting. You might also try `gt()` from the `gt` package. 
+
+```{r}
+#| eval: true
+dplyr::tribble(
+  ~ "variable", ~ "description",
+  "species", "penguin species",
+  "island",  "island penguin lives on",
+  "bill_length_mm",  "length of bill in millimeters",
+  "bill_depth_mm",  "depth of bill in millimeters",
+  "flipper_length_mm",  "length of flipper in millimeters",
+  "body_mass_g",  "penguin weight in grams",
+  "sex",  "penguin sex",
+  "year",  "year of data collection"
+) |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling()
+```
+
+## Table caption
+
+If this table will be printed in a PDF or HTML output, you might want to add a table label (`label: tbl-...`) and table caption (`tbl-cap: ...`). Then you can also cross reference the table using `@tbl-...`. For example, @tbl-penguins-dictionary has a label and caption. I've printed the code chunk options so you can see exactly how I achieved this.
+
+```{r}
+#| eval: true
+#| label: tbl-penguins-dictionary
+#| tbl-cap: Data dictionary for penguins data from palmerpenguins
+#| echo: fenced
+dplyr::tribble(
+  ~ "variable", ~ "description",
+  "species", "penguin species",
+  "island",  "island penguin lives on",
+  "bill_length_mm",  "length of bill in millimeters",
+  "bill_depth_mm",  "depth of bill in millimeters",
+  "flipper_length_mm",  "length of flipper in millimeters",
+  "body_mass_g",  "penguin weight in grams",
+  "sex",  "penguin sex",
+  "year",  "year of data collection"
+) |> 
+  knitr::kable() |> 
+  kableExtra::kable_styling()
+```
+
+
+
