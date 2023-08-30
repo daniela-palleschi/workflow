@@ -41,6 +41,7 @@ df_penguins <- palmerpenguins::penguins
 ### Step 2: Get variable names
 
 ```{r}
+#| eval: true
 dput(names(df_penguins))
 ```
 
