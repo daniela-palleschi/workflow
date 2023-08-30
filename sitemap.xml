@@ -2,38 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/zotero.html</loc>
-    <lastmod>2023-08-09T12:50:15.171Z</lastmod>
+    <lastmod>2023-08-30T17:47:06.572Z</lastmod>
+  </url>
+  <url>
+    <loc>https://daniela-palleschi.github.io/workflow/data_dictionary.html</loc>
+    <lastmod>2023-08-30T17:47:12.912Z</lastmod>
+  </url>
+  <url>
+    <loc>https://daniela-palleschi.github.io/workflow/plots.html</loc>
+    <lastmod>2023-08-30T17:47:17.612Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/index.html</loc>
-    <lastmod>2023-08-09T12:50:21.009Z</lastmod>
+    <lastmod>2023-08-30T17:47:19.827Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/docker.html</loc>
-    <lastmod>2023-08-09T12:50:26.360Z</lastmod>
+    <lastmod>2023-08-30T17:47:24.741Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/git.html</loc>
-    <lastmod>2023-08-09T12:50:31.260Z</lastmod>
+    <lastmod>2023-08-30T17:47:28.621Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/quarto.html</loc>
-    <lastmod>2023-08-09T12:50:34.253Z</lastmod>
+    <lastmod>2023-08-30T17:47:30.653Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/troubleshooting.html</loc>
-    <lastmod>2023-08-09T12:50:44.279Z</lastmod>
+    <lastmod>2023-08-30T17:47:41.891Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/packages.html</loc>
-    <lastmod>2023-08-09T12:50:55.998Z</lastmod>
+    <lastmod>2023-08-30T17:47:52.598Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/gh-pages-quarto.html</loc>
-    <lastmod>2023-08-09T12:51:00.161Z</lastmod>
+    <lastmod>2023-08-30T17:47:57.350Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/updateR_install_packages.html</loc>
-    <lastmod>2023-08-09T12:51:03.692Z</lastmod>
+    <lastmod>2023-08-30T17:48:00.510Z</lastmod>
   </url>
 </urlset>
