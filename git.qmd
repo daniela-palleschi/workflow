@@ -42,7 +42,8 @@ dplyr::tribble(
   "git add -u", "stage all modified but unstaged files",
   'git commit -m "message"', "commit the changes to local git",
   "git push", "push current state of local git to remote repo",
-  "git remote -v", "print remote fetch/pull URLs"
+  "git remote -v", "print remote fetch/pull URLs",
+  "git remote set-url origin git@github.com:username/repo.git", "change remote repository; e.g., if you changed the GH repo name (GH repo > Settings > rename)"
 ) %>% 
   knitr::kable() %>% 
   kableExtra::kable_styling()

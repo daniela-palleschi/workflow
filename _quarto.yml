@@ -17,6 +17,7 @@ website:
           - quarto.qmd
           - packages.qmd
           - updateR_install_packages.qmd
+          - data_dictionary.qmd
           - zotero.qmd
       - section: "Next level"
         contents:
