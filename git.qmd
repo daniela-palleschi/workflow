@@ -7,7 +7,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ## How to follow
 
-All code should be added into the ***Terminal*** tab (in the Console pane in RStudio). Alternatively, you don't need to use the Terminal at all, as RStudio adds a Git tab to the Environment pane. For a much more in-depth (and better) guide, follow the amazing [Happy git with R book](https://happygitwithr.com/index.html) by the even more amazing Jenny Bryan.
+All code should be added into the ***Terminal*** tab (in the Console pane in RStudio). Alternatively, you don't need to use the Terminal at all, as RStudio adds a Git tab to the Environment pane. For a much more in-depth (and better) guide, follow the amazing [Happy git with R book](https://happygitwithr.com/index.html) by Jenny Bryan.
 
 I use git right in the Terminal window in RStudio. To get to the Terminal window, look where you usually see the output from your code (probably the bottom left window, 'Console'). You should see a tab 'Terminal'. This is where you want to go. Now you can start setting up git using the following commands.
 
