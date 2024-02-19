@@ -1,57 +1,16 @@
 ---
-title: "Writing"
 format: html
 ---
 
-Here I aim to build references on writing workflow tips. This is a work-in-progress.
+# Quarto
 
-## Use APA 7 in papaja
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-[`papaja`](https://github.com/crsh/papaja) is an R package for preparing APA-styled articles in Rmarkdown. It's current version (0.1.2) supports APA 6 guidelines, although the newest guidelines are APA 7. Basically, we need to get `papaja` to use APA 7. 
+## Quarto versus Rmarkdown
 
-I achieved this by following these instructions:
+Important differences I've noticed:
 
-- [Open issue on the `papaja` GitHub repo](https://github.com/crsh/papaja/issues/342)
-- Blogpost [How to set up {papaja} to work with the APA 7 format](https://www.martinasladek.co.uk/content/blog/2022_feb_how-to-set-up-papaja-to-work-with-apa-7-format.html)
-
-Namely, the steps followed were:
-
-1. Install developer version of `papaja`:
-
-```{r}
-#| eval: false
-#| echo: true
-remotes::install_github("crsh/papaja@devel")
-```
-
-2. Add to the YAML:
-
-```{markdown}
-#| echo: true
-#| eval: false
-csl               : "`r system.file('rmd', 'apa7.csl', package = 'papaja')`"
-documentclass     : "apa7"
-```
-
-And this:
-
-```{markdown}
-#| echo: true
-header-includes:
-  - |
-    \makeatletter
-    \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%
-      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
-      {-1em}%
-      {\normalfont\normalsize\bfseries\typesectitle}}
-    
-    \renewcommand{\subparagraph}[1]{\@startsection{subparagraph}{5}{1em}%
-      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%
-      {-\z@\relax}%
-      {\normalfont\normalsize\bfseries\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
-    \makeatother
-```
-
-This was sufficient for my set-up. The additional LaTeX packages I needed were then listed directly under (and in line with) `\makatother`.
-
-To test if APA 7 vs. 6 was being used, I changed a BibTex entry for a reference to have more than 7 authors (e.g., by repeating all the author names until >7). I then changed `csl: "``r system.file('rmd', 'apa7.csl', package = 'papaja')``"` to `csl: "``r system.file('rmd', 'apa6.csl', package = 'papaja')``"`. In the bibliography only 7 authors were listed (following apa 6). I then changed it back to `'apa7.csl`, and the rendered bibliography listed all authors (following apa 7). I took this as sufficient evidence that apa 7 was indeed being used. I then changed the BibTex authors back, of course.
+- `YAML`:
+  + Rmd `output` = `format` in Quarto
+  + Rmd `html_document` = `html` in Quarto
+  
