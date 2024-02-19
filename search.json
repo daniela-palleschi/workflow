@@ -91,116 +91,18 @@
     "text": "4.5 Update and Hydrate\n\n# updates all packages (stored in renv.lock) in the renv cache\nrenv::hydrate(update = \"all\")\n\n# update should have no effect now, but doesn't hurt to check\nrenv::update()\n\n# now take a snapshot with the updated packages\nrenv::snapshot()\n\n\n\n\n\n\n\nVersion control (repeated)\n\n\n\nAfter updating the renv.lock file (i.e., running renv::snapshot()), remember to commit/push these changes to git (if you’re using git)! Otherwise, your renv.lock file will be outdated compared to your output."
   },
   {
-    "objectID": "quarto.html",
-    "href": "quarto.html",
+    "objectID": "writing.html",
+    "href": "writing.html",
     "title": "Quarto",
     "section": "",
     "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n\nImportant differences I’ve noticed:\n\nYAML:\n\nRmd output = format in Quarto\nRmd html_document = html in Quarto"
   },
   {
-    "objectID": "quarto.html#quarto-versus-rmarkdown",
-    "href": "quarto.html#quarto-versus-rmarkdown",
+    "objectID": "writing.html#quarto-versus-rmarkdown",
+    "href": "writing.html#quarto-versus-rmarkdown",
     "title": "Quarto",
     "section": "",
     "text": "Important differences I’ve noticed:\n\nYAML:\n\nRmd output = format in Quarto\nRmd html_document = html in Quarto"
-  },
-  {
-    "objectID": "docker.html",
-    "href": "docker.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "docker.html#open-dock",
-    "href": "docker.html#open-dock",
-    "title": "",
-    "section": "2.1 Open Dock",
-    "text": "2.1 Open Dock\nFind Docker on your machine and open it. You can select the recommended settings."
-  },
-  {
-    "objectID": "docker.html#set-up-hub.docker-account",
-    "href": "docker.html#set-up-hub.docker-account",
-    "title": "",
-    "section": "2.2 Set up hub.docker account",
-    "text": "2.2 Set up hub.docker account\nYou can do that here, or wait to be prompted when you open Docker."
-  },
-  {
-    "objectID": "plots.html",
-    "href": "plots.html",
-    "title": "",
-    "section": "",
-    "text": "CodeShow All CodeHide All CodeView Source"
-  },
-  {
-    "objectID": "plots.html#custom-theme",
-    "href": "plots.html#custom-theme",
-    "title": "",
-    "section": "1.1 Custom theme",
-    "text": "1.1 Custom theme\nThis post is inspired by Albert Rapp’s blogpost on the same topic, which goes into more detail about how to build a plot using ggplot2.\nCreating a customised theme can help ensure all plots in a document have identical formatting. All you need to do is create a function that takes any theme() specifications.\nFirst, let’s see what a basic plot looks like without any formatting:\n\n\nCode\n# install.packages(\"pacman\") # if needed\npacman::p_load(tidyverse,\n               janitor,\n               languageR)\ndf_lexdec &lt;- lexdec |&gt; \n  clean_names()\n\n\n\n\nCode\nfig_lexdec &lt;-\n  df_lexdec |&gt;\n  arrange(correct) |&gt; \n  ggplot() +\n  aes(x = frequency, y = rt,\n      fill = correct) +\n  facet_grid(.~native_language) +\n  labs(\n    title = \"Log reaction time by log word frequency for native (English) and non-native (Other) speakers\",\n    x = \"Frequency (log)\",\n    y = \"Reaction time (log)\"\n  ) +\n  geom_point(shape = 21, position = position_jitter(.1), alpha = .8, size = 2, colour = \"grey10\") \n\n\n\nfig_lexdec\n\n\n\n\n\n1.1.1 Create theme\nBelow I create a custom theme called my_theme, which:\n\nuses theme_bw()\nremoves x-axis title\nsets plot title text size to 10\nlegend is:\n\nbelow the plot\nhas no title\ndisplays points as .4cm\ndisplays lines as 1 cm long\nall legend text is size 8\npadding around the legend is minimised\n\n\nNow we can add my_theme() to plots:\n\n\n\n\n\n\n\n1.1.2 Set global theme\nWe can also set our custom theme (or any other built-in theme, such as theme_minimal()) as the default theme for all plots (so it doesn’t need to be called for every theme). Now when I produce plots\nNow when we generate any plot, it will use my_theme() by default.\n\nfig_lexdec"
-  },
-  {
-    "objectID": "plots.html#function-for-multiple-plots",
-    "href": "plots.html#function-for-multiple-plots",
-    "title": "",
-    "section": "1.2 Function for multiple plots",
-    "text": "1.2 Function for multiple plots\nIn reading research, we often want to look at the reading time across sentence regions. Typically I would do this using facet_wrap() or facet_grid() from ggplot2. However, during we might want to instead produce separate plots per region, item, participant, etc., for example during exploratory data analysis This can result in repeating code multiple times in order to produce plots for each region. Alternatively, we create a function to produce multiple plots at once.\nThe code below is adapted for ggplot2 from Vivian Peng’s tutorial, which uses plotly and the penguins data set from palmerpenguins. All code not specific to ggplot2 is therefore identical to that in her tutorial.\n\n1.2.1 Generate plot\nFirst, we generate a plot for a single neologism from the selfPacedReadingHeid dataset from the languageR package.\n\n\nCode\n# install.packages(\"pacman\") # if needed\npacman::p_load(tidyverse,\n               languageR,\n               janitor,\n               plotly)\n\n\n\n\nCode\n# store selfPacedReadingHeid as 'df', to keep it short and sweet (you'll want to use a more meaningful name in real analyses)\n# I also use clean_names() from the janitor package to keep variable names tidy\ndf &lt;- selfPacedReadingHeid |&gt; clean_names()\n\n\n\n\nCode\n# generate a scatterplot for the neologism 'blusbaarheid'\ndf |&gt;\n  filter(word == \"blusbaarheid\") |&gt; \n  arrange(condition) |&gt; \n  ggplot() +\n  aes(x = rt4words_back, y = rt,\n      fill = condition) +\n  # facet_grid(.~native_language) +\n  labs(\n    title = \"Log reaction time by log root frequency for the neologism 'blusbaarheid'\",\n    x = \"i-4 Reaction time (log)\",\n    y = \"Reaction time (log)\"\n  ) +\n  geom_point(shape = 21, alpha = .8, size = 2, colour = \"grey10\") \n\n\n\n\n\n\n\n1.2.2 Create function\nThis function will use the same code that generated our plot above. However, instead of filtering for word == \"blusbaarheid\", it will be word == word_label.\n\nplot_fx &lt;- function(word_label){\n  df |&gt;\n  filter(word == word_label) |&gt; \n  arrange(condition) |&gt; \n  ggplot() +\n  aes(x = rt4words_back, y = rt,\n      fill = condition) +\n  # facet_grid(.~native_language) +\n  labs(\n    title = paste0(\"Neologism '\", word_label, \"'\"),\n    x = \"i-4 Reaction time (log)\",\n    y = \"Reaction time (log)\"\n  ) +\n  geom_point(shape = 21, alpha = .8, size = 2, colour = \"grey10\") \n  }\n\nNow we can specify the word_label directly as an argument of the function we’ve created:\n\n# Run function for word \"blusbaarheid\"\nplot_fx(\"blusbaarheid\")\n\n\n\n\nOr, even better, we can create a list of our plots.\n\n# Create an empty list for all your plots\nplot_list = list() \n\n\n# Run the plotting function for all the species\nfor (i in unique(df$word)){\n    plot_list[[i]] = plot_fx(i)\n}\n\n\n# Now you have a list of plots - one for each neologism\n# You can see the plots by changing the value within the square brackets. Let's see the plot for the 31st plot:\nplot_list[[31]]\n\n\n\n\nAnd now, let’s plot 2 neologisms of our choosing side-by-side using the patchwork package.\n\n\nCode\npacman::p_load(patchwork)\n\n(plot_list[[\"tilbaarheid\"]] +\n    plot_list[[\"blusbaarheid\"]]) +\n  plot_annotation(title = \"Log reaction times by log rot frequency for neologisms\") +\n  plot_layout(guides = \"collect\")\n\n\n\n\n\nOf course, if we already knew ahead of time that we wanted to print only these 2 plots, we could’ve first filtered the dataset to contain only these 2 words, and then produced the two plots using facet_wrap(). Whether or not this method is more straightforward depends on what exactly you want to do."
-  },
-  {
-    "objectID": "zotero.html",
-    "href": "zotero.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "zotero.html#zotero-group-library",
-    "href": "zotero.html#zotero-group-library",
-    "title": "",
-    "section": "1.1 Zotero group library",
-    "text": "1.1 Zotero group library\n\nGo to Zotero website\nCreate a group library\nOn main Zotero webpage &gt; Groups &gt; Manage members &gt; Send More Invitations"
-  },
-  {
-    "objectID": "zotero.html#update-citation-keys",
-    "href": "zotero.html#update-citation-keys",
-    "title": "",
-    "section": "1.2 Update citation keys",
-    "text": "1.2 Update citation keys\n\nhighlight relevant publication (or all)\n\nright click &gt; BibTex &gt; Refresh citation"
-  },
-  {
-    "objectID": "data_dictionary.html",
-    "href": "data_dictionary.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "data_dictionary.html#data-dictionary-in-r",
-    "href": "data_dictionary.html#data-dictionary-in-r",
-    "title": "",
-    "section": "1.1 Data dictionary in R",
-    "text": "1.1 Data dictionary in R\nI first started creating data dictionaries based on a free Coding Club I attended on creating an R package, given by Lisa DeBruine.\nYou’ll need the package dplyr from the tidyverse.\n\nlibrary(tidyverse)\n\nI prefer to load packages in using the function p_load from the pacman package. It will install and load packages that you don’t already have installed, otherwise it simply loads a package.\n\n# install.packages(\"pacman\")\npacman::p_load(tidyverse)\n\n\n1.1.1 Step 1: Load in data\n\ndf_penguins &lt;- palmerpenguins::penguins\n\n\n\n1.1.2 Step 2: Get variable names\n\ndput(names(df_penguins))\n\nc(\"species\", \"island\", \"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \n\"body_mass_g\", \"sex\", \"year\")\n\n\nCopy list of names (without c( and )) and place them in tribble() from dplyr. Add varible headers ~variable and ~description, or whatever you like.\n\ntribble(\n  ~ \"variable\", ~ \"description\",\n  \"species\", \"island\", \"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \n\"body_mass_g\", \"sex\", \"year\"\n)\n\nHighlight the variable names, and use the keyboard shortcut Cmd/Ctrl+Shift+A to format the list, making a single row for each. Then add \"\", after each variable name. Now we’ve got all our variable names, which will appear under the header variable, and an empty string where we can write the variable description that will appear under the heading despcription. Try printing this to see how the table looks.\n\ntribble(\n  ~ \"variable\", ~ \"description\",\n  \"species\", \"\",\n  \"island\",  \"\",\n  \"bill_length_mm\",  \"\",\n  \"bill_depth_mm\",  \"\",\n  \"flipper_length_mm\",  \"\",\n  \"body_mass_g\",  \"\",\n  \"sex\",  \"\",\n  \"year\",  \"\"\n)\n\n\n\n1.1.3 Step 3: Create table\nFill in all the variable descriptions. Then feed the tibble through your favourite table formatter. I’ll use kable() from knitr and kable_styling() from kableExtra for some extra HTML formatting. You might also try gt() from the gt package.\n\ndplyr::tribble(\n  ~ \"variable\", ~ \"description\",\n  \"species\", \"penguin species\",\n  \"island\",  \"island penguin lives on\",\n  \"bill_length_mm\",  \"length of bill in millimeters\",\n  \"bill_depth_mm\",  \"depth of bill in millimeters\",\n  \"flipper_length_mm\",  \"length of flipper in millimeters\",\n  \"body_mass_g\",  \"penguin weight in grams\",\n  \"sex\",  \"penguin sex\",\n  \"year\",  \"year of data collection\"\n) |&gt; \n  knitr::kable() |&gt; \n  kableExtra::kable_styling()\n\n\n\n\nvariable\ndescription\n\n\n\n\nspecies\npenguin species\n\n\nisland\nisland penguin lives on\n\n\nbill_length_mm\nlength of bill in millimeters\n\n\nbill_depth_mm\ndepth of bill in millimeters\n\n\nflipper_length_mm\nlength of flipper in millimeters\n\n\nbody_mass_g\npenguin weight in grams\n\n\nsex\npenguin sex\n\n\nyear\nyear of data collection"
-  },
-  {
-    "objectID": "data_dictionary.html#table-caption",
-    "href": "data_dictionary.html#table-caption",
-    "title": "",
-    "section": "1.2 Table caption",
-    "text": "1.2 Table caption\nIf this table will be printed in a PDF or HTML output, you might want to add a table label (label: tbl-...) and table caption (tbl-cap: ...). Then you can also cross reference the table using @tbl-.... For example, Table 1 has a label and caption. I’ve printed the code chunk options so you can see exactly how I achieved this.\n\n```{r}\n#| eval: true\n#| label: tbl-penguins-dictionary\n#| tbl-cap: Data dictionary for penguins data from palmerpenguins\ndplyr::tribble(\n  ~ \"variable\", ~ \"description\",\n  \"species\", \"penguin species\",\n  \"island\",  \"island penguin lives on\",\n  \"bill_length_mm\",  \"length of bill in millimeters\",\n  \"bill_depth_mm\",  \"depth of bill in millimeters\",\n  \"flipper_length_mm\",  \"length of flipper in millimeters\",\n  \"body_mass_g\",  \"penguin weight in grams\",\n  \"sex\",  \"penguin sex\",\n  \"year\",  \"year of data collection\"\n) |&gt; \n  knitr::kable() |&gt; \n  kableExtra::kable_styling()\n```\n\n\n\nTable 1: Data dictionary for penguins data from palmerpenguins\n\n\nvariable\ndescription\n\n\n\n\nspecies\npenguin species\n\n\nisland\nisland penguin lives on\n\n\nbill_length_mm\nlength of bill in millimeters\n\n\nbill_depth_mm\ndepth of bill in millimeters\n\n\nflipper_length_mm\nlength of flipper in millimeters\n\n\nbody_mass_g\npenguin weight in grams\n\n\nsex\npenguin sex\n\n\nyear\nyear of data collection"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "",
-    "section": "",
-    "text": "Code"
-  },
-  {
-    "objectID": "index.html#resources",
-    "href": "index.html#resources",
-    "title": "",
-    "section": "1.1 Resources",
-    "text": "1.1 Resources\n\nJenny Bryan, Project-oriented workflow (2017 Blogpost)"
   },
   {
     "objectID": "git.html",
@@ -250,6 +152,118 @@
     "title": "",
     "section": "1.6 New laptop or expired SSH key",
     "text": "1.6 New laptop or expired SSH key\nIf you have everything backed up, and are running your same projects etc. on a new machine (or if your SSH key simply expired), then you just need to generate a new SSH key in RStudio. Then, go to your GitHub or GitLab Settings, go to the tab for SSH keys, and add a the new SSH key. In other words, follow these steps:\n\nCreate SSH key (in RStudio) and save to clipboard (e.g., CTRL+C)\n\nRStudio &gt; Tools &gt; Global Options &gt; Git/SVN &gt; SSH key &gt; Create SSH Key… &gt; OK &gt; View public key; copy key\n\nAdd SSH key to you GitHub and/or GitLab account\n\nGitHub &gt; Settings &gt; SSH and GPG keys &gt; New SSH key; paste key\nGitLab &gt; Preferences &gt; SSH keys &gt; Key / title etc.; paste key"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "index.html#resources",
+    "href": "index.html#resources",
+    "title": "",
+    "section": "1.1 Resources",
+    "text": "1.1 Resources\n\nJenny Bryan, Project-oriented workflow (2017 Blogpost)"
+  },
+  {
+    "objectID": "data_dictionary.html",
+    "href": "data_dictionary.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "data_dictionary.html#data-dictionary-in-r",
+    "href": "data_dictionary.html#data-dictionary-in-r",
+    "title": "",
+    "section": "1.1 Data dictionary in R",
+    "text": "1.1 Data dictionary in R\nI first started creating data dictionaries based on a free Coding Club I attended on creating an R package, given by Lisa DeBruine.\nYou’ll need the package dplyr from the tidyverse.\n\nlibrary(tidyverse)\n\nI prefer to load packages in using the function p_load from the pacman package. It will install and load packages that you don’t already have installed, otherwise it simply loads a package.\n\n# install.packages(\"pacman\")\npacman::p_load(tidyverse)\n\n\n1.1.1 Step 1: Load in data\n\ndf_penguins &lt;- palmerpenguins::penguins\n\n\n\n1.1.2 Step 2: Get variable names\n\ndput(names(df_penguins))\n\nc(\"species\", \"island\", \"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \n\"body_mass_g\", \"sex\", \"year\")\n\n\nCopy list of names (without c( and )) and place them in tribble() from dplyr. Add varible headers ~variable and ~description, or whatever you like.\n\ntribble(\n  ~ \"variable\", ~ \"description\",\n  \"species\", \"island\", \"bill_length_mm\", \"bill_depth_mm\", \"flipper_length_mm\", \n\"body_mass_g\", \"sex\", \"year\"\n)\n\nHighlight the variable names, and use the keyboard shortcut Cmd/Ctrl+Shift+A to format the list, making a single row for each. Then add \"\", after each variable name. Now we’ve got all our variable names, which will appear under the header variable, and an empty string where we can write the variable description that will appear under the heading despcription. Try printing this to see how the table looks.\n\ntribble(\n  ~ \"variable\", ~ \"description\",\n  \"species\", \"\",\n  \"island\",  \"\",\n  \"bill_length_mm\",  \"\",\n  \"bill_depth_mm\",  \"\",\n  \"flipper_length_mm\",  \"\",\n  \"body_mass_g\",  \"\",\n  \"sex\",  \"\",\n  \"year\",  \"\"\n)\n\n\n\n1.1.3 Step 3: Create table\nFill in all the variable descriptions. Then feed the tibble through your favourite table formatter. I’ll use kable() from knitr and kable_styling() from kableExtra for some extra HTML formatting. You might also try gt() from the gt package.\n\ndplyr::tribble(\n  ~ \"variable\", ~ \"description\",\n  \"species\", \"penguin species\",\n  \"island\",  \"island penguin lives on\",\n  \"bill_length_mm\",  \"length of bill in millimeters\",\n  \"bill_depth_mm\",  \"depth of bill in millimeters\",\n  \"flipper_length_mm\",  \"length of flipper in millimeters\",\n  \"body_mass_g\",  \"penguin weight in grams\",\n  \"sex\",  \"penguin sex\",\n  \"year\",  \"year of data collection\"\n) |&gt; \n  knitr::kable() |&gt; \n  kableExtra::kable_styling()\n\n\n\n\nvariable\ndescription\n\n\n\n\nspecies\npenguin species\n\n\nisland\nisland penguin lives on\n\n\nbill_length_mm\nlength of bill in millimeters\n\n\nbill_depth_mm\ndepth of bill in millimeters\n\n\nflipper_length_mm\nlength of flipper in millimeters\n\n\nbody_mass_g\npenguin weight in grams\n\n\nsex\npenguin sex\n\n\nyear\nyear of data collection"
+  },
+  {
+    "objectID": "data_dictionary.html#table-caption",
+    "href": "data_dictionary.html#table-caption",
+    "title": "",
+    "section": "1.2 Table caption",
+    "text": "1.2 Table caption\nIf this table will be printed in a PDF or HTML output, you might want to add a table label (label: tbl-...) and table caption (tbl-cap: ...). Then you can also cross reference the table using @tbl-.... For example, Table 1 has a label and caption. I’ve printed the code chunk options so you can see exactly how I achieved this.\n\n```{r}\n#| eval: true\n#| label: tbl-penguins-dictionary\n#| tbl-cap: Data dictionary for penguins data from palmerpenguins\ndplyr::tribble(\n  ~ \"variable\", ~ \"description\",\n  \"species\", \"penguin species\",\n  \"island\",  \"island penguin lives on\",\n  \"bill_length_mm\",  \"length of bill in millimeters\",\n  \"bill_depth_mm\",  \"depth of bill in millimeters\",\n  \"flipper_length_mm\",  \"length of flipper in millimeters\",\n  \"body_mass_g\",  \"penguin weight in grams\",\n  \"sex\",  \"penguin sex\",\n  \"year\",  \"year of data collection\"\n) |&gt; \n  knitr::kable() |&gt; \n  kableExtra::kable_styling()\n```\n\n\n\nTable 1: Data dictionary for penguins data from palmerpenguins\n\n\nvariable\ndescription\n\n\n\n\nspecies\npenguin species\n\n\nisland\nisland penguin lives on\n\n\nbill_length_mm\nlength of bill in millimeters\n\n\nbill_depth_mm\ndepth of bill in millimeters\n\n\nflipper_length_mm\nlength of flipper in millimeters\n\n\nbody_mass_g\npenguin weight in grams\n\n\nsex\npenguin sex\n\n\nyear\nyear of data collection"
+  },
+  {
+    "objectID": "zotero.html",
+    "href": "zotero.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "zotero.html#zotero-group-library",
+    "href": "zotero.html#zotero-group-library",
+    "title": "",
+    "section": "1.1 Zotero group library",
+    "text": "1.1 Zotero group library\n\nGo to Zotero website\nCreate a group library\nOn main Zotero webpage &gt; Groups &gt; Manage members &gt; Send More Invitations"
+  },
+  {
+    "objectID": "zotero.html#update-citation-keys",
+    "href": "zotero.html#update-citation-keys",
+    "title": "",
+    "section": "1.2 Update citation keys",
+    "text": "1.2 Update citation keys\n\nhighlight relevant publication (or all)\n\nright click &gt; BibTex &gt; Refresh citation"
+  },
+  {
+    "objectID": "plots.html",
+    "href": "plots.html",
+    "title": "",
+    "section": "",
+    "text": "CodeShow All CodeHide All CodeView Source"
+  },
+  {
+    "objectID": "plots.html#custom-theme",
+    "href": "plots.html#custom-theme",
+    "title": "",
+    "section": "1.1 Custom theme",
+    "text": "1.1 Custom theme\nThis post is inspired by Albert Rapp’s blogpost on the same topic, which goes into more detail about how to build a plot using ggplot2.\nCreating a customised theme can help ensure all plots in a document have identical formatting. All you need to do is create a function that takes any theme() specifications.\nFirst, let’s see what a basic plot looks like without any formatting:\n\n\nCode\n# install.packages(\"pacman\") # if needed\npacman::p_load(tidyverse,\n               janitor,\n               languageR)\ndf_lexdec &lt;- lexdec |&gt; \n  clean_names()\n\n\n\n\nCode\nfig_lexdec &lt;-\n  df_lexdec |&gt;\n  arrange(correct) |&gt; \n  ggplot() +\n  aes(x = frequency, y = rt,\n      fill = correct) +\n  facet_grid(.~native_language) +\n  labs(\n    title = \"Log reaction time by log word frequency for native (English) and non-native (Other) speakers\",\n    x = \"Frequency (log)\",\n    y = \"Reaction time (log)\"\n  ) +\n  geom_point(shape = 21, position = position_jitter(.1), alpha = .8, size = 2, colour = \"grey10\") \n\n\n\nfig_lexdec\n\n\n\n\n\n1.1.1 Create theme\nBelow I create a custom theme called my_theme, which:\n\nuses theme_bw()\nremoves x-axis title\nsets plot title text size to 10\nlegend is:\n\nbelow the plot\nhas no title\ndisplays points as .4cm\ndisplays lines as 1 cm long\nall legend text is size 8\npadding around the legend is minimised\n\n\nNow we can add my_theme() to plots:\n\n\n\n\n\n\n\n1.1.2 Set global theme\nWe can also set our custom theme (or any other built-in theme, such as theme_minimal()) as the default theme for all plots (so it doesn’t need to be called for every theme). Now when I produce plots\nNow when we generate any plot, it will use my_theme() by default.\n\nfig_lexdec"
+  },
+  {
+    "objectID": "plots.html#function-for-multiple-plots",
+    "href": "plots.html#function-for-multiple-plots",
+    "title": "",
+    "section": "1.2 Function for multiple plots",
+    "text": "1.2 Function for multiple plots\nIn reading research, we often want to look at the reading time across sentence regions. Typically I would do this using facet_wrap() or facet_grid() from ggplot2. However, during we might want to instead produce separate plots per region, item, participant, etc., for example during exploratory data analysis This can result in repeating code multiple times in order to produce plots for each region. Alternatively, we create a function to produce multiple plots at once.\nThe code below is adapted for ggplot2 from Vivian Peng’s tutorial, which uses plotly and the penguins data set from palmerpenguins. All code not specific to ggplot2 is therefore identical to that in her tutorial.\n\n1.2.1 Generate plot\nFirst, we generate a plot for a single neologism from the selfPacedReadingHeid dataset from the languageR package.\n\n\nCode\n# install.packages(\"pacman\") # if needed\npacman::p_load(tidyverse,\n               languageR,\n               janitor,\n               plotly)\n\n\n\n\nCode\n# store selfPacedReadingHeid as 'df', to keep it short and sweet (you'll want to use a more meaningful name in real analyses)\n# I also use clean_names() from the janitor package to keep variable names tidy\ndf &lt;- selfPacedReadingHeid |&gt; clean_names()\n\n\n\n\nCode\n# generate a scatterplot for the neologism 'blusbaarheid'\ndf |&gt;\n  filter(word == \"blusbaarheid\") |&gt; \n  arrange(condition) |&gt; \n  ggplot() +\n  aes(x = rt4words_back, y = rt,\n      fill = condition) +\n  # facet_grid(.~native_language) +\n  labs(\n    title = \"Log reaction time by log root frequency for the neologism 'blusbaarheid'\",\n    x = \"i-4 Reaction time (log)\",\n    y = \"Reaction time (log)\"\n  ) +\n  geom_point(shape = 21, alpha = .8, size = 2, colour = \"grey10\") \n\n\n\n\n\n\n\n1.2.2 Create function\nThis function will use the same code that generated our plot above. However, instead of filtering for word == \"blusbaarheid\", it will be word == word_label.\n\nplot_fx &lt;- function(word_label){\n  df |&gt;\n  filter(word == word_label) |&gt; \n  arrange(condition) |&gt; \n  ggplot() +\n  aes(x = rt4words_back, y = rt,\n      fill = condition) +\n  # facet_grid(.~native_language) +\n  labs(\n    title = paste0(\"Neologism '\", word_label, \"'\"),\n    x = \"i-4 Reaction time (log)\",\n    y = \"Reaction time (log)\"\n  ) +\n  geom_point(shape = 21, alpha = .8, size = 2, colour = \"grey10\") \n  }\n\nNow we can specify the word_label directly as an argument of the function we’ve created:\n\n# Run function for word \"blusbaarheid\"\nplot_fx(\"blusbaarheid\")\n\n\n\n\nOr, even better, we can create a list of our plots.\n\n# Create an empty list for all your plots\nplot_list = list() \n\n\n# Run the plotting function for all the species\nfor (i in unique(df$word)){\n    plot_list[[i]] = plot_fx(i)\n}\n\n\n# Now you have a list of plots - one for each neologism\n# You can see the plots by changing the value within the square brackets. Let's see the plot for the 31st plot:\nplot_list[[31]]\n\n\n\n\nAnd now, let’s plot 2 neologisms of our choosing side-by-side using the patchwork package.\n\n\nCode\npacman::p_load(patchwork)\n\n(plot_list[[\"tilbaarheid\"]] +\n    plot_list[[\"blusbaarheid\"]]) +\n  plot_annotation(title = \"Log reaction times by log rot frequency for neologisms\") +\n  plot_layout(guides = \"collect\")\n\n\n\n\n\nOf course, if we already knew ahead of time that we wanted to print only these 2 plots, we could’ve first filtered the dataset to contain only these 2 words, and then produced the two plots using facet_wrap(). Whether or not this method is more straightforward depends on what exactly you want to do."
+  },
+  {
+    "objectID": "docker.html",
+    "href": "docker.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "docker.html#open-dock",
+    "href": "docker.html#open-dock",
+    "title": "",
+    "section": "2.1 Open Dock",
+    "text": "2.1 Open Dock\nFind Docker on your machine and open it. You can select the recommended settings."
+  },
+  {
+    "objectID": "docker.html#set-up-hub.docker-account",
+    "href": "docker.html#set-up-hub.docker-account",
+    "title": "",
+    "section": "2.2 Set up hub.docker account",
+    "text": "2.2 Set up hub.docker account\nYou can do that here, or wait to be prompted when you open Docker."
+  },
+  {
+    "objectID": "quarto.html",
+    "href": "quarto.html",
+    "title": "Writing",
+    "section": "",
+    "text": "Here I aim to build references on writing workflow tips. This is a work-in-progress."
+  },
+  {
+    "objectID": "quarto.html#use-apa-7-in-papaja",
+    "href": "quarto.html#use-apa-7-in-papaja",
+    "title": "Writing",
+    "section": "1 Use APA 7 in papaja",
+    "text": "1 Use APA 7 in papaja\npapaja is an R package for preparing APA-styled articles in Rmarkdown. It’s current version (0.1.2) supports APA 6 guidelines, although the newest guidelines are APA 7. Basically, we need to get papaja to use APA 7.\nI achieved this by following these instructions:\n\nOpen issue on the papaja GitHub repo\nBlogpost How to set up {papaja} to work with the APA 7 format\n\nNamely, the steps followed were:\n\nInstall developer version of papaja:\n\n\nremotes::install_github(\"crsh/papaja@devel\")\n\n\nAdd to the YAML:\n\n\ncsl               : \"`r system.file('rmd', 'apa7.csl', package = 'papaja')`\"\ndocumentclass     : \"apa7\"\n\nAnd this:\n\nheader-includes:\n  - |\n    \\makeatletter\n    \\renewcommand{\\paragraph}{\\@startsection{paragraph}{4}{\\parindent}%\n      {0\\baselineskip \\@plus 0.2ex \\@minus 0.2ex}%\n      {-1em}%\n      {\\normalfont\\normalsize\\bfseries\\typesectitle}}\n    \n    \\renewcommand{\\subparagraph}[1]{\\@startsection{subparagraph}{5}{1em}%\n      {0\\baselineskip \\@plus 0.2ex \\@minus 0.2ex}%\n      {-\\z@\\relax}%\n      {\\normalfont\\normalsize\\bfseries\\itshape\\hspace{\\parindent}{#1}\\textit{\\addperi}}{\\relax}}\n    \\makeatother\n\nThis was sufficient for my set-up. The additional LaTeX packages I needed were then listed directly under (and in line with) \\makatother.\nTo test if APA 7 vs. 6 was being used, I changed a BibTex entry for a reference to have more than 7 authors (e.g., by repeating all the author names until &gt;7). I then changed csl: \"``\" to csl: \"``\". In the bibliography only 7 authors were listed (following apa 6). I then changed it back to 'apa7.csl, and the rendered bibliography listed all authors (following apa 7). I took this as sufficient evidence that apa 7 was indeed being used. I then changed the BibTex authors back, of course."
   },
   {
     "objectID": "troubleshooting.html",
