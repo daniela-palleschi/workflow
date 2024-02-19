@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Daniela Palleschi - Quarto</title>
+<title>Daniela Palleschi - Writing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4525,7 +4525,7 @@ vertical-align: -.125em;
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quarto.html">Basics</a></li><li class="breadcrumb-item"><a href="./quarto.html">Quarto</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quarto.html">Basics</a></li><li class="breadcrumb-item"><a href="./quarto.html">Writing</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label onclick="window.quartoOpenSearch();">
@@ -4563,7 +4563,7 @@ vertical-align: -.125em;
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quarto.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Quarto</span></a>
+ <span class="menu-text">Writing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -4619,6 +4619,12 @@ vertical-align: -.125em;
  <span class="menu-text">Quarto and Git Pages</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./writing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -4631,10 +4637,7 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto"><span class="header-section-number">1</span> Quarto</a>
-  <ul class="collapse">
-  <li><a href="#quarto-versus-rmarkdown" id="toc-quarto-versus-rmarkdown" class="nav-link" data-scroll-target="#quarto-versus-rmarkdown"><span class="header-section-number">1.1</span> Quarto versus Rmarkdown</a></li>
-  </ul></li>
+  <li><a href="#use-apa-7-in-papaja" id="toc-use-apa-7-in-papaja" class="nav-link active" data-scroll-target="#use-apa-7-in-papaja"><span class="header-section-number">1</span> Use APA 7 in papaja</a></li>
   </ul>
 </nav>
     </div>
@@ -4643,7 +4646,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Quarto</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Writing</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -4658,24 +4661,51 @@ vertical-align: -.125em;
 
 </header>
 
-<section id="quarto" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Quarto</h1>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
-<section id="quarto-versus-rmarkdown" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="quarto-versus-rmarkdown"><span class="header-section-number">1.1</span> Quarto versus Rmarkdown</h2>
-<p>Important differences I’ve noticed:</p>
+<p>Here I aim to build references on writing workflow tips. This is a work-in-progress.</p>
+<section id="use-apa-7-in-papaja" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="use-apa-7-in-papaja"><span class="header-section-number">1</span> Use APA 7 in papaja</h2>
+<p><a href="https://github.com/crsh/papaja"><code>papaja</code></a> is an R package for preparing APA-styled articles in Rmarkdown. It’s current version (0.1.2) supports APA 6 guidelines, although the newest guidelines are APA 7. Basically, we need to get <code>papaja</code> to use APA 7.</p>
+<p>I achieved this by following these instructions:</p>
 <ul>
-<li><code>YAML</code>:
-<ul>
-<li>Rmd <code>output</code> = <code>format</code> in Quarto</li>
-<li>Rmd <code>html_document</code> = <code>html</code> in Quarto</li>
-</ul></li>
+<li><a href="https://github.com/crsh/papaja/issues/342">Open issue on the <code>papaja</code> GitHub repo</a></li>
+<li>Blogpost <a href="https://www.martinasladek.co.uk/content/blog/2022_feb_how-to-set-up-papaja-to-work-with-apa-7-format.html">How to set up {papaja} to work with the APA 7 format</a></li>
 </ul>
+<p>Namely, the steps followed were:</p>
+<ol type="1">
+<li>Install developer version of <code>papaja</code>:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;crsh/papaja@devel&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Add to the YAML:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="an">csl               :</span><span class="co"> &quot;`r system.file(&#39;rmd&#39;, &#39;apa7.csl&#39;, package = &#39;papaja&#39;)`&quot;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">documentclass     :</span><span class="co"> &quot;apa7&quot;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="an">header-includes:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>|</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    \makeatletter</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      {-1em}%</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      {\normalfont\normalsize\bfseries\typesectitle}}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    \renewcommand{\subparagraph}<span class="co">[</span><span class="ot">1</span><span class="co">]</span>{\@startsection{subparagraph}{5}{1em}%</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      {-\z@\relax}%</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      {\normalfont\normalsize\bfseries\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    \makeatother</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This was sufficient for my set-up. The additional LaTeX packages I needed were then listed directly under (and in line with) <code>\makatother</code>.</p>
+<p>To test if APA 7 vs. 6 was being used, I changed a BibTex entry for a reference to have more than 7 authors (e.g., by repeating all the author names until &gt;7). I then changed <code>csl: &quot;``&quot;</code> to <code>csl: &quot;``&quot;</code>. In the bibliography only 7 authors were listed (following apa 6). I then changed it back to <code>&#39;apa7.csl</code>, and the rendered bibliography listed all authors (following apa 7). I took this as sufficient evidence that apa 7 was indeed being used. I then changed the BibTex authors back, of course.</p>
 
 
 <!-- -->
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -5086,22 +5116,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Quarto&quot;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Quarto</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <span class="ot">&lt;https://quarto.org&gt;</span>.</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quarto versus Rmarkdown</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Important differences I&#39;ve noticed:</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`YAML`</span>:</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Rmd <span class="in">`output`</span> = <span class="in">`format`</span> in Quarto</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">  + </span>Rmd <span class="in">`html_document`</span> = <span class="in">`html`</span> in Quarto</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Writing&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>Here I aim to build references on writing workflow tips. This is a work-in-progress.</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Use APA 7 in papaja</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">`papaja`</span><span class="co">](https://github.com/crsh/papaja)</span> is an R package for preparing APA-styled articles in Rmarkdown. It&#39;s current version (0.1.2) supports APA 6 guidelines, although the newest guidelines are APA 7. Basically, we need to get <span class="in">`papaja`</span> to use APA 7. </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>I achieved this by following these instructions:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Open issue on the `papaja` GitHub repo</span><span class="co">](https://github.com/crsh/papaja/issues/342)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Blogpost <span class="co">[</span><span class="ot">How to set up {papaja} to work with the APA 7 format</span><span class="co">](https://www.martinasladek.co.uk/content/blog/2022_feb_how-to-set-up-papaja-to-work-with-apa-7-format.html)</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>Namely, the steps followed were:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Install developer version of <span class="in">`papaja`</span>:</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;crsh/papaja@devel&quot;</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Add to the YAML:</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>#| echo: true</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>#| eval: false</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>csl               : &quot;<span class="in">`r system.file(&#39;rmd&#39;, &#39;apa7.csl&#39;, package = &#39;papaja&#39;)`</span>&quot;</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>documentclass     : &quot;apa7&quot;</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>And this:</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>#| echo: true</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>header-includes:</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>|</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    \makeatletter</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\parindent}%</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>      {-1em}%</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>      {\normalfont\normalsize\bfseries\typesectitle}}</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    \renewcommand{\subparagraph}<span class="co">[</span><span class="ot">1</span><span class="co">]</span>{\@startsection{subparagraph}{5}{1em}%</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>      {0\baselineskip \@plus 0.2ex \@minus 0.2ex}%</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>      {-\z@\relax}%</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>      {\normalfont\normalsize\bfseries\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>    \makeatother</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a><span class="in">This was sufficient for my set-up. The additional LaTeX packages I needed were then listed directly under (and in line with) `\makatother`.</span></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a><span class="in">To test if APA 7 vs. 6 was being used, I changed a BibTex entry for a reference to have more than 7 authors (e.g., by repeating all the author names until &gt;7). I then changed `csl: &quot;``r system.file(&#39;rmd&#39;, &#39;apa7.csl&#39;, package = &#39;papaja&#39;)``&quot;` to `csl: &quot;``r system.file(&#39;rmd&#39;, &#39;apa6.csl&#39;, package = &#39;papaja&#39;)``&quot;`. In the bibliography only 7 authors were listed (following apa 6). I then changed it back to `&#39;apa7.csl`, and the rendered bibliography listed all authors (following apa 7). I took this as sufficient evidence that apa 7 was indeed being used. I then changed the BibTex authors back, of course.</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

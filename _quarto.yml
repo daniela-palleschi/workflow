@@ -24,6 +24,7 @@ website:
           - git.qmd
           - docker.qmd
           - gh-pages-quarto.qmd
+          - writing.qmd
   navbar:
     right:
       - icon: home
