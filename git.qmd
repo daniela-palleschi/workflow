@@ -486,3 +486,48 @@ If you have everything backed up, and are running your same projects etc. on a n
 2. **Add SSH key** to you GitHub and/or GitLab account
     + GitHub > Settings > SSH and GPG keys > New SSH key; paste key
     + GitLab > Preferences > SSH keys > Key / title etc.; paste key
+    
+## Expired Personal Access Token
+
+I was having trouble installing the developer package `rbbt` in a new RProject that had `renv` installed). The error I was receiving was:
+
+```{markdown}
+Using GitHub PAT from the git credential store.
+Error: Failed to install 'unknown package' from GitHub:
+  HTTP error 401.
+  Bad credentials
+```
+
+So it was a GitHub related issue. This was after recently receiving an e-mail that my Personal Access Token had expired (it was actually expired for about 3 months already). I had ignored this e-mail because I forgot why I even need a PAT, and so I went on with my life. 
+
+**The solution**: I needed to generate a new PAT, which I did by following a link provided in that 3-month old GitHub email (GitHub > Settings > Developer Settings > Personal access tokens > Tokens (classic) > Generate new token). I then copied and saved the PAT in a file where I keep track of my PATs, and then in the relevant RProject ran the following:
+
+1. Print the current PAT to check if there is one, and if it's the expired one:
+
+```{r}
+#| eval: false
+Sys.getenv("GITHUB_PAT")
+```
+
+2. Set the new PAT (here replaced with `mypat`)
+
+```{r}
+#| eval: false
+Sys.setenv(GITHUB_PAT = "mypat")
+```
+
+3. Print the PAT to check that it's the new one
+
+```{r}
+#| eval: false
+Sys.getenv("GITHUB_PAT")
+```
+
+4. Finally, install the package I was trying to install
+
+```{r}
+#| eval: false
+devtools::install_github("paleolimbot/rbbt")
+```
+
+

@@ -48,7 +48,7 @@ format:
     code-tools: true
     css: styles.css
     toc: true
-    number-sections: true
+    number-sections: false
     include-after-body: custom.html
     page-layout: full
     self-contained: true

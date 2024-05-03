@@ -1,30 +1,6 @@
----
-title: "R for Reproducibility"
-subtitle: "R Packages for Reproducibile Workflow"
-author: "Daniela Palleschi"
-date: "`r Sys.Date()`"
-format:
-  html:
-    toc: true
-    html-math-method: katex
-    css: styles.css
-    number-sections: true
-    number-depth: 3
-    code-overflow: wrap
-    self-contained: true
-  pdf:
-    output-file: packages.pdf
-    toc: true
-    toc-depth: 2
-    number-sections: true
-    code-link: true
-    code-overflow: wrap
-    code-tools: true
-    self-contained: true
-editor: source
-editor_options: 
-  chunk_output_type: console
----
+# R for Reproducibility {#sec-r4repro}
+
+## R Packages for Reproducibile Workflow
 
 This is an overview of R packages that I use to maintain a reproducible workflow.
 
@@ -80,6 +56,20 @@ remotes::install_github("paleolimbot/rbbt")
 You can follow this [blog post](https://gsverhoeven.github.io/post/zotero-rmarkdown-csl/) from Gertjan Verhoeven (May 2021) on integrating RStudio and Zotero for writing in Rmarkdown, assuming only that you have RStudio installed.
 
 Caveat: currently some `rbbt` functions conflict with Quarto's cross-references, which also begin with `@`. For Quarto documents, I mainly use the `rbbt` Addin to insert Zotero citations while writing using a keyboard shortcut (see the blogpost for tips on how to set this up).
+
+::: {.callout-note}
+# Developer packages and PATs {.unlisted}
+I was having trouble install `rbbt` in a new RProject that had `renv` installed (see below). The error I was receiving was:
+
+```{markdown}
+Using GitHub PAT from the git credential store.
+Error: Failed to install 'unknown package' from GitHub:
+  HTTP error 401.
+  Bad credentials
+```
+
+[Click here](https://daniela-palleschi.github.io/workflow/git.html#expired-personal-acces-token) to see how I solved the issue.
+:::
 
 
 # `renv` package
@@ -169,6 +159,31 @@ renv::snapshot()
 After updating the `renv.lock` file (i.e., running `renv::snapshot()`), remember to commit/push these changes to git (if you're using git)! Otherwise, your `renv.lock` file will be outdated compared to your output.
 
 :::
+
+## Updating R
+
+After updating R, you may want to also update your `renv.lock` file. When you open an RRproject that has a lockfile for a previous R version, you will get a message like this in the Console:
+
+```{markdown}
+# Bootstrapping renv 0.17.3 --------------------------------------------------
+* Downloading renv 0.17.3 ... OK
+* Installing renv 0.17.3 ... Done!
+* Successfully installed and loaded renv 0.17.3.
+ℹ Using R 4.4.0 (lockfile was generated with R 4.3.0)
+* Project '~/Documents/Academic DP/website/workflow' loaded. [renv 0.17.3]
+* This project contains a lockfile, but none of the recorded packages are installed.
+* Use `renv::restore()` to restore the project library.
+```
+
+```{r}
+install.packages("renv")
+```
+
+```{r}
+renv::install()
+```
+
+
 
 
 # `usethis` package

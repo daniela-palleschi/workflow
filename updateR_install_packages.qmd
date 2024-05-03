@@ -18,7 +18,7 @@ Do you need to update R? If using a Mac, you can do this by using the `updateR` 
 
 ```{r}
 # install devtools if you don't have it already
-install.packages('devtools')
+install.packages("devtools")
 ```
 
 ```{r}
@@ -205,7 +205,7 @@ cmdstanr::install_cmdstan(cores = parallel::detectCores(), overwrite = TRUE)
 ```{r}
 # run the nextline if you don't have 'devtools' already installed
 # install.packages("devtools")
-devtools::install_github("bnicenboim/bcogsci")
+remotes::install_github("bnicenboim/bcogsci")
 ```
 
 ### Optional developer packages
@@ -250,7 +250,7 @@ install.packages("stargazer", repos = NULL, type="source")
 
 ```{r}
 # how to install the introdataviz package to get split and half violin plots
-devtools::install_github("psyteachr/introdataviz", dependencies = TRUE)
+remotes::install_github("psyteachr/introdataviz", dependencies = TRUE)
 ```
 
 #### `starpolishr` package
@@ -269,18 +269,7 @@ devtools::install_github("ChandlerLutz/starpolishr")
 
 ```{r}
 # Install CogSci paper template
-devtools::install_github("kemacdonald/cogsci2016")
-```
-
-#### `BRRR` package
-
-- play sounds from different rappers
-
-```{r}
-if(!require(devtools)) {install.packages("devtools")}
-devtools::install_github("brooke-watson/BRRR")
-library("BRRR")
-skrrrahh("kendrick")
+remotes::install_github("kemacdonald/cogsci2016")
 ```
 
 
@@ -337,4 +326,4 @@ Install from the [website]{https://retorque.re/zotero-better-bibtex/installation
 - set your citation keys: Zotero > Settings > Better BibTex > Citation key formula > (I like "zotero.clean")
   + if you need to update the BibTex key in your docs: 
       + highlight all your files in the Zotero Library, right-click > Better BibTex > Refresh BibTex key
-
+      
