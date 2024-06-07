@@ -2,50 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/updateR_install_packages.html</loc>
-    <lastmod>2024-04-11T15:43:33.175Z</lastmod>
+    <lastmod>2024-05-03T15:26:53.326Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/packages.html</loc>
-    <lastmod>2024-04-11T15:43:27.112Z</lastmod>
+    <lastmod>2024-06-07T11:08:17.276Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/writing.html</loc>
-    <lastmod>2024-04-11T15:43:11.120Z</lastmod>
-  </url>
-  <url>
-    <loc>https://daniela-palleschi.github.io/workflow/git.html</loc>
-    <lastmod>2024-04-11T15:43:05.495Z</lastmod>
-  </url>
-  <url>
-    <loc>https://daniela-palleschi.github.io/workflow/index.html</loc>
-    <lastmod>2024-04-11T15:42:55.634Z</lastmod>
-  </url>
-  <url>
-    <loc>https://daniela-palleschi.github.io/workflow/data_dictionary.html</loc>
-    <lastmod>2024-04-11T15:42:47.828Z</lastmod>
-  </url>
-  <url>
-    <loc>https://daniela-palleschi.github.io/workflow/zotero.html</loc>
-    <lastmod>2024-04-11T15:42:41.307Z</lastmod>
-  </url>
-  <url>
-    <loc>https://daniela-palleschi.github.io/workflow/plots.html</loc>
-    <lastmod>2024-04-11T15:42:52.975Z</lastmod>
-  </url>
-  <url>
-    <loc>https://daniela-palleschi.github.io/workflow/docker.html</loc>
-    <lastmod>2024-04-11T15:43:01.008Z</lastmod>
+    <lastmod>2024-02-19T16:03:22.064Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/quarto.html</loc>
-    <lastmod>2024-04-11T15:43:07.899Z</lastmod>
+    <lastmod>2024-02-19T16:03:11.041Z</lastmod>
+  </url>
+  <url>
+    <loc>https://daniela-palleschi.github.io/workflow/docker.html</loc>
+    <lastmod>2023-07-08T09:51:03.843Z</lastmod>
+  </url>
+  <url>
+    <loc>https://daniela-palleschi.github.io/workflow/plots.html</loc>
+    <lastmod>2024-06-07T11:08:30.215Z</lastmod>
+  </url>
+  <url>
+    <loc>https://daniela-palleschi.github.io/workflow/zotero.html</loc>
+    <lastmod>2024-06-07T11:15:21.663Z</lastmod>
+  </url>
+  <url>
+    <loc>https://daniela-palleschi.github.io/workflow/data_dictionary.html</loc>
+    <lastmod>2023-08-30T17:51:53.200Z</lastmod>
+  </url>
+  <url>
+    <loc>https://daniela-palleschi.github.io/workflow/index.html</loc>
+    <lastmod>2024-06-07T11:15:07.840Z</lastmod>
+  </url>
+  <url>
+    <loc>https://daniela-palleschi.github.io/workflow/git.html</loc>
+    <lastmod>2024-04-11T15:39:44.250Z</lastmod>
+  </url>
+  <url>
+    <loc>https://daniela-palleschi.github.io/workflow/examples/rbbt_example.html</loc>
+    <lastmod>2024-06-07T11:06:31.932Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/troubleshooting.html</loc>
-    <lastmod>2024-04-11T15:43:22.959Z</lastmod>
+    <lastmod>2023-09-01T16:32:17.678Z</lastmod>
   </url>
   <url>
     <loc>https://daniela-palleschi.github.io/workflow/gh-pages-quarto.html</loc>
-    <lastmod>2024-04-11T15:43:29.661Z</lastmod>
+    <lastmod>2023-07-13T11:33:46.054Z</lastmod>
   </url>
 </urlset>
