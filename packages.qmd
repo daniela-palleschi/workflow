@@ -71,6 +71,36 @@ Error: Failed to install 'unknown package' from GitHub:
 [Click here](https://daniela-palleschi.github.io/workflow/git.html#expired-personal-acces-token) to see how I solved the issue.
 :::
 
+## `bbt_update_bib()` issues
+
+To be able to create `.bib` files from an `.Rmd` or `.qmd` file, I currently (May 24, 2024) need:
+
+- Better BibTex (BBT) version [6.7.140](https://github.com/retorquere/zotero-better-bibtex/releases/tag/v6.7.140)
+- Zotero version [6.0.37](https://www.zotero.org/download/) (newest pre-release is 7.0.0-beta 81, but doesn't work with BBT)
+- rbbt version 0.0.0.9000 (the only version currently):
+
+```{r}
+remotes::install_github("paleolimbot/rbbt")
+```
+
+Then, make sure you have a bibliography file set in the YAML (e.g., `bibliography: references.bib`) that uses the folder cotaining the current script as the filepath (i.e., *not* the project folder), and run the following line manually in the Console: 
+
+- if you don't already have a bib file: `rbbt::bbt_write_bib("filepath/this_script.qmd")`
+- if you already have a bib file: `rbbt::bbt_update_bib("filepath/this_script.qmd")`
+
+For example, I have an R project with a subfolder `teaching_notes`, which contains the files `teaching_notes.qmd` and `references.bib` which should contains the BibTex formatted references for the citations listed in the .qmd file. The beginning of the script looks like:
+
+```{r echo = FALSE, comment = ""}
+cat(readr::read_file(here::here("examples/rbbt_example.qmd")))
+```
+
+If I rather have a `.bib` file one folder higher, I would write `../references.bib` (and add an additional `../` for every parent folder).
+
+Resources I used to figure out the problem with `bbt_update_bib()`:
+
+- [Zotero forum thread about Zotero 7 Beta 72 problems](https://forums.zotero.org/discussion/113570/betterbibtex-not-working-after-the-recent-update-to-zotero-7-beta-72)
+- [Zotero forum thread about Zotero 7 Beta 69 problems](https://forums.zotero.org/discussion/113507/upgrade-to-zotero-7-beta-69-56c363521-and-plugin-error)
+- [rbbt GitHub issue](https://github.com/paleolimbot/rbbt/issues/47) about original error I was receiving
 
 # `renv` package
 
