@@ -90,9 +90,19 @@ Then, make sure you have a bibliography file set in the YAML (e.g., `bibliograph
 
 For example, I have an R project with a subfolder `teaching_notes`, which contains the files `teaching_notes.qmd` and `references.bib` which should contains the BibTex formatted references for the citations listed in the .qmd file. The beginning of the script looks like:
 
-```{r echo = FALSE, comment = ""}
-cat(readr::read_file(here::here("examples/rbbt_example.qmd")))
+````{markdown}
+---
+title: "Teaching notes"
+subtitle: "For future planning"
+bibliography: "references.bib"
+---
+
+```{r}
+#| echo: false
+#| eval: false
+rbbt::bbt_update_bib(here::here("teaching_notes","teaching_notes.qmd"))
 ```
+````
 
 If I rather have a `.bib` file one folder higher, I would write `../references.bib` (and add an additional `../` for every parent folder).
 

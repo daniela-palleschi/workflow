@@ -1,6 +1,6 @@
 ---
 format: 
-  pdf: default
+  # pdf: default
   html: default
 ---
 
