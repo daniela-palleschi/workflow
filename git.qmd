@@ -470,9 +470,9 @@ push
 
 Alternatively, you don't need to use the Terminal at all (but it's good practice to know how to in order to understand the logic/workflow). In the 'Environment' pane, you should see a 'Git' tab (if git is indeed set up). You can tick the 'Staged' button for all files whose changes you want to commit. Then click 'commit'. A message window will come up, add your message and click 'Commit'. Then, Click 'Push' to push to GH.
 
-# Branches and merging
+## Branches and merging
 
-## Create a new branch
+### Create a new branch
 
 To create a new branch in your local repo:
 
@@ -508,20 +508,20 @@ branch 'new_branch' set up to track 'origin/new_branch'.
 ```
 
 
-## Deleting a branch
+### Deleting a branch
 
 First make sure you are not currently in the branch! E.g., `git checkout main` to switch to main.
 
 To delete a branch locally:
 
 ```{markdown}
-git branch -d localBranchName
+git branch -d my_local_branch
 ```
 
 And to delete it remotely:
 
 ```{markdown}
-git push origin --delete remoteBranchName
+git push origin --delete my_remote_branch
 ```
 
 Here I deleted the new branch locally:
@@ -541,7 +541,7 @@ To scm.cms.hu-berlin.de:pallescd/lifetime_paper1_exp123.git
 
 
 
-## Switching and checking branches
+### Switching and checking branches
 
 If you want to see which branches you have (your current branch will be highlighted and have an asterisk):
 
@@ -564,7 +564,6 @@ git checkout my_branch
 Here is the history of me switching between and checking my branches, where I'm working on a branch called `revisions1`:
 
 ```{markdown}
-Your branch is up to date with 'origin/revisions1'.
 Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch
   main
 * revisions1
@@ -581,7 +580,7 @@ Switched to branch 'revisions1'
 Your branch is up to date with 'origin/revisions1'.
 ```
 
-## Merge branches
+### Merge branches
 
 You want to be careful here. First, make sure both your branch and the main/master (trunk) are up-to-date with your remote repo (or that your remote repo is up-to-date with your local changes).
 
@@ -608,15 +607,16 @@ git push
 Here is the history from when I recently did this:
 
 ```{markdown}
-Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull
-Already up to date.
 Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1
 Switched to branch 'revisions1'
 Your branch is up to date with 'origin/revisions1'.
 Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull
 Already up to date.
-Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout mainSwitched to branch 'main'
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout main
+Switched to branch 'main'
 Your branch is up to date with 'origin/main'.
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull
+Already up to date.
 Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git merge --no-ff --no-commit revisions1
 Automatic merge went well; stopped before committing as requested
 Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git status
