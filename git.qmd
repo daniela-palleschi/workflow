@@ -470,6 +470,190 @@ push
 
 Alternatively, you don't need to use the Terminal at all (but it's good practice to know how to in order to understand the logic/workflow). In the 'Environment' pane, you should see a 'Git' tab (if git is indeed set up). You can tick the 'Staged' button for all files whose changes you want to commit. Then click 'commit'. A message window will come up, add your message and click 'Commit'. Then, Click 'Push' to push to GH.
 
+# Branches and merging
+
+## Create a new branch
+
+To create a new branch in your local repo:
+
+```{markdown}
+git checkout -b my_branch
+```
+
+And push this branch to a remote repository:
+
+```{markdown}
+git push -u origin my_branch
+```
+
+Here I created a new branch:
+
+```{markdown}
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout -b new_branch
+Switched to a new branch 'new_branch'
+```
+
+And here I pushed it to my remote repo:
+
+```{markdown}
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git push -u origin new_branch
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: To create a merge request for new_branch, visit:
+remote:   https://scm.cms.hu-berlin.de/pallescd/lifetime_paper1_exp123/-/merge_requests/new?merge_request%5Bsource_branch%5D=new_branch
+remote: 
+To scm.cms.hu-berlin.de:pallescd/lifetime_paper1_exp123.git
+ * [new branch]      new_branch -> new_branch
+branch 'new_branch' set up to track 'origin/new_branch'.
+```
+
+
+## Deleting a branch
+
+First make sure you are not currently in the branch! E.g., `git checkout main` to switch to main.
+
+To delete a branch locally:
+
+```{markdown}
+git branch -d localBranchName
+```
+
+And to delete it remotely:
+
+```{markdown}
+git push origin --delete remoteBranchName
+```
+
+Here I deleted the new branch locally:
+
+```{markdown}
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch -d new_branch
+Deleted branch new_branch (was 1bf9cc6).
+```
+
+And remotely:
+
+```{markdown}
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git push origin --delete new_branch
+To scm.cms.hu-berlin.de:pallescd/lifetime_paper1_exp123.git
+ - [deleted]         new_branch
+```
+
+
+
+## Switching and checking branches
+
+If you want to see which branches you have (your current branch will be highlighted and have an asterisk):
+
+```{markdown}
+git branch
+```
+
+Or to see only the name of your current branch:
+
+```{markdown}
+git branch --show-current
+```
+
+To switch between branches:
+
+```{markdown}
+git checkout my_branch
+```
+
+Here is the history of me switching between and checking my branches, where I'm working on a branch called `revisions1`:
+
+```{markdown}
+Your branch is up to date with 'origin/revisions1'.
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch
+  main
+* revisions1
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch --show-current
+revisions1
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch
+* main
+  revisions1
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1
+Switched to branch 'revisions1'
+Your branch is up to date with 'origin/revisions1'.
+```
+
+## Merge branches
+
+You want to be careful here. First, make sure both your branch and the main/master (trunk) are up-to-date with your remote repo (or that your remote repo is up-to-date with your local changes).
+
+```{markdown}
+git checkout my_branch
+git pull
+git checkout main
+git pull
+```
+
+Then to merge the branches, but not commit the merge in case of conflicts:
+
+```{markdown}
+git merge --no-ff --no-commit my_branch
+```
+
+If there are no conflicts, then commit and push
+
+```{r}
+git commit -m "merging my_branch with main"
+git push
+```
+
+Here is the history from when I recently did this:
+
+```{markdown}
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull
+Already up to date.
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1
+Switched to branch 'revisions1'
+Your branch is up to date with 'origin/revisions1'.
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull
+Already up to date.
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout mainSwitched to branch 'main'
+Your branch is up to date with 'origin/main'.
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git merge --no-ff --no-commit revisions1
+Automatic merge went well; stopped before committing as requested
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+  
+  [...]
+```
+
+And commited the merge:
+
+```{r}
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git commit -m "merge revisions1: formulae tables in Appendices"
+[main 39f1720] merge revisions1: formulae tables in Appendices
+```
+
+And push the merge to GitLab (which I use for manuscripts, instead of GitHub):
+
+```{r}
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git push
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 242 bytes | 242.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+To scm.cms.hu-berlin.de:pallescd/lifetime_paper1_exp123.git
+   b9c3533..39f1720  main -> main
+```
+
+
+
+
+
 ## Git for collaboration
 
 If you've got a git repo set up and want to add a member:
