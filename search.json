@@ -427,6 +427,50 @@
     ]
   },
   {
+    "objectID": "git.html#create-a-new-branch",
+    "href": "git.html#create-a-new-branch",
+    "title": "",
+    "section": "Create a new branch",
+    "text": "Create a new branch\nTo create a new branch in your local repo:\n\ngit checkout -b my_branch\n\nAnd push this branch to a remote repository:\n\ngit push -u origin my_branch\n\nHere I created a new branch:\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout -b new_branch\nSwitched to a new branch 'new_branch'\n\nAnd here I pushed it to my remote repo:\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git push -u origin new_branch\nTotal 0 (delta 0), reused 0 (delta 0), pack-reused 0\nremote: \nremote: To create a merge request for new_branch, visit:\nremote:   https://scm.cms.hu-berlin.de/pallescd/lifetime_paper1_exp123/-/merge_requests/new?merge_request%5Bsource_branch%5D=new_branch\nremote: \nTo scm.cms.hu-berlin.de:pallescd/lifetime_paper1_exp123.git\n * [new branch]      new_branch -&gt; new_branch\nbranch 'new_branch' set up to track 'origin/new_branch'.",
+    "crumbs": [
+      "Next level",
+      "Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "git.html#deleting-a-branch",
+    "href": "git.html#deleting-a-branch",
+    "title": "",
+    "section": "Deleting a branch",
+    "text": "Deleting a branch\nFirst make sure you are not currently in the branch! E.g., git checkout main to switch to main.\nTo delete a branch locally:\n\ngit branch -d localBranchName\n\nAnd to delete it remotely:\n\ngit push origin --delete remoteBranchName\n\nHere I deleted the new branch locally:\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch -d new_branch\nDeleted branch new_branch (was 1bf9cc6).\n\nAnd remotely:\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git push origin --delete new_branch\nTo scm.cms.hu-berlin.de:pallescd/lifetime_paper1_exp123.git\n - [deleted]         new_branch",
+    "crumbs": [
+      "Next level",
+      "Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "git.html#switching-and-checking-branches",
+    "href": "git.html#switching-and-checking-branches",
+    "title": "",
+    "section": "Switching and checking branches",
+    "text": "Switching and checking branches\nIf you want to see which branches you have (your current branch will be highlighted and have an asterisk):\n\ngit branch\n\nOr to see only the name of your current branch:\n\ngit branch --show-current\n\nTo switch between branches:\n\ngit checkout my_branch\n\nHere is the history of me switching between and checking my branches, where I’m working on a branch called revisions1:\n\nYour branch is up to date with 'origin/revisions1'.\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch\n  main\n* revisions1\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch --show-current\nrevisions1\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout main\nSwitched to branch 'main'\nYour branch is up to date with 'origin/main'.\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch\n* main\n  revisions1\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1\nSwitched to branch 'revisions1'\nYour branch is up to date with 'origin/revisions1'.",
+    "crumbs": [
+      "Next level",
+      "Git and GitHub"
+    ]
+  },
+  {
+    "objectID": "git.html#merge-branches",
+    "href": "git.html#merge-branches",
+    "title": "",
+    "section": "Merge branches",
+    "text": "Merge branches\nYou want to be careful here. First, make sure both your branch and the main/master (trunk) are up-to-date with your remote repo (or that your remote repo is up-to-date with your local changes).\n\ngit checkout my_branch\ngit pull\ngit checkout main\ngit pull\n\nThen to merge the branches, but not commit the merge in case of conflicts:\n\ngit merge --no-ff --no-commit my_branch\n\nIf there are no conflicts, then commit and push\n\ngit commit -m \"merging my_branch with main\"\ngit push\n\nHere is the history from when I recently did this:\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull\nAlready up to date.\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1\nSwitched to branch 'revisions1'\nYour branch is up to date with 'origin/revisions1'.\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull\nAlready up to date.\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout mainSwitched to branch 'main'\nYour branch is up to date with 'origin/main'.\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git merge --no-ff --no-commit revisions1\nAutomatic merge went well; stopped before committing as requested\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git status\nOn branch main\nYour branch is up to date with 'origin/main'.\n\nAll conflicts fixed but you are still merging.\n  (use \"git commit\" to conclude merge)\n\nChanges to be committed:\n  \n  [...]\n\nAnd commited the merge:\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git commit -m \"merge revisions1: formulae tables in Appendices\"\n[main 39f1720] merge revisions1: formulae tables in Appendices\n\nAnd push the merge to GitLab (which I use for manuscripts, instead of GitHub):\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git push\nEnumerating objects: 1, done.\nCounting objects: 100% (1/1), done.\nWriting objects: 100% (1/1), 242 bytes | 242.00 KiB/s, done.\nTotal 1 (delta 0), reused 0 (delta 0), pack-reused 0\nTo scm.cms.hu-berlin.de:pallescd/lifetime_paper1_exp123.git\n   b9c3533..39f1720  main -&gt; main",
+    "crumbs": [
+      "Next level",
+      "Git and GitHub"
+    ]
+  },
+  {
     "objectID": "git.html#git-for-collaboration",
     "href": "git.html#git-for-collaboration",
     "title": "",
