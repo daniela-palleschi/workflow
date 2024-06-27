@@ -5101,13 +5101,13 @@ border: 0;
   <li><a href="#other-commands" id="toc-other-commands" class="nav-link" data-scroll-target="#other-commands">Other commands</a></li>
   <li><a href="#keeping-up-changes" id="toc-keeping-up-changes" class="nav-link" data-scroll-target="#keeping-up-changes">Keeping up changes</a></li>
   </ul></li>
-  </ul></li>
   <li><a href="#branches-and-merging" id="toc-branches-and-merging" class="nav-link" data-scroll-target="#branches-and-merging">Branches and merging</a>
   <ul class="collapse">
   <li><a href="#create-a-new-branch" id="toc-create-a-new-branch" class="nav-link" data-scroll-target="#create-a-new-branch">Create a new branch</a></li>
   <li><a href="#deleting-a-branch" id="toc-deleting-a-branch" class="nav-link" data-scroll-target="#deleting-a-branch">Deleting a branch</a></li>
   <li><a href="#switching-and-checking-branches" id="toc-switching-and-checking-branches" class="nav-link" data-scroll-target="#switching-and-checking-branches">Switching and checking branches</a></li>
   <li><a href="#merge-branches" id="toc-merge-branches" class="nav-link" data-scroll-target="#merge-branches">Merge branches</a></li>
+  </ul></li>
   <li><a href="#git-for-collaboration" id="toc-git-for-collaboration" class="nav-link" data-scroll-target="#git-for-collaboration">Git for collaboration</a></li>
   <li><a href="#new-laptop-or-expired-ssh-key" id="toc-new-laptop-or-expired-ssh-key" class="nav-link" data-scroll-target="#new-laptop-or-expired-ssh-key">New laptop or expired SSH key</a></li>
   <li><a href="#expired-personal-access-token" id="toc-expired-personal-access-token" class="nav-link" data-scroll-target="#expired-personal-access-token">Expired Personal Access Token</a></li>
@@ -5638,11 +5638,10 @@ Table 2: Summary of useful git commands for when things go wrong
 <p>Alternatively, you don’t need to use the Terminal at all (but it’s good practice to know how to in order to understand the logic/workflow). In the ‘Environment’ pane, you should see a ‘Git’ tab (if git is indeed set up). You can tick the ‘Staged’ button for all files whose changes you want to commit. Then click ‘commit’. A message window will come up, add your message and click ‘Commit’. Then, Click ‘Push’ to push to GH.</p>
 </section>
 </section>
-</section>
-<section id="branches-and-merging" class="level1">
-<h1>Branches and merging</h1>
-<section id="create-a-new-branch" class="level2">
-<h2 class="anchored" data-anchor-id="create-a-new-branch">Create a new branch</h2>
+<section id="branches-and-merging" class="level2">
+<h2 class="anchored" data-anchor-id="branches-and-merging">Branches and merging</h2>
+<section id="create-a-new-branch" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-new-branch">Create a new branch</h3>
 <p>To create a new branch in your local repo:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>git checkout -b my_branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5669,16 +5668,16 @@ Table 2: Summary of useful git commands for when things go wrong
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>branch &#39;new_branch&#39; set up to track &#39;origin/new_branch&#39;.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="deleting-a-branch" class="level2">
-<h2 class="anchored" data-anchor-id="deleting-a-branch">Deleting a branch</h2>
+<section id="deleting-a-branch" class="level3">
+<h3 class="anchored" data-anchor-id="deleting-a-branch">Deleting a branch</h3>
 <p>First make sure you are not currently in the branch! E.g., <code>git checkout main</code> to switch to main.</p>
 <p>To delete a branch locally:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>git branch -d localBranchName</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>git branch -d my_local_branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And to delete it remotely:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>git push origin --delete remoteBranchName</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>git push origin --delete my_remote_branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here I deleted the new branch locally:</p>
 <div class="cell">
@@ -5692,8 +5691,8 @@ Table 2: Summary of useful git commands for when things go wrong
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">deleted</span><span class="co">]</span>         new_branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="switching-and-checking-branches" class="level2">
-<h2 class="anchored" data-anchor-id="switching-and-checking-branches">Switching and checking branches</h2>
+<section id="switching-and-checking-branches" class="level3">
+<h3 class="anchored" data-anchor-id="switching-and-checking-branches">Switching and checking branches</h3>
 <p>If you want to see which branches you have (your current branch will be highlighted and have an asterisk):</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>git branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5708,25 +5707,24 @@ Table 2: Summary of useful git commands for when things go wrong
 </div>
 <p>Here is the history of me switching between and checking my branches, where I’m working on a branch called <code>revisions1</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  main</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>revisions1</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch --show-current</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>revisions1</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout main</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;main&#39;</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>main</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>  revisions1</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;revisions1&#39;</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  main</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>revisions1</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch --show-current</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>revisions1</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout main</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;main&#39;</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>main</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>  revisions1</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;revisions1&#39;</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="merge-branches" class="level2">
-<h2 class="anchored" data-anchor-id="merge-branches">Merge branches</h2>
+<section id="merge-branches" class="level3">
+<h3 class="anchored" data-anchor-id="merge-branches">Merge branches</h3>
 <p>You want to be careful here. First, make sure both your branch and the main/master (trunk) are up-to-date with your remote repo (or that your remote repo is up-to-date with your local changes).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>git checkout my_branch</span>
@@ -5745,27 +5743,28 @@ Table 2: Summary of useful git commands for when things go wrong
 </div>
 <p>Here is the history from when I recently did this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>Already up to date.</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;revisions1&#39;</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>Already up to date.</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout mainSwitched to branch &#39;main&#39;</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git merge --no-ff --no-commit revisions1</span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>Automatic merge went well; stopped before committing as requested</span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git status</span>
-<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>On branch main</span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>All conflicts fixed but you are still merging.</span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>  (use &quot;git commit&quot; to conclude merge)</span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>Changes to be committed:</span>
-<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>  <span class="co">[</span><span class="ot">...</span><span class="co">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;revisions1&#39;</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>Already up to date.</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout main</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;main&#39;</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>Already up to date.</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git merge --no-ff --no-commit revisions1</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>Automatic merge went well; stopped before committing as requested</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git status</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>On branch main</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>All conflicts fixed but you are still merging.</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>  (use &quot;git commit&quot; to conclude merge)</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>Changes to be committed:</span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">[</span><span class="ot">...</span><span class="co">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And commited the merge:</p>
 <div class="cell">
@@ -5782,6 +5781,7 @@ Table 2: Summary of useful git commands for when things go wrong
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>To scm.cms.hu<span class="sc">-</span>berlin.de<span class="sc">:</span>pallescd<span class="sc">/</span>lifetime_paper1_exp123.git</span>
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>   b9c3533..<span class="dv">39</span>f1720  main <span class="ot">-&gt;</span> main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 </section>
 <section id="git-for-collaboration" class="level2">
 <h2 class="anchored" data-anchor-id="git-for-collaboration">Git for collaboration</h2>
@@ -6930,9 +6930,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb49-508"><a href="#cb49-508" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-509"><a href="#cb49-509" aria-hidden="true" tabindex="-1"></a>Alternatively, you don&#39;t need to use the Terminal at all (but it&#39;s good practice to know how to in order to understand the logic/workflow). In the &#39;Environment&#39; pane, you should see a &#39;Git&#39; tab (if git is indeed set up). You can tick the &#39;Staged&#39; button for all files whose changes you want to commit. Then click &#39;commit&#39;. A message window will come up, add your message and click &#39;Commit&#39;. Then, Click &#39;Push&#39; to push to GH.</span>
 <span id="cb49-510"><a href="#cb49-510" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-511"><a href="#cb49-511" aria-hidden="true" tabindex="-1"></a><span class="fu"># Branches and merging</span></span>
+<span id="cb49-511"><a href="#cb49-511" aria-hidden="true" tabindex="-1"></a><span class="fu">## Branches and merging</span></span>
 <span id="cb49-512"><a href="#cb49-512" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-513"><a href="#cb49-513" aria-hidden="true" tabindex="-1"></a><span class="fu">## Create a new branch</span></span>
+<span id="cb49-513"><a href="#cb49-513" aria-hidden="true" tabindex="-1"></a><span class="fu">### Create a new branch</span></span>
 <span id="cb49-514"><a href="#cb49-514" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-515"><a href="#cb49-515" aria-hidden="true" tabindex="-1"></a>To create a new branch in your local repo:</span>
 <span id="cb49-516"><a href="#cb49-516" aria-hidden="true" tabindex="-1"></a></span>
@@ -6968,20 +6968,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb49-554"><a href="#cb49-554" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb49-555"><a href="#cb49-555" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-556"><a href="#cb49-556" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-557"><a href="#cb49-557" aria-hidden="true" tabindex="-1"></a><span class="in">## Deleting a branch</span></span>
+<span id="cb49-557"><a href="#cb49-557" aria-hidden="true" tabindex="-1"></a><span class="in">### Deleting a branch</span></span>
 <span id="cb49-558"><a href="#cb49-558" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-559"><a href="#cb49-559" aria-hidden="true" tabindex="-1"></a><span class="in">First make sure you are not currently in the branch! E.g., `git checkout main` to switch to main.</span></span>
 <span id="cb49-560"><a href="#cb49-560" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-561"><a href="#cb49-561" aria-hidden="true" tabindex="-1"></a><span class="in">To delete a branch locally:</span></span>
 <span id="cb49-562"><a href="#cb49-562" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-565"><a href="#cb49-565" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
-<span id="cb49-566"><a href="#cb49-566" aria-hidden="true" tabindex="-1"></a><span class="in">git branch -d localBranchName</span></span>
+<span id="cb49-566"><a href="#cb49-566" aria-hidden="true" tabindex="-1"></a><span class="in">git branch -d my_local_branch</span></span>
 <span id="cb49-567"><a href="#cb49-567" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb49-568"><a href="#cb49-568" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-569"><a href="#cb49-569" aria-hidden="true" tabindex="-1"></a>And to delete it remotely:</span>
 <span id="cb49-570"><a href="#cb49-570" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-573"><a href="#cb49-573" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
-<span id="cb49-574"><a href="#cb49-574" aria-hidden="true" tabindex="-1"></a>git push origin --delete remoteBranchName</span>
+<span id="cb49-574"><a href="#cb49-574" aria-hidden="true" tabindex="-1"></a>git push origin --delete my_remote_branch</span>
 <span id="cb49-575"><a href="#cb49-575" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb49-576"><a href="#cb49-576" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-577"><a href="#cb49-577" aria-hidden="true" tabindex="-1"></a>Here I deleted the new branch locally:</span>
@@ -7001,7 +7001,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb49-595"><a href="#cb49-595" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-596"><a href="#cb49-596" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-597"><a href="#cb49-597" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-598"><a href="#cb49-598" aria-hidden="true" tabindex="-1"></a><span class="in">## Switching and checking branches</span></span>
+<span id="cb49-598"><a href="#cb49-598" aria-hidden="true" tabindex="-1"></a><span class="in">### Switching and checking branches</span></span>
 <span id="cb49-599"><a href="#cb49-599" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-600"><a href="#cb49-600" aria-hidden="true" tabindex="-1"></a><span class="in">If you want to see which branches you have (your current branch will be highlighted and have an asterisk):</span></span>
 <span id="cb49-601"><a href="#cb49-601" aria-hidden="true" tabindex="-1"></a></span>
@@ -7024,59 +7024,59 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb49-624"><a href="#cb49-624" aria-hidden="true" tabindex="-1"></a>Here is the history of me switching between and checking my branches, where I&#39;m working on a branch called <span class="in">`revisions1`</span>:</span>
 <span id="cb49-625"><a href="#cb49-625" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-628"><a href="#cb49-628" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
-<span id="cb49-629"><a href="#cb49-629" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span>
-<span id="cb49-630"><a href="#cb49-630" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch</span>
-<span id="cb49-631"><a href="#cb49-631" aria-hidden="true" tabindex="-1"></a>  main</span>
-<span id="cb49-632"><a href="#cb49-632" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>revisions1</span>
-<span id="cb49-633"><a href="#cb49-633" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch --show-current</span>
-<span id="cb49-634"><a href="#cb49-634" aria-hidden="true" tabindex="-1"></a>revisions1</span>
-<span id="cb49-635"><a href="#cb49-635" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout main</span>
-<span id="cb49-636"><a href="#cb49-636" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;main&#39;</span>
-<span id="cb49-637"><a href="#cb49-637" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
-<span id="cb49-638"><a href="#cb49-638" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch</span>
-<span id="cb49-639"><a href="#cb49-639" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>main</span>
-<span id="cb49-640"><a href="#cb49-640" aria-hidden="true" tabindex="-1"></a>  revisions1</span>
-<span id="cb49-641"><a href="#cb49-641" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1</span>
-<span id="cb49-642"><a href="#cb49-642" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;revisions1&#39;</span>
-<span id="cb49-643"><a href="#cb49-643" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span>
-<span id="cb49-644"><a href="#cb49-644" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb49-645"><a href="#cb49-645" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-646"><a href="#cb49-646" aria-hidden="true" tabindex="-1"></a><span class="in">## Merge branches</span></span>
-<span id="cb49-647"><a href="#cb49-647" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-648"><a href="#cb49-648" aria-hidden="true" tabindex="-1"></a><span class="in">You want to be careful here. First, make sure both your branch and the main/master (trunk) are up-to-date with your remote repo (or that your remote repo is up-to-date with your local changes).</span></span>
-<span id="cb49-649"><a href="#cb49-649" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-652"><a href="#cb49-652" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
-<span id="cb49-653"><a href="#cb49-653" aria-hidden="true" tabindex="-1"></a><span class="in">git checkout my_branch</span></span>
-<span id="cb49-654"><a href="#cb49-654" aria-hidden="true" tabindex="-1"></a><span class="in">git pull</span></span>
-<span id="cb49-655"><a href="#cb49-655" aria-hidden="true" tabindex="-1"></a><span class="in">git checkout main</span></span>
-<span id="cb49-656"><a href="#cb49-656" aria-hidden="true" tabindex="-1"></a><span class="in">git pull</span></span>
-<span id="cb49-657"><a href="#cb49-657" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb49-658"><a href="#cb49-658" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-659"><a href="#cb49-659" aria-hidden="true" tabindex="-1"></a>Then to merge the branches, but not commit the merge in case of conflicts:</span>
-<span id="cb49-660"><a href="#cb49-660" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-663"><a href="#cb49-663" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
-<span id="cb49-664"><a href="#cb49-664" aria-hidden="true" tabindex="-1"></a>git merge --no-ff --no-commit my_branch</span>
-<span id="cb49-665"><a href="#cb49-665" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb49-666"><a href="#cb49-666" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-667"><a href="#cb49-667" aria-hidden="true" tabindex="-1"></a>If there are no conflicts, then commit and push</span>
-<span id="cb49-668"><a href="#cb49-668" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-671"><a href="#cb49-671" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb49-672"><a href="#cb49-672" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">&quot;merging my_branch with main&quot;</span></span>
-<span id="cb49-673"><a href="#cb49-673" aria-hidden="true" tabindex="-1"></a>git push</span>
-<span id="cb49-674"><a href="#cb49-674" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb49-675"><a href="#cb49-675" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-676"><a href="#cb49-676" aria-hidden="true" tabindex="-1"></a>Here is the history from when I recently did this:</span>
-<span id="cb49-677"><a href="#cb49-677" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-680"><a href="#cb49-680" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
-<span id="cb49-681"><a href="#cb49-681" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull</span>
-<span id="cb49-682"><a href="#cb49-682" aria-hidden="true" tabindex="-1"></a>Already up to date.</span>
-<span id="cb49-683"><a href="#cb49-683" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1</span>
-<span id="cb49-684"><a href="#cb49-684" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;revisions1&#39;</span>
-<span id="cb49-685"><a href="#cb49-685" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span>
-<span id="cb49-686"><a href="#cb49-686" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull</span>
-<span id="cb49-687"><a href="#cb49-687" aria-hidden="true" tabindex="-1"></a>Already up to date.</span>
-<span id="cb49-688"><a href="#cb49-688" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout mainSwitched to branch &#39;main&#39;</span>
-<span id="cb49-689"><a href="#cb49-689" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
+<span id="cb49-629"><a href="#cb49-629" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch</span>
+<span id="cb49-630"><a href="#cb49-630" aria-hidden="true" tabindex="-1"></a>  main</span>
+<span id="cb49-631"><a href="#cb49-631" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>revisions1</span>
+<span id="cb49-632"><a href="#cb49-632" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch --show-current</span>
+<span id="cb49-633"><a href="#cb49-633" aria-hidden="true" tabindex="-1"></a>revisions1</span>
+<span id="cb49-634"><a href="#cb49-634" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout main</span>
+<span id="cb49-635"><a href="#cb49-635" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;main&#39;</span>
+<span id="cb49-636"><a href="#cb49-636" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
+<span id="cb49-637"><a href="#cb49-637" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git branch</span>
+<span id="cb49-638"><a href="#cb49-638" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>main</span>
+<span id="cb49-639"><a href="#cb49-639" aria-hidden="true" tabindex="-1"></a>  revisions1</span>
+<span id="cb49-640"><a href="#cb49-640" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1</span>
+<span id="cb49-641"><a href="#cb49-641" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;revisions1&#39;</span>
+<span id="cb49-642"><a href="#cb49-642" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span>
+<span id="cb49-643"><a href="#cb49-643" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-644"><a href="#cb49-644" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-645"><a href="#cb49-645" aria-hidden="true" tabindex="-1"></a><span class="in">### Merge branches</span></span>
+<span id="cb49-646"><a href="#cb49-646" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-647"><a href="#cb49-647" aria-hidden="true" tabindex="-1"></a><span class="in">You want to be careful here. First, make sure both your branch and the main/master (trunk) are up-to-date with your remote repo (or that your remote repo is up-to-date with your local changes).</span></span>
+<span id="cb49-648"><a href="#cb49-648" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-651"><a href="#cb49-651" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
+<span id="cb49-652"><a href="#cb49-652" aria-hidden="true" tabindex="-1"></a><span class="in">git checkout my_branch</span></span>
+<span id="cb49-653"><a href="#cb49-653" aria-hidden="true" tabindex="-1"></a><span class="in">git pull</span></span>
+<span id="cb49-654"><a href="#cb49-654" aria-hidden="true" tabindex="-1"></a><span class="in">git checkout main</span></span>
+<span id="cb49-655"><a href="#cb49-655" aria-hidden="true" tabindex="-1"></a><span class="in">git pull</span></span>
+<span id="cb49-656"><a href="#cb49-656" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-657"><a href="#cb49-657" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-658"><a href="#cb49-658" aria-hidden="true" tabindex="-1"></a>Then to merge the branches, but not commit the merge in case of conflicts:</span>
+<span id="cb49-659"><a href="#cb49-659" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-662"><a href="#cb49-662" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
+<span id="cb49-663"><a href="#cb49-663" aria-hidden="true" tabindex="-1"></a>git merge --no-ff --no-commit my_branch</span>
+<span id="cb49-664"><a href="#cb49-664" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-665"><a href="#cb49-665" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-666"><a href="#cb49-666" aria-hidden="true" tabindex="-1"></a>If there are no conflicts, then commit and push</span>
+<span id="cb49-667"><a href="#cb49-667" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-670"><a href="#cb49-670" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb49-671"><a href="#cb49-671" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">&quot;merging my_branch with main&quot;</span></span>
+<span id="cb49-672"><a href="#cb49-672" aria-hidden="true" tabindex="-1"></a>git push</span>
+<span id="cb49-673"><a href="#cb49-673" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb49-674"><a href="#cb49-674" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-675"><a href="#cb49-675" aria-hidden="true" tabindex="-1"></a>Here is the history from when I recently did this:</span>
+<span id="cb49-676"><a href="#cb49-676" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-679"><a href="#cb49-679" aria-hidden="true" tabindex="-1"></a><span class="in">```{markdown}</span></span>
+<span id="cb49-680"><a href="#cb49-680" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1</span>
+<span id="cb49-681"><a href="#cb49-681" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;revisions1&#39;</span>
+<span id="cb49-682"><a href="#cb49-682" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/revisions1&#39;.</span>
+<span id="cb49-683"><a href="#cb49-683" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull</span>
+<span id="cb49-684"><a href="#cb49-684" aria-hidden="true" tabindex="-1"></a>Already up to date.</span>
+<span id="cb49-685"><a href="#cb49-685" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout main</span>
+<span id="cb49-686"><a href="#cb49-686" aria-hidden="true" tabindex="-1"></a>Switched to branch &#39;main&#39;</span>
+<span id="cb49-687"><a href="#cb49-687" aria-hidden="true" tabindex="-1"></a>Your branch is up to date with &#39;origin/main&#39;.</span>
+<span id="cb49-688"><a href="#cb49-688" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git pull</span>
+<span id="cb49-689"><a href="#cb49-689" aria-hidden="true" tabindex="-1"></a>Already up to date.</span>
 <span id="cb49-690"><a href="#cb49-690" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git merge --no-ff --no-commit revisions1</span>
 <span id="cb49-691"><a href="#cb49-691" aria-hidden="true" tabindex="-1"></a>Automatic merge went well; stopped before committing as requested</span>
 <span id="cb49-692"><a href="#cb49-692" aria-hidden="true" tabindex="-1"></a>Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git status</span>
