@@ -438,6 +438,17 @@
     ]
   },
   {
+    "objectID": "git.html#updating-development-branch",
+    "href": "git.html#updating-development-branch",
+    "title": "",
+    "section": "Updating development branch",
+    "text": "Updating development branch\nSometimes the main branch will have changes not yet available in the development branch. This can happen e.g., when you forget to switch from the main to development branch before making changes (as I often do when working in a private repo), or if a collaborator has pushed and merged some changes from their development branch. Ignoring the fact that this might introduce conflicts with your development branch and assuming your branch was otherwise previously up-to-date with the main branch, here is what you would do:\n\ngit checkout my_branch\ngit fetch origin\ngit merge origin/main\n\nHere is some recent output from when I did this and had created a new folder in main which was not yet avaialble in my development branch ‘revisions1’:\nSwitching to my dev branch:\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1\nSwitched to branch 'revisions1'\nYour branch is up to date with 'origin/revisions1'.\n\nFetching the changes from main:\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git fetch origin\n\nMerging these changes to my dev branch (had a very long output because it was a whole morning’s worth of changes):\n\nAdministrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git merge origin/main\nUpdating 2a9159b..94439d8\nFast-forward\n[...]",
+    "crumbs": [
+      "Next level",
+      "Git and GitHub"
+    ]
+  },
+  {
     "objectID": "git.html#git-for-collaboration",
     "href": "git.html#git-for-collaboration",
     "title": "",
