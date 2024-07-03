@@ -650,9 +650,41 @@ To scm.cms.hu-berlin.de:pallescd/lifetime_paper1_exp123.git
    b9c3533..39f1720  main -> main
 ```
 
+## Updating development branch
 
+Sometimes the main branch will have changes not yet available in the development branch. This can happen e.g., when you forget to switch from the main to development branch before making changes (as I often do when working in a private repo), or if a collaborator has pushed and merged some changes from their development branch. Ignoring the fact that this might introduce conflicts with your development branch and assuming your branch was otherwise previously up-to-date with the main branch, here is what you would do:
 
+```{markdown}
+git checkout my_branch
+git fetch origin
+git merge origin/main
+```
 
+Here is some recent output from when I did this and had created a new folder in main which was not yet avaialble in my development branch 'revisions1':
+
+Switching to my dev branch:
+
+```{markdown}
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git checkout revisions1
+Switched to branch 'revisions1'
+Your branch is up to date with 'origin/revisions1'.
+```
+
+Fetching the changes from main:
+
+```{markdown}
+Administrators-MacBook-Pro:lifetime_paper1_exp123 danielapalleschi$ git fetch origin
+Administrators-MacBook-Pro:lifetime_paper1_exp123
+```
+
+Merging these changes to my dev branch (had a very long output because it was a whole morning's worth of changes):
+
+```{markdown}
+danielapalleschi$ git merge origin/main
+Updating 2a9159b..94439d8
+Fast-forward
+[...]
+```
 
 ## Git for collaboration
 
