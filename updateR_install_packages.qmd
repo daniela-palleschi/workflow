@@ -12,6 +12,50 @@ knitr::opts_chunk$set(eval = F, # run each code chunk?
 
 This script is to be run whenever you want to update R and/or install your required packages. Whenever you install a new package, try to remember to add it to this file. This way, whenver you update, you can just run this script and will then have all your required packages ready to go. Newer versions of RStudio automatically check for missing packages when opening a script, so forgetting to install CRAN packages will be less detrimental to your workflow.
 
+## Package migration
+
+A common issue after updating R is finding that none of your scripts will run because your packages are no longer installed. This is because your package library is specific to your R version. Though this is not as much of a pain as it used to be due to RStudio's new suggested package install bar when working within a script, it can still be annoying and worse--it can change your results in extreme cases because you will be installing the newest package version, whereas you might've been working with an older package version which has changed under the hood. There are a few ways around this. My suggestion is to work in RProjects and use the `renv` package to create and use project-relative package libraries, or in a pinch, save your global package library as an RDS file *before* updating R, and then install the packages listed in this RDS file. 
+
+```{r}
+# Run this in your OLD R version first to save the list
+installed <- rownames(installed.packages())
+saveRDS(installed, "installed_packages.rds")
+
+# Then in your NEW R version
+installed <- readRDS("installed_packages.rds")
+install.packages(installed)
+```
+
+However, this method again doesn't re-install the specific package versions you had installed with your previous version of R. If you want to maintain the package versions, run the following code instead.
+
+```{r}
+#| eval: false
+# In old R
+installed <- as.data.frame(installed.packages()[, c("Package", "Version")])
+saveRDS(installed, "installed_packages.rds")
+```
+
+And then in the new R version, load this list of packages and their version, and run a for loop that installs each. This may take a while to run.
+```{r}
+#| eval: false
+# In new R
+installed <- readRDS("installed_packages.rds")
+
+# you'll need the remotes package first
+install.packages("remotes")
+library(remotes)
+
+for (i in seq_len(nrow(installed))) {
+  tryCatch(
+    remotes::install_version(installed$Package[i], version = installed$Version[i]),
+    error = function(e) message("Failed: ", installed$Package[i])
+  )
+}
+```
+
+However, this just achieves the same result as using `renv` to begin with.
+
+
 ## Check for R update: `updateR`
 
 Do you need to update R? If using a Mac, you can do this by using the `updateR` package (some steps found [here](https://www.linkedin.com/pulse/3-methods-update-r-rstudio-windows-mac-woratana-ngarmtrakulchol/)):

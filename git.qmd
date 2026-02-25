@@ -90,12 +90,12 @@ You'll first need to already have git installed locally. To see how to do that, 
 git version 2.32.1 (Apple Git-133) # and this was the output
 ```
 
-`git config --list` = check your configurations
+- `git config --list` = check your configurations
 
-`git config --global user.name "your-name"` = globally set your name
-`git config --global user.email "your-email"` = globally set your email
-`pwd` = print working directory
-`cd` = change directory
+- `git config --global user.name "your-name"` = globally set your name
+- `git config --global user.email "your-email"` = globally set your email
+- `pwd` = print working directory
+- `cd` = change directory
 
 ```{r}
 pwd
